@@ -1,0 +1,8 @@
+# Overnight batch 1 (Nov 3, 2026), thinking off, after the qwen3.5:27b base-rate run.
+# Why is rho so small? Follow-up arms: the base rate plus an instruction to use it, and payoffs.
+# Then a fourth model size (qwen3.5:4b) for the scale comparison.
+# minutes  model        label                conditions
+27         qwen3.5:9b   qwen3.5:9b-nothink   followups
+33         gemma4:12b   gemma4:12b-nothink   followups
+35         qwen3.5:4b   qwen3.5:4b-nothink   base_rate,followups
+67         qwen3.5:27b  qwen3.5:27b-nothink  followups

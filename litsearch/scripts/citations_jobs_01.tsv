@@ -1,0 +1,17 @@
+s2	https://api.semanticscholar.org/graph/v1/paper/batch?fields=title,year,venue,publicationDate,externalIds,citationCount,referenceCount,authors,abstract	s2/known_batch.json	0	req/known_batch.json
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2608.16003/citations?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/cit_2608.16003.json	1
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2609.18204/citations?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/cit_2609.18204.json	1
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2610.22631/citations?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/cit_2610.22631.json	1
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2601.13537/citations?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/cit_2601.13537.json	1
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2603.14893/citations?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/cit_2603.14893.json	1
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2412.06559/citations?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/cit_2412.06559.json	1
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2609.28564/citations?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/cit_2609.28564.json	1
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2609.09703/citations?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/cit_2609.09703.json	1
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2603.00539/citations?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/cit_2603.00539.json	1
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2604.15224/citations?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/cit_2604.15224.json	1
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2605.20745/citations?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/cit_2605.20745.json	1
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2608.16003/references?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/ref_2608.16003.json	1
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2609.18204/references?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/ref_2609.18204.json	1
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2610.22631/references?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/ref_2610.22631.json	1
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2603.14893/references?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/ref_2603.14893.json	1
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2601.13537/references?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/ref_2601.13537.json	1

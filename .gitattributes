@@ -1,0 +1,7 @@
+# Private provenance and generated/local data are not source-release content.
+.local/** export-ignore
+.venv/** export-ignore
+HPC/** export-ignore
+logs/** export-ignore
+data/raw/** export-ignore
+litsearch/raw/** export-ignore

@@ -1,0 +1,92 @@
+{
+  "status": "Saved-response freeze conditional on original labels",
+  "human_audit_status": "pending",
+  "supported_claim_contrasts": {
+    "original_18": 16,
+    "sol_9": 4
+  },
+  "mandatory_limits": [
+    "Gaussian optimum is a conditional reference, not an identified optimum for actual critics",
+    "Effective prior is shift-equivalent, not an estimate of internal belief",
+    "Reported-score AUC does not measure preservation of latent evidence",
+    "Attribution and declared randomness are confounded; no isolated reliability-remedy claim",
+    "Reasoning gains are model-specific; report paired observed shifts as well as rho",
+    "Near-ceiling rho is descriptive; percentile uncertainty undercovers in simulated ceiling regimes",
+    "Threshold evaluation is retrospective, uses previously inspected data, and requires matched-score coverage reporting",
+    "No revised population-equivalence conclusions; non-significance is not equivalence",
+    "Label-assignment ranges cover contested labels only; audited controls may also change",
+    "A selected audit cannot estimate overall benchmark label-error prevalence"
+  ],
+  "human_audits": [],
+  "results_by_label_variant": {
+    "original": {
+      "claim_support": {
+        "original_18": 16,
+        "sol_9": 4
+      },
+      "wording_significant": [
+        {
+          "critic": "qwen3.5:4b-nothink-bf16-t1",
+          "arm": "hist",
+          "p_holm": 0.005999400059994001
+        }
+      ],
+      "wording_descriptive": 30
+    },
+    "drop": {
+      "claim_support": {
+        "original_18": 16,
+        "sol_9": 4
+      },
+      "wording_significant": [
+        {
+          "critic": "qwen3.5:4b-nothink-bf16-t1",
+          "arm": "hist",
+          "p_holm": 0.011998800119988003
+        }
+      ],
+      "wording_descriptive": 34
+    },
+    "flip": {
+      "claim_support": {
+        "original_18": 16,
+        "sol_9": 4
+      },
+      "wording_significant": [
+        {
+          "critic": "qwen3.5:4b-nothink-bf16-t1",
+          "arm": "hist",
+          "p_holm": 0.005999400059994001
+        },
+        {
+          "critic": "qwen3.5:4b-nothink-bf16-t1",
+          "arm": "user",
+          "p_holm": 0.029497050294970503
+        }
+      ],
+      "wording_descriptive": 30
+    },
+    "no_damaged": {
+      "claim_support": {
+        "original_18": 16,
+        "sol_9": 4
+      },
+      "wording_significant": [
+        {
+          "critic": "qwen3.5:4b-nothink-bf16-t1",
+          "arm": "hist",
+          "p_holm": 0.011998800119988003
+        }
+      ],
+      "wording_descriptive": 30
+    }
+  },
+  "threshold_interpretation": {
+    "original_label_bare_claim_fitted_policy_flags_nothing_at_p10": [
+      "qwen3.5:27b-think-bf16-t1",
+      "gpt-6.1-sol-think"
+    ],
+    "requirement": "Report hit rate, false-alarm rate and best constant-verdict baseline alongside weighted risk. Lower risk achieved by flagging nothing is not recovered detection.",
+    "audit_dependency": "All threshold-policy labelings are retained; original-label utility does not establish utility under adjudicated labels."
+  }
+}

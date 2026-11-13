@@ -1,0 +1,28 @@
+id,short_title,role,relevance,claims_touched,read_level,notes
+2608.16003,Mazaheri & Mazaheri: audit context shifts criterion (ProcessBench),seed,close,C4 C7,full,Same dataset and SDT stats; appendix has a bundled base-rate/stakes prime as false-alarm rates only
+2609.18204,Chen et al.: procedural trace detail and overseer criterion (HICSS-60),seed,close,C4,full,Authors name criterion-calibration prompts as next step
+2610.22631,Cai et al.: explanations shift multimodal judges,seed,close,C4,full,"Has one ""be conservative"" line; rejection rates only"
+2609.28564,Xu: video judges and repair-loop ceiling,seed,related,C4,full,No d' or c
+2609.09703,Zhang & Li: judge politeness (RecSys short),seed,related,C4,full,Leniency as score offset
+2601.13537,Hwang et al.: accept/reject framing across 14 judges,seed,related,C4,abstract,
+2603.00539,Jin & Chen: prompt richness and false rejection of correct code,seed,related,C4,full,
+2604.15224,Gupta et al.: stakes framing in safety judges,seed,related,C3 C4,abstract,
+2605.20745,VerifySteer: latent strictness steering,seed,related,C4,abstract,Activation-level
+2607.17641,VRR-Stop: noisy verify-repair model,,related,,abstract,
+2603.14893,Cacioli: SDT of LLMs (temperature),seed,related,C1 C7,snippet,Pre-registered
+2412.19513,Yang et al.: confidence vs critique,,background,C4,abstract,
+2610.15634,Big-Big-SycoBench,,background,C4,abstract,
+2412.06559,ProcessBench,,background,,full,Dataset
+2608.30373,Song et al.: strict judge role bias (EMNLP 2026 Findings),,related,C4,abstract,
+2607.23002,Causal estimate of a code critic loop,,unscreened,,title,
+2608.18167,Qiu & Gill: Adversarial Review,,unscreened,,abstract,
+2604.16790,Bias in the Loop,,unscreened,,snippet,
+2604.19049,Refute-or-Promote,,unscreened,,title,
+2603.12123,Cross-Context Review,,unscreened,,title,
+2608.10729,Optimal Stopping of Self-Refining Foundation Models,,unscreened,,title,
+2603.04582,Khullar et al.: self-attribution leniency in monitors,,background,,abstract,
+2605.22714,AMEL: judgments drift toward prior polarity,,background,,abstract,
+2609.12439,TraceJudgeBench: prompt-strength ladders,,related,C4,abstract,
+2601.08258,CausalT3: Skepticism Trap,,background,,abstract,
+2610.32986,Judge version swaps shift leniency,,background,,abstract,
+2507.11662,Andrade et al.: agreement bias in multimodal verifiers,,background,,abstract,

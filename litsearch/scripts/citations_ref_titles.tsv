@@ -1,0 +1,41 @@
+2608.16003	JudgeSense: A benchmark for prompt sensitivity in LLM-as-a-judge systems
+2608.16003	Curse of knowledge: Your guidance and provided knowledge are biasing LLM judges in complex evaluation
+2608.16003	CriticEval: Evaluating large language model as critic
+2608.16003	CriticBench: Benchmarking LLMs for critique-correct reasoning
+2608.16003	Large language models cannot self-correct reasoning yet
+2608.16003	Is self-repair a silver bullet for code generation?
+2608.16003	LLM evaluators recognize and favor their own generations
+2608.16003	Towards understanding sycophancy in language models
+2608.16003	A survey on LLM-as-a-judge
+2608.16003	Judging LLM-as-a-judge with MT-Bench and Chatbot Arena
+2609.18204	Large language models are not fair evaluators
+2609.18204	Language models don't always say what they think: Unfaithful explanations in chain-of-thought prompting
+2609.18204	Self-preference bias in LLM-as-a-judge
+2609.18204	Does automation bias decision-making?
+2609.18204	Complacency and bias in human use of automation: An attentional integration
+2609.18204	Explanations can reduce overreliance on AI systems during decision-making
+2609.18204	Does the whole exceed its parts? The effect of AI explanations on complementary team performance
+2609.18204	Corrections for extreme proportions and their biasing effects on estimated values of d'
+2610.22631	Can you trick the grader? Adversarial persuasion of LLM judges
+2610.22631	Challenging the evaluator: LLM sycophancy under user rebuttal
+2610.22631	The silent judge: unacknowledged shortcut bias in LLM-as-a-judge
+2610.22631	How long reasoning chains influence LLMs' judgment of answer factuality
+2610.22631	Mitigating perceptual judgment bias in multimodal LLM-as-a-judge via perceptual perturbation and reward modeling
+2610.22631	When vision-language models judge without seeing: exposing informativeness bias
+2610.22631	Justice or prejudice? Quantifying biases in LLM-as-a-judge
+2610.22631	Is LLM-as-a-judge robust? Investigating universal adversarial attacks on zero-shot LLM assessment
+2610.22631	Words or vision: Do vision-language models have blind faith in text?
+2610.22631	Measuring sycophancy of language models in multi-turn dialogues
+2610.22631	MLLM-as-a-judge: Assessing multimodal LLM-as-a-judge with vision-language benchmark
+2610.22631	MLLMs are deeply affected by modality bias
+2610.22631	LLM comparative assessment: Zero-shot NLG evaluation through pairwise comparisons using large language models
+2610.22631	Calculation of signal detection theory measures
+2603.14893	Benchmarking aided decision making in a signal detection framework
+2603.14893	Metacognition and uncertainty communication in humans and large language models
+2603.14893	What large language models know and what people think they know
+2603.14893	Language models (mostly) know what they know
+2603.14893	A signal detection theoretic approach for estimating metacognitive sensitivity from confidence ratings
+2603.14893	Contrast sensitivity in multimodal large language models: a psychophysics-inspired evaluation
+2603.14893	Just ask for calibration: Strategies for eliciting calibrated confidence scores from language models fine-tuned with human feedback
+2603.14893	A direct test of the unequal-variance signal detection model of recognition memory
+2603.14893	The effect of sampling temperature on problem solving in large language models

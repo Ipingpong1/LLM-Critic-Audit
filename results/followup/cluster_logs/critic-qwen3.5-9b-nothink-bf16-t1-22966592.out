@@ -1,0 +1,79 @@
+2026-11-13 03:16:15 job 22966592 on gl016.hpc.nyu.edu: Qwen/Qwen3.5-9B, label qwen3.5:9b-nothink-bf16-t1, TP 1, restart 0
+NVIDIA L40S, 46068 MiB
+waiting for vLLM (Qwen/Qwen3.5-9B) on port 8592 ...
+2026-11-13 03:18:15 vLLM is up
+qwen3.5:9b-nothink-bf16-t1: 6 conditions x 200 items x 3 samples; 3600 to run, 0 already in results/followup/qwen3.5_9b-nothink-bf16-t1.jsonl
+  50/3600 done, 0 unparsed/failed, 8.77/s
+  100/3600 done, 0 unparsed/failed, 11.12/s
+  150/3600 done, 0 unparsed/failed, 12.08/s
+  200/3600 done, 0 unparsed/failed, 12.56/s
+  250/3600 done, 0 unparsed/failed, 12.53/s
+  300/3600 done, 0 unparsed/failed, 12.83/s
+  350/3600 done, 0 unparsed/failed, 13.08/s
+  400/3600 done, 0 unparsed/failed, 13.21/s
+  450/3600 done, 0 unparsed/failed, 13.32/s
+  500/3600 done, 0 unparsed/failed, 13.30/s
+  550/3600 done, 0 unparsed/failed, 13.32/s
+  600/3600 done, 0 unparsed/failed, 13.28/s
+  650/3600 done, 0 unparsed/failed, 13.42/s
+  700/3600 done, 0 unparsed/failed, 13.40/s
+  750/3600 done, 0 unparsed/failed, 13.41/s
+  800/3600 done, 0 unparsed/failed, 13.44/s
+  850/3600 done, 0 unparsed/failed, 13.31/s
+  900/3600 done, 0 unparsed/failed, 13.36/s
+  950/3600 done, 0 unparsed/failed, 13.40/s
+  1000/3600 done, 0 unparsed/failed, 13.41/s
+  1050/3600 done, 0 unparsed/failed, 13.44/s
+  1100/3600 done, 0 unparsed/failed, 13.39/s
+  1150/3600 done, 0 unparsed/failed, 13.39/s
+  1200/3600 done, 0 unparsed/failed, 13.35/s
+  1250/3600 done, 0 unparsed/failed, 13.40/s
+  1300/3600 done, 0 unparsed/failed, 13.39/s
+  1350/3600 done, 0 unparsed/failed, 13.38/s
+  1400/3600 done, 0 unparsed/failed, 13.38/s
+  1450/3600 done, 0 unparsed/failed, 13.33/s
+  1500/3600 done, 1 unparsed/failed, 13.36/s
+  1550/3600 done, 1 unparsed/failed, 13.39/s
+  1600/3600 done, 1 unparsed/failed, 13.39/s
+  1650/3600 done, 1 unparsed/failed, 13.41/s
+  1700/3600 done, 1 unparsed/failed, 13.39/s
+  1750/3600 done, 1 unparsed/failed, 13.39/s
+  1800/3600 done, 1 unparsed/failed, 13.32/s
+  1850/3600 done, 1 unparsed/failed, 13.26/s
+  1900/3600 done, 1 unparsed/failed, 13.17/s
+  1950/3600 done, 1 unparsed/failed, 13.13/s
+  2000/3600 done, 1 unparsed/failed, 13.06/s
+  2050/3600 done, 2 unparsed/failed, 12.98/s
+  2100/3600 done, 2 unparsed/failed, 12.92/s
+  2150/3600 done, 2 unparsed/failed, 12.84/s
+  2200/3600 done, 2 unparsed/failed, 12.79/s
+  2250/3600 done, 2 unparsed/failed, 12.72/s
+  2300/3600 done, 2 unparsed/failed, 12.65/s
+  2350/3600 done, 2 unparsed/failed, 12.57/s
+  2400/3600 done, 2 unparsed/failed, 12.46/s
+  2450/3600 done, 2 unparsed/failed, 12.41/s
+  2500/3600 done, 4 unparsed/failed, 12.36/s
+  2550/3600 done, 4 unparsed/failed, 12.31/s
+  2600/3600 done, 6 unparsed/failed, 12.28/s
+  2650/3600 done, 8 unparsed/failed, 12.22/s
+  2700/3600 done, 8 unparsed/failed, 12.19/s
+  2750/3600 done, 10 unparsed/failed, 12.15/s
+  2800/3600 done, 10 unparsed/failed, 12.13/s
+  2850/3600 done, 12 unparsed/failed, 12.10/s
+  2900/3600 done, 13 unparsed/failed, 12.06/s
+  2950/3600 done, 15 unparsed/failed, 12.02/s
+  3000/3600 done, 15 unparsed/failed, 11.97/s
+  3050/3600 done, 15 unparsed/failed, 11.96/s
+  3100/3600 done, 15 unparsed/failed, 11.92/s
+  3150/3600 done, 15 unparsed/failed, 11.90/s
+  3200/3600 done, 16 unparsed/failed, 11.88/s
+  3250/3600 done, 16 unparsed/failed, 11.83/s
+  3300/3600 done, 16 unparsed/failed, 11.81/s
+  3350/3600 done, 18 unparsed/failed, 11.77/s
+  3400/3600 done, 19 unparsed/failed, 11.75/s
+  3450/3600 done, 19 unparsed/failed, 11.70/s
+  3500/3600 done, 20 unparsed/failed, 11.67/s
+  3550/3600 done, 20 unparsed/failed, 11.64/s
+  3600/3600 done, 43 unparsed/failed, 10.75/s
+warning: 43 replies hit --max-tokens (1024). The model is probably thinking before answering: raise --max-tokens or disable thinking (see README).
+2026-11-13 03:23:56 done

@@ -1,0 +1,293 @@
+{
+  "point_estimates": [
+    {
+      "set": "hard",
+      "point_estimates_compared": 751,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "set": "easy",
+      "point_estimates_compared": 984,
+      "max_absolute_difference": 0.0
+    },
+    {
+      "set": "premise",
+      "point_estimates_compared": 504,
+      "max_absolute_difference": 0.0
+    }
+  ],
+  "claim_tests": [
+    {
+      "critic": "qwen3.5:27b-think-bf16-t1",
+      "test": "T1",
+      "family": "original_18",
+      "old_p_holm": 0.0017998200179982003,
+      "revised_p_holm": 5.9999700001499995e-05,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "qwen3.5:27b-think-bf16-t1",
+      "test": "T2",
+      "family": "original_18",
+      "old_p_holm": 0.0017998200179982003,
+      "revised_p_holm": 5.9999700001499995e-05,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "qwen3.5:27b-think-bf16-t1",
+      "test": "T3",
+      "family": "original_18",
+      "old_p_holm": 0.0017998200179982003,
+      "revised_p_holm": 5.9999700001499995e-05,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "qwen3.5:27b-think-bf16-t1",
+      "test": "T4",
+      "family": "original_18",
+      "old_p_holm": 0.0017998200179982003,
+      "revised_p_holm": 5.9999700001499995e-05,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "qwen3.5:27b-think-bf16-t1",
+      "test": "T5",
+      "family": "original_18",
+      "old_p_holm": 0.0017998200179982003,
+      "revised_p_holm": 5.9999700001499995e-05,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "qwen3.5:27b-think-bf16-t1",
+      "test": "T6",
+      "family": "original_18",
+      "old_p_holm": 0.0017998200179982003,
+      "revised_p_holm": 5.9999700001499995e-05,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "qwen3.5:27b-think-bf16-t1",
+      "test": "T7",
+      "family": "original_18",
+      "old_p_holm": 0.132986701329867,
+      "revised_p_holm": 0.15645921770391147,
+      "old_supported": false,
+      "revised_significant": false,
+      "predicted_direction_supported": false
+    },
+    {
+      "critic": "qwen3.5:27b-think-bf16-t1",
+      "test": "T8",
+      "family": "original_18",
+      "old_p_holm": 0.0017998200179982003,
+      "revised_p_holm": 5.9999700001499995e-05,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "qwen3.5:27b-think-bf16-t1",
+      "test": "T9",
+      "family": "original_18",
+      "old_p_holm": 0.001999800019998,
+      "revised_p_holm": 0.009521484375,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "opus-5.5-think",
+      "test": "T1",
+      "family": "original_18",
+      "old_p_holm": 0.0017998200179982003,
+      "revised_p_holm": 1.0059675420793657e-31,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "opus-5.5-think",
+      "test": "T2",
+      "family": "original_18",
+      "old_p_holm": 0.0017998200179982003,
+      "revised_p_holm": 7.891274185862595e-35,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "opus-5.5-think",
+      "test": "T3",
+      "family": "original_18",
+      "old_p_holm": 0.0017998200179982003,
+      "revised_p_holm": 1.5043920146264177e-21,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "opus-5.5-think",
+      "test": "T4",
+      "family": "original_18",
+      "old_p_holm": 0.001999800019998,
+      "revised_p_holm": 0.001625768429609307,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "opus-5.5-think",
+      "test": "T5",
+      "family": "original_18",
+      "old_p_holm": 0.0017998200179982003,
+      "revised_p_holm": 8.010586599482749e-18,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "opus-5.5-think",
+      "test": "T6",
+      "family": "original_18",
+      "old_p_holm": 0.0017998200179982003,
+      "revised_p_holm": 2.8755951895579096e-18,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "opus-5.5-think",
+      "test": "T7",
+      "family": "original_18",
+      "old_p_holm": 0.7454254574542546,
+      "revised_p_holm": 0.6666666666666665,
+      "old_supported": false,
+      "revised_significant": false,
+      "predicted_direction_supported": false
+    },
+    {
+      "critic": "opus-5.5-think",
+      "test": "T8",
+      "family": "original_18",
+      "old_p_holm": 0.0017998200179982003,
+      "revised_p_holm": 2.117582368135751e-22,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "opus-5.5-think",
+      "test": "T9",
+      "family": "original_18",
+      "old_p_holm": 0.0017998200179982003,
+      "revised_p_holm": 0.0006774035123372113,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "gpt-6.1-sol-think",
+      "test": "T1",
+      "family": "sol_9",
+      "old_p_holm": 0.0264973502649735,
+      "revised_p_holm": 0.15625,
+      "old_supported": true,
+      "revised_significant": false,
+      "predicted_direction_supported": false
+    },
+    {
+      "critic": "gpt-6.1-sol-think",
+      "test": "T2",
+      "family": "sol_9",
+      "old_p_holm": 0.0008999100089991002,
+      "revised_p_holm": 1.9058241313221758e-21,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "gpt-6.1-sol-think",
+      "test": "T3",
+      "family": "sol_9",
+      "old_p_holm": 0.0008999100089991002,
+      "revised_p_holm": 0.00341796875,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "gpt-6.1-sol-think",
+      "test": "T4",
+      "family": "sol_9",
+      "old_p_holm": 1.0,
+      "revised_p_holm": 1.0,
+      "old_supported": false,
+      "revised_significant": false,
+      "predicted_direction_supported": false
+    },
+    {
+      "critic": "gpt-6.1-sol-think",
+      "test": "T5",
+      "family": "sol_9",
+      "old_p_holm": 0.0264973502649735,
+      "revised_p_holm": 0.15625,
+      "old_supported": true,
+      "revised_significant": false,
+      "predicted_direction_supported": false
+    },
+    {
+      "critic": "gpt-6.1-sol-think",
+      "test": "T6",
+      "family": "sol_9",
+      "old_p_holm": 0.0264973502649735,
+      "revised_p_holm": 0.15625,
+      "old_supported": true,
+      "revised_significant": false,
+      "predicted_direction_supported": false
+    },
+    {
+      "critic": "gpt-6.1-sol-think",
+      "test": "T7",
+      "family": "sol_9",
+      "old_p_holm": 1.0,
+      "revised_p_holm": 1.0,
+      "old_supported": false,
+      "revised_significant": false,
+      "predicted_direction_supported": false
+    },
+    {
+      "critic": "gpt-6.1-sol-think",
+      "test": "T8",
+      "family": "sol_9",
+      "old_p_holm": 0.0008999100089991002,
+      "revised_p_holm": 1.9058241313221758e-21,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    },
+    {
+      "critic": "gpt-6.1-sol-think",
+      "test": "T9",
+      "family": "sol_9",
+      "old_p_holm": 0.0008999100089991002,
+      "revised_p_holm": 0.01171875,
+      "old_supported": true,
+      "revised_significant": true,
+      "predicted_direction_supported": true
+    }
+  ],
+  "intervals": "Changed by whole-problem split-stratified resampling; old intervals are not freeze outputs",
+  "legacy_equivalence": "Not carried forward; lack of significance does not establish equivalence"
+}

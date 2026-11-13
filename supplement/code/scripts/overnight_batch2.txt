@@ -1,0 +1,19 @@
+# Overnight batch 2 (Nov 3, 2026), thinking off, after batch 1.
+# Strictness battery: framings with no ideal-observer prediction, each compared with neutral
+# (neutral is already in every model's file, so each framing costs 200 requests).
+# Batch 1 showed that numeric payoffs don't move the threshold in the right direction, so the
+# verbal stakes lines (stakes_miss, stakes_fa) come first: does a cost asymmetry work in words?
+# Measured rates (requests/s): 4b 1.0, 9b 0.5, gemma4 0.3, 27b 0.16. Estimates include ~8% slack.
+# Order: the full battery for the cheap 4b, then five core framings per model, with the 27b
+# (the scale point) in chunks; find_bugs and persona last, since they echo presuppose and harsh.
+# The queue skips a job that would run past the deadline and tries the next, shorter one.
+# minutes  model        label                conditions
+26         qwen3.5:4b   qwen3.5:4b-nothink   strictness
+36         qwen3.5:9b   qwen3.5:9b-nothink   presuppose,harsh,lenient,stakes_miss,stakes_fa
+45         qwen3.5:27b  qwen3.5:27b-nothink  stakes_miss,stakes_fa
+60         gemma4:12b   gemma4:12b-nothink   presuppose,harsh,lenient,stakes_miss,stakes_fa
+45         qwen3.5:27b  qwen3.5:27b-nothink  presuppose,harsh
+15         qwen3.5:9b   qwen3.5:9b-nothink   find_bugs,persona
+23         qwen3.5:27b  qwen3.5:27b-nothink  lenient
+25         gemma4:12b   gemma4:12b-nothink   find_bugs,persona
+45         qwen3.5:27b  qwen3.5:27b-nothink  find_bugs,persona

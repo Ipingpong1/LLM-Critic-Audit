@@ -1,0 +1,2 @@
+# Overnight batch 3 (Nov 3, 2026): one more 27b framing in the last minutes before 8 am.
+21         qwen3.5:27b  qwen3.5:27b-nothink  lenient

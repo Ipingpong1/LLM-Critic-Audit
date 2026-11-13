@@ -1,0 +1,150 @@
+{
+  "seed": 20261112,
+  "bootstrap": 999,
+  "wording_nulls": [
+    {
+      "kind": "wording_null",
+      "d_prime": 1.5,
+      "repeats": 1,
+      "wording_main_effect": 0.4,
+      "simulations": 500,
+      "eligible": 500,
+      "rejections": 26,
+      "rejection_rate": 0.052,
+      "rejection_rate_ci": [
+        0.034245698082767936,
+        0.07526637103062216
+      ],
+      "excessive_rejection": false
+    },
+    {
+      "kind": "wording_null",
+      "d_prime": 1.5,
+      "repeats": 3,
+      "wording_main_effect": 0.4,
+      "simulations": 500,
+      "eligible": 500,
+      "rejections": 31,
+      "rejection_rate": 0.062,
+      "rejection_rate_ci": [
+        0.04251106129638552,
+        0.08685259747910139
+      ],
+      "excessive_rejection": false
+    },
+    {
+      "kind": "wording_null",
+      "d_prime": 3.2,
+      "repeats": 1,
+      "wording_main_effect": 0.4,
+      "simulations": 500,
+      "eligible": 479,
+      "rejections": 32,
+      "rejection_rate": 0.064,
+      "rejection_rate_ci": [
+        0.044184210946713244,
+        0.08915062755086343
+      ],
+      "excessive_rejection": false
+    },
+    {
+      "kind": "wording_null",
+      "d_prime": 3.2,
+      "repeats": 3,
+      "wording_main_effect": 0.4,
+      "simulations": 500,
+      "eligible": 500,
+      "rejections": 19,
+      "rejection_rate": 0.038,
+      "rejection_rate_ci": [
+        0.023030770806247606,
+        0.05870729046322855
+      ],
+      "excessive_rejection": false
+    },
+    {
+      "kind": "wording_null",
+      "d_prime": 4.5,
+      "repeats": 1,
+      "wording_main_effect": 0.4,
+      "simulations": 500,
+      "eligible": 1,
+      "rejections": 1,
+      "rejection_rate": 0.002,
+      "rejection_rate_ci": [
+        5.0634334007415215e-05,
+        0.011092476898968787
+      ],
+      "excessive_rejection": false
+    },
+    {
+      "kind": "wording_null",
+      "d_prime": 3.2,
+      "repeats": 3,
+      "wording_main_effect": 0.0,
+      "simulations": 500,
+      "eligible": 500,
+      "rejections": 23,
+      "rejection_rate": 0.046,
+      "rejection_rate_ci": [
+        0.029380175392402796,
+        0.0682254278812379
+      ],
+      "excessive_rejection": false
+    }
+  ],
+  "rho_coverage": [
+    {
+      "kind": "rho_coverage",
+      "d_prime": 1.5,
+      "true_rho": 0.5,
+      "simulations": 500,
+      "coverage": 0.95,
+      "coverage_ci": [
+        0.927072378349521,
+        0.9673848198506699
+      ],
+      "mean_estimate": 0.49994004409238396,
+      "near_ceiling": 0,
+      "warning": "Percentile intervals are descriptive; ceiling regimes are not promoted to precise normative claims"
+    },
+    {
+      "kind": "rho_coverage",
+      "d_prime": 3.2,
+      "true_rho": 0.5,
+      "simulations": 500,
+      "coverage": 0.914,
+      "coverage_ci": [
+        0.8859063306539441,
+        0.9370632334338127
+      ],
+      "mean_estimate": 0.49915841660249094,
+      "near_ceiling": 8,
+      "warning": "Percentile intervals are descriptive; ceiling regimes are not promoted to precise normative claims"
+    },
+    {
+      "kind": "rho_coverage",
+      "d_prime": 4.5,
+      "true_rho": 0.5,
+      "simulations": 500,
+      "coverage": 0.796,
+      "coverage_ci": [
+        0.7579738222098206,
+        0.8304830314351875
+      ],
+      "mean_estimate": 0.35079012569306456,
+      "near_ceiling": 450,
+      "warning": "Percentile intervals are descriptive; ceiling regimes are not promoted to precise normative claims"
+    }
+  ],
+  "wording_validation_passed": true,
+  "sparse_exact_null": {
+    "simulations": 5000,
+    "rejection_rate": 0.0182,
+    "ci": [
+      0.014678167055287397,
+      0.022299108114531587
+    ]
+  },
+  "scope": "Finite simulation screen, not proof of universal calibration. Holm relies on valid individual tests. No simulated 60-test family claim is made."
+}

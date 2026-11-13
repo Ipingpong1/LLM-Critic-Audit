@@ -1,0 +1,79 @@
+2026-11-13 03:18:55 job 22966593 on gl025.hpc.nyu.edu: google/gemma-4-12B-it, label gemma4:12b-nothink-bf16-t1, TP 1, restart 0
+NVIDIA L40S, 46068 MiB
+waiting for vLLM (google/gemma-4-12B-it) on port 8593 ...
+2026-11-13 03:22:46 vLLM is up
+gemma4:12b-nothink-bf16-t1: 6 conditions x 200 items x 3 samples; 3600 to run, 0 already in results/followup/gemma4_12b-nothink-bf16-t1.jsonl
+  50/3600 done, 0 unparsed/failed, 7.82/s
+  100/3600 done, 0 unparsed/failed, 10.13/s
+  150/3600 done, 0 unparsed/failed, 11.84/s
+  200/3600 done, 0 unparsed/failed, 12.24/s
+  250/3600 done, 0 unparsed/failed, 14.05/s
+  300/3600 done, 0 unparsed/failed, 14.30/s
+  350/3600 done, 0 unparsed/failed, 14.67/s
+  400/3600 done, 0 unparsed/failed, 15.07/s
+  450/3600 done, 0 unparsed/failed, 15.04/s
+  500/3600 done, 0 unparsed/failed, 15.58/s
+  550/3600 done, 0 unparsed/failed, 15.68/s
+  600/3600 done, 0 unparsed/failed, 15.89/s
+  650/3600 done, 0 unparsed/failed, 15.78/s
+  700/3600 done, 0 unparsed/failed, 15.93/s
+  750/3600 done, 0 unparsed/failed, 16.36/s
+  800/3600 done, 0 unparsed/failed, 16.32/s
+  850/3600 done, 0 unparsed/failed, 16.30/s
+  900/3600 done, 0 unparsed/failed, 16.43/s
+  950/3600 done, 0 unparsed/failed, 16.44/s
+  1000/3600 done, 0 unparsed/failed, 16.60/s
+  1050/3600 done, 0 unparsed/failed, 16.75/s
+  1100/3600 done, 0 unparsed/failed, 16.69/s
+  1150/3600 done, 0 unparsed/failed, 16.65/s
+  1200/3600 done, 0 unparsed/failed, 16.66/s
+  1250/3600 done, 0 unparsed/failed, 16.65/s
+  1300/3600 done, 0 unparsed/failed, 16.68/s
+  1350/3600 done, 0 unparsed/failed, 16.75/s
+  1400/3600 done, 0 unparsed/failed, 16.83/s
+  1450/3600 done, 0 unparsed/failed, 16.76/s
+  1500/3600 done, 0 unparsed/failed, 16.79/s
+  1550/3600 done, 0 unparsed/failed, 16.80/s
+  1600/3600 done, 0 unparsed/failed, 16.82/s
+  1650/3600 done, 0 unparsed/failed, 16.73/s
+  1700/3600 done, 0 unparsed/failed, 16.74/s
+  1750/3600 done, 0 unparsed/failed, 16.62/s
+  1800/3600 done, 0 unparsed/failed, 16.56/s
+  1850/3600 done, 0 unparsed/failed, 16.49/s
+  1900/3600 done, 0 unparsed/failed, 16.42/s
+  1950/3600 done, 0 unparsed/failed, 16.41/s
+  2000/3600 done, 0 unparsed/failed, 16.33/s
+  2050/3600 done, 0 unparsed/failed, 16.30/s
+  2100/3600 done, 0 unparsed/failed, 16.29/s
+  2150/3600 done, 0 unparsed/failed, 16.28/s
+  2200/3600 done, 0 unparsed/failed, 16.31/s
+  2250/3600 done, 0 unparsed/failed, 16.19/s
+  2300/3600 done, 0 unparsed/failed, 16.10/s
+  2350/3600 done, 0 unparsed/failed, 15.89/s
+  2400/3600 done, 0 unparsed/failed, 15.95/s
+  2450/3600 done, 0 unparsed/failed, 15.92/s
+  2500/3600 done, 0 unparsed/failed, 15.91/s
+  2550/3600 done, 0 unparsed/failed, 15.90/s
+  2600/3600 done, 0 unparsed/failed, 15.89/s
+  2650/3600 done, 1 unparsed/failed, 15.81/s
+  2700/3600 done, 1 unparsed/failed, 15.81/s
+  2750/3600 done, 1 unparsed/failed, 15.80/s
+  2800/3600 done, 1 unparsed/failed, 15.79/s
+  2850/3600 done, 1 unparsed/failed, 15.78/s
+  2900/3600 done, 1 unparsed/failed, 15.79/s
+  2950/3600 done, 1 unparsed/failed, 15.67/s
+  3000/3600 done, 1 unparsed/failed, 15.61/s
+  3050/3600 done, 1 unparsed/failed, 15.62/s
+  3100/3600 done, 1 unparsed/failed, 15.62/s
+  3150/3600 done, 1 unparsed/failed, 15.62/s
+  3200/3600 done, 2 unparsed/failed, 15.60/s
+  3250/3600 done, 2 unparsed/failed, 15.58/s
+  3300/3600 done, 2 unparsed/failed, 15.56/s
+  3350/3600 done, 2 unparsed/failed, 15.58/s
+  3400/3600 done, 2 unparsed/failed, 15.59/s
+  3450/3600 done, 3 unparsed/failed, 15.62/s
+  3500/3600 done, 3 unparsed/failed, 15.57/s
+  3550/3600 done, 3 unparsed/failed, 15.54/s
+  3600/3600 done, 5 unparsed/failed, 14.62/s
+warning: 5 replies hit --max-tokens (1024). The model is probably thinking before answering: raise --max-tokens or disable thinking (see README).
+2026-11-13 03:26:58 done

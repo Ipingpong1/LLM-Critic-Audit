@@ -1,0 +1,672 @@
+{
+ "bootstrap": 2000,
+ "draws": 20000,
+ "variants": [
+  "original"
+ ],
+ "results": {
+  "original": {
+   "critics": {
+    "sim-plain": {
+     "d_neutral": 1.352816520061643,
+     "errors_per_200": 51.78875638841567,
+     "arms": {
+      "br": {
+       "rho": 0.5016354482346743,
+       "ci": [
+        0.4056991675921808,
+        0.6196844843705629
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.4552389861724373,
+       "ci": [
+        0.3655689575170732,
+        0.5704561833448719
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.4499282477927494,
+       "ci": [
+        0.367154933104035,
+        0.5498934950586966
+       ],
+       "ref": "exp50",
+       "samples": 3
+      },
+      "paper_self": {
+       "rho": 0.4693341982480437,
+       "ci": [
+        0.37949757362768516,
+        0.5820133523304473
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "paper_other": {
+       "rho": 0.4852124483025677,
+       "ci": [
+        0.3918854852704866,
+        0.6037501761014161
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "paper_methods": {
+       "rho": 0.4441121308048777,
+       "ci": [
+        0.3595010215253262,
+        0.5568751997435852
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "paper_true": {
+       "rho": 0.574984378108547,
+       "ci": [
+        0.4629400206004582,
+        0.7262071478064889
+       ],
+       "ref": "neutral",
+       "samples": 3
+      }
+     },
+     "ceiling": false,
+     "false_alarms": {
+      "neutral": 15.463917525773196,
+      "note_bare": 18.983050847457626,
+      "claim_bare": 43.58108108108108,
+      "claim_random": 15.463917525773196,
+      "claim_reviewer": 25.259515570934255
+     }
+    },
+    "sim-raised": {
+     "d_neutral": 1.266028188983269,
+     "errors_per_200": 54.01709401709402,
+     "arms": {
+      "br": {
+       "rho": 0.4581267817922271,
+       "ci": [
+        0.3700436923818204,
+        0.5709431935354402
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.803922249075362,
+       "ci": [
+        0.6486790106503281,
+        0.9891841146390946
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.8725899262702154,
+       "ci": [
+        0.7252628294330025,
+        1.062309657409202
+       ],
+       "ref": "exp50",
+       "samples": 3
+      },
+      "paper_self": {
+       "rho": 0.7766409406870433,
+       "ci": [
+        0.6373011121979703,
+        0.9475039196187596
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "paper_other": {
+       "rho": 0.7496846743365149,
+       "ci": [
+        0.6215980278719452,
+        0.9162094135469345
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "paper_methods": {
+       "rho": 0.4806546780823224,
+       "ci": [
+        0.383981136368526,
+        0.6063099906350198
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "paper_true": {
+       "rho": 0.02684943791085701,
+       "ci": [
+        -0.01743573057952652,
+        0.07555513117437729
+       ],
+       "ref": "neutral",
+       "samples": 3
+      }
+     },
+     "ceiling": false,
+     "false_alarms": {
+      "neutral": 17.586206896551722,
+      "note_bare": 29.553264604810998,
+      "claim_bare": 38.38383838383838,
+      "claim_random": 14.334470989761092,
+      "claim_reviewer": 20.477815699658702
+     }
+    }
+   },
+   "A": [
+    {
+     "estimate": -0.06094162559192878,
+     "p": 0.3830308484575771,
+     "method": "paired_problem_vector_swap_monte_carlo",
+     "informative_problems": 122,
+     "draws": 20000,
+     "mc_p_interval": [
+      0.3762552802617629,
+      0.3897787471223832
+     ],
+     "assumption": "Whole condition-specific response vectors exchangeable within problem under the null",
+     "critic": "sim-plain",
+     "test": "A1",
+     "a": "note_bare",
+     "b": "neutral",
+     "sign": -1,
+     "what": "a note's claim moves the threshold",
+     "ci": [
+      -0.19816292103386404,
+      0.0732067283003878
+     ],
+     "p_holm": 0.6854657267136643,
+     "held": false,
+     "no_shift": true
+    },
+    {
+     "estimate": -0.705437109562707,
+     "p": 4.999750012499375e-05,
+     "method": "paired_problem_vector_swap_monte_carlo",
+     "informative_problems": 132,
+     "draws": 20000,
+     "mc_p_interval": [
+      0.0,
+      0.0001844269639618992
+     ],
+     "assumption": "Whole condition-specific response vectors exchangeable within problem under the null",
+     "critic": "sim-plain",
+     "test": "A2",
+     "a": "claim_bare",
+     "b": "note_bare",
+     "sign": -1,
+     "what": "the system prompt's own claim moves more than a note's",
+     "ci": [
+      -0.8581651233828418,
+      -0.5597990019160457
+     ],
+     "p_holm": 0.0002999850007499625,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": -0.0674848391786434,
+     "p": 0.3427328633568322,
+     "method": "paired_problem_vector_swap_monte_carlo",
+     "informative_problems": 114,
+     "draws": 20000,
+     "mc_p_interval": [
+      0.336120586709485,
+      0.3493251666307755
+     ],
+     "assumption": "Whole condition-specific response vectors exchangeable within problem under the null",
+     "critic": "sim-plain",
+     "test": "A3",
+     "a": "note_bare",
+     "b": "claim_random",
+     "sign": 0,
+     "what": "the note against the note declared random",
+     "ci": [
+      -0.20242216190294685,
+      0.06809376130561341
+     ],
+     "p_holm": 0.6854657267136643,
+     "held": false,
+     "no_shift": true
+    },
+    {
+     "estimate": -0.36369902737483556,
+     "p": 9.99950002499875e-05,
+     "method": "paired_problem_vector_swap_monte_carlo",
+     "informative_problems": 127,
+     "draws": 20000,
+     "mc_p_interval": [
+      1.2658895979755804e-06,
+      0.0002785503321745113
+     ],
+     "assumption": "Whole condition-specific response vectors exchangeable within problem under the null",
+     "critic": "sim-raised",
+     "test": "A1",
+     "a": "note_bare",
+     "b": "neutral",
+     "sign": -1,
+     "what": "a note's claim moves the threshold",
+     "ci": [
+      -0.5016156260257927,
+      -0.22937520613854132
+     ],
+     "p_holm": 0.0002999850007499625,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": -0.3579323262151899,
+     "p": 4.999750012499375e-05,
+     "method": "paired_problem_vector_swap_monte_carlo",
+     "informative_problems": 116,
+     "draws": 20000,
+     "mc_p_interval": [
+      0.0,
+      0.0001844269639618992
+     ],
+     "assumption": "Whole condition-specific response vectors exchangeable within problem under the null",
+     "critic": "sim-raised",
+     "test": "A2",
+     "a": "claim_bare",
+     "b": "note_bare",
+     "sign": -1,
+     "what": "the system prompt's own claim moves more than a note's",
+     "ci": [
+      -0.4816029706855579,
+      -0.2359203459072471
+     ],
+     "p_holm": 0.0002999850007499625,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": -0.3975960178208584,
+     "p": 4.999750012499375e-05,
+     "method": "paired_problem_vector_swap_monte_carlo",
+     "informative_problems": 125,
+     "draws": 20000,
+     "mc_p_interval": [
+      0.0,
+      0.0001844269639618992
+     ],
+     "assumption": "Whole condition-specific response vectors exchangeable within problem under the null",
+     "critic": "sim-raised",
+     "test": "A3",
+     "a": "note_bare",
+     "b": "claim_random",
+     "sign": 0,
+     "what": "the note against the note declared random",
+     "ci": [
+      -0.5513175189717052,
+      -0.2550700610188618
+     ],
+     "p_holm": 0.0002999850007499625,
+     "held": true,
+     "no_shift": false
+    }
+   ],
+   "B": [
+    {
+     "estimate": -0.1507128945172097,
+     "ci": [
+      -0.38840516864228136,
+      0.10565813620627747
+     ],
+     "se": 0.12938464942448866,
+     "informative_problems": 150,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.23488255872063968,
+     "draws": 2000,
+     "studentized_ci": [
+      -0.40516274114060497,
+      0.09699645868015772
+     ],
+     "rho_a": 0.4552389861724373,
+     "rho_a_ci": [
+      0.3655689575170732,
+      0.5704561833448719
+     ],
+     "rho_b": 0.5016354482346743,
+     "rho_b_ci": [
+      0.4056991675921808,
+      0.6196844843705629
+     ],
+     "rho_diff": -0.04639646206223702,
+     "rho_diff_ci": [
+      -0.11935039468571529,
+      0.03194075696986477
+     ],
+     "critic": "sim-plain",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 2.899041753480731,
+      "stated_p_shift_logodds_br": 2.95470224848785,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 0.9982847341337907,
+       "bayes90": 0.9966101694915255
+      }
+     },
+     "p_holm": 0.23488255872063968,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": 1.2002739055220308,
+     "ci": [
+      0.9054257819374715,
+      1.498484026216093
+     ],
+     "se": 0.14903046934496228,
+     "informative_problems": 156,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.0004997501249375312,
+     "draws": 2000,
+     "studentized_ci": [
+      0.8596843028000647,
+      1.5084146203260558
+     ],
+     "rho_a": 0.803922249075362,
+     "rho_a_ci": [
+      0.6486790106503281,
+      0.9891841146390946
+     ],
+     "rho_b": 0.4581267817922271,
+     "rho_b_ci": [
+      0.3700436923818204,
+      0.5709431935354402
+     ],
+     "rho_diff": 0.3457954672831349,
+     "rho_diff_ci": [
+      0.24056450213094227,
+      0.46619536248427407
+     ],
+     "critic": "sim-raised",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 4.946681670206216,
+      "stated_p_shift_logodds_br": 2.9716247925704327,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 0.9965870307167235,
+       "bayes90": 0.9966216216216216
+      }
+     },
+     "p_holm": 0.0009995002498750624,
+     "B1": true,
+     "B2": true
+    }
+   ],
+   "C": [
+    {
+     "estimate": -0.0634094320260078,
+     "ci": [
+      -0.2956139438224151,
+      0.16817821439416147
+     ],
+     "se": 0.12005268505907041,
+     "informative_problems": 150,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.5987006496751625,
+     "draws": 2000,
+     "studentized_ci": [
+      -0.29771582348865044,
+      0.17292284360883695
+     ],
+     "rho_a": 0.4499282477927494,
+     "rho_a_ci": [
+      0.367154933104035,
+      0.5498934950586966
+     ],
+     "rho_b": 0.5016354482346743,
+     "rho_b_ci": [
+      0.4056991675921808,
+      0.6196844843705629
+     ],
+     "rho_diff": -0.051707200441924894,
+     "rho_diff_ci": [
+      -0.16704492379582583,
+      0.06030861101160249
+     ],
+     "critic": "sim-plain",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.09031632172592996,
+     "d_exp50_minus_neutral_ci": [
+      -0.38900607117045916,
+      0.18617823942956457
+     ],
+     "c_exp50_minus_neutral": -0.0650456047358996,
+     "c_exp50_minus_neutral_ci": [
+      -0.21278675513322046,
+      0.07999556715140829
+     ],
+     "p_holm": 0.5987006496751625,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": 1.2181296778849902,
+     "ci": [
+      0.9171707606423397,
+      1.522584886716385
+     ],
+     "se": 0.1515287246408813,
+     "informative_problems": 153,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.0004997501249375312,
+     "draws": 2000,
+     "studentized_ci": [
+      0.8719700517723494,
+      1.5203697397445946
+     ],
+     "rho_a": 0.8725899262702154,
+     "rho_a_ci": [
+      0.7252628294330025,
+      1.062309657409202
+     ],
+     "rho_b": 0.4581267817922271,
+     "rho_b_ci": [
+      0.3700436923818204,
+      0.5709431935354402
+     ],
+     "rho_diff": 0.41446314447798827,
+     "rho_diff_ci": [
+      0.2546841342573362,
+      0.5977844555367988
+     ],
+     "critic": "sim-raised",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": 0.09940162182366241,
+     "d_exp50_minus_neutral_ci": [
+      -0.17509651722108824,
+      0.3804966131180863
+     ],
+     "c_exp50_minus_neutral": 0.1307071068113485,
+     "c_exp50_minus_neutral_ci": [
+      -0.010644295925017245,
+      0.27151977439003305
+     ],
+     "p_holm": 0.0009995002498750624,
+     "C1": true,
+     "C2": true,
+     "C3": false
+    }
+   ],
+   "D": {
+    "D1": {
+     "estimate": 1.1055790767428366,
+     "ci": [
+      0.7754779929016585,
+      1.4274005485630454
+     ],
+     "se": 0.16421717174268757,
+     "informative_problems": 162,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.0004997501249375312,
+     "draws": 2000,
+     "studentized_ci": [
+      0.7471761102057101,
+      1.447778168351574
+     ],
+     "rho_a": 0.7766409406870433,
+     "rho_a_ci": [
+      0.6373011121979703,
+      0.9475039196187596
+     ],
+     "rho_b": 0.4581267817922271,
+     "rho_b_ci": [
+      0.3700436923818204,
+      0.5709431935354402
+     ],
+     "rho_diff": 0.31851415889481616,
+     "rho_diff_ci": [
+      0.21458906676419884,
+      0.43536729644696065
+     ],
+     "p_holm": 0.0014992503748125937,
+     "held": true
+    },
+    "D2": {
+     "estimate": 0.09356659109805165,
+     "ci": [
+      -0.20382345186995526,
+      0.4109853772294142
+     ],
+     "se": 0.15758149947058447,
+     "informative_problems": 144,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.5677161419290355,
+     "draws": 2000,
+     "studentized_ci": [
+      -0.24640191736566297,
+      0.4318085553204003
+     ],
+     "rho_a": 0.7766409406870433,
+     "rho_a_ci": [
+      0.6373011121979703,
+      0.9475039196187596
+     ],
+     "rho_b": 0.7496846743365149,
+     "rho_b_ci": [
+      0.6215980278719452,
+      0.9162094135469345
+     ],
+     "rho_diff": 0.02695626635052839,
+     "rho_diff_ci": [
+      -0.0591040500883407,
+      0.12037973834992928
+     ],
+     "p_holm": 0.5677161419290355,
+     "held": false
+    },
+    "D3": {
+     "estimate": 1.0273835865712777,
+     "ci": [
+      0.7389889738849874,
+      1.3448273455231698
+     ],
+     "se": 0.1538242769914136,
+     "informative_problems": 159,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.0004997501249375312,
+     "draws": 2000,
+     "studentized_ci": [
+      0.6942746937204054,
+      1.3272575767924186
+     ],
+     "rho_a": 0.7766409406870433,
+     "rho_a_ci": [
+      0.6373011121979703,
+      0.9475039196187596
+     ],
+     "rho_b": 0.4806546780823224,
+     "rho_b_ci": [
+      0.383981136368526,
+      0.6063099906350198
+     ],
+     "rho_diff": 0.2959862626047209,
+     "rho_diff_ci": [
+      0.20626191072548095,
+      0.40298643648517213
+     ],
+     "p_holm": 0.0014992503748125937,
+     "held": true
+    },
+    "D4": {
+     "estimate": -2.6025649856986988,
+     "ci": [
+      -2.895693689830503,
+      -2.378990814196767
+     ],
+     "se": 0.13775138793479902,
+     "informative_problems": 185,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.0004997501249375312,
+     "draws": 2000,
+     "studentized_ci": [
+      -2.8435187835493982,
+      -2.2919175866790686
+     ],
+     "rho_a": 0.02684943791085701,
+     "rho_a_ci": [
+      -0.01743573057952652,
+      0.07555513117437729
+     ],
+     "rho_b": 0.7766409406870433,
+     "rho_b_ci": [
+      0.6373011121979703,
+      0.9475039196187596
+     ],
+     "rho_diff": -0.7497915027761862,
+     "rho_diff_ci": [
+      -0.9205338953233915,
+      -0.6096063255206288
+     ],
+     "p_holm": 0.0004997501249375312,
+     "held": true
+    },
+    "D5": {
+     "rho_self": 0.7766409406870433,
+     "ci": [
+      0.6373011121979703,
+      0.9475039196187596
+     ],
+     "overshoot": false
+    },
+    "ceiling": false
+   },
+   "A_reading": {
+    "sim-plain": "attribution alone discounts (A2 held, A3 no shift)",
+    "sim-raised": "the reliability statement does the work (A3 held and negative, A1 held)"
+   }
+  }
+ }
+}

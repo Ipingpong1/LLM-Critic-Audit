@@ -1,0 +1,4 @@
+s2	https://api.semanticscholar.org/graph/v1/author/2255142697/papers?fields=title,externalIds,year,venue,publicationDate&limit=1000	s2/author_Zihan_Chen_2255142697.json	1
+s2	https://api.semanticscholar.org/graph/v1/author/36737152/papers?fields=title,externalIds,year,venue,publicationDate&limit=1000	s2/author_Di_Zhu_36737152.json	1
+s2	https://api.semanticscholar.org/graph/v1/author/2233239462/papers?fields=title,externalIds,year,venue,publicationDate&limit=1000	s2/author_Lei_Zheng_2233239462.json	1
+s2	https://api.semanticscholar.org/graph/v1/author/2479227536/papers?fields=title,externalIds,year,venue,publicationDate&limit=1000	s2/author_Weiling_Li_2479227536.json	1

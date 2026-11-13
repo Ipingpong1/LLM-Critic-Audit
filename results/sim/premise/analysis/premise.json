@@ -1,0 +1,310 @@
+{
+ "primary_tests": [
+  {
+   "critic": "qwen3.5:27b-think-bf16-t1",
+   "test": "T1",
+   "a": "presuppose",
+   "b": "neutral",
+   "sign": -1,
+   "what": "the original wording replicates on new items",
+   "est": -0.8038908403030953,
+   "ci": [
+    -0.9569087118387721,
+    -0.6551040756806258
+   ],
+   "p": 0.0004997501249375312,
+   "p_holm": 0.008995502248875561,
+   "held": true,
+   "against": false
+  },
+  {
+   "critic": "qwen3.5:27b-think-bf16-t1",
+   "test": "T2",
+   "a": "claim_bare",
+   "b": "neutral",
+   "sign": -1,
+   "what": "the claim alone, with no instruction to check",
+   "est": -0.8157915143811456,
+   "ci": [
+    -0.980344312097969,
+    -0.661381377326468
+   ],
+   "p": 0.0004997501249375312,
+   "p_holm": 0.008995502248875561,
+   "held": true,
+   "against": false
+  },
+  {
+   "critic": "qwen3.5:27b-think-bf16-t1",
+   "test": "T3",
+   "a": "claim_mistake",
+   "b": "neutral",
+   "sign": -1,
+   "what": "the claim in other words",
+   "est": -0.4893947240294213,
+   "ci": [
+    -0.6283632589963994,
+    -0.3486456963131986
+   ],
+   "p": 0.0004997501249375312,
+   "p_holm": 0.008995502248875561,
+   "held": true,
+   "against": false
+  },
+  {
+   "critic": "qwen3.5:27b-think-bf16-t1",
+   "test": "T4",
+   "a": "claim_reviewer",
+   "b": "neutral",
+   "sign": -1,
+   "what": "the claim attributed to someone else",
+   "est": -0.3385298751398528,
+   "ci": [
+    -0.4809046195383396,
+    -0.1939370379230842
+   ],
+   "p": 0.0004997501249375312,
+   "p_holm": 0.008995502248875561,
+   "held": true,
+   "against": false
+  },
+  {
+   "critic": "qwen3.5:27b-think-bf16-t1",
+   "test": "T5",
+   "a": "presuppose",
+   "b": "check_only",
+   "sign": -1,
+   "what": "the claim beyond an instruction to check",
+   "est": -0.8377878307491182,
+   "ci": [
+    -1.0032462552177275,
+    -0.6827271198156979
+   ],
+   "p": 0.0004997501249375312,
+   "p_holm": 0.008995502248875561,
+   "held": true,
+   "against": false
+  },
+  {
+   "critic": "qwen3.5:27b-think-bf16-t1",
+   "test": "T6",
+   "a": "presuppose",
+   "b": "may_error",
+   "sign": -1,
+   "what": "the claim beyond raising the possibility",
+   "est": -0.8681932711277356,
+   "ci": [
+    -1.022153573708156,
+    -0.7327046178025248
+   ],
+   "p": 0.0004997501249375312,
+   "p_holm": 0.008995502248875561,
+   "held": true,
+   "against": false
+  },
+  {
+   "critic": "qwen3.5:27b-think-bf16-t1",
+   "test": "T7",
+   "a": "claim_random",
+   "b": "neutral",
+   "sign": 0,
+   "what": "a claim the critic is told carries no information",
+   "est": -0.2571547040750553,
+   "ci": [
+    -0.39010851172969835,
+    -0.12153139895688644
+   ],
+   "p": 0.0004997501249375312,
+   "p_holm": 0.008995502248875561,
+   "held": true,
+   "against": false
+  },
+  {
+   "critic": "qwen3.5:27b-think-bf16-t1",
+   "test": "T8",
+   "a": "claim_random",
+   "b": "claim_bare",
+   "sign": 1,
+   "what": "saying so weakens the claim",
+   "est": 0.5586368103060904,
+   "ci": [
+    0.41213241796655375,
+    0.7139213155604678
+   ],
+   "p": 0.0004997501249375312,
+   "p_holm": 0.008995502248875561,
+   "held": true,
+   "against": false
+  },
+  {
+   "critic": "qwen3.5:27b-think-bf16-t1",
+   "test": "T9",
+   "a": "claim_correct",
+   "b": "neutral",
+   "sign": 1,
+   "what": "the opposite claim moves the threshold the other way",
+   "est": 0.4531477887974537,
+   "ci": [
+    0.31388295171774977,
+    0.6196320536138319
+   ],
+   "p": 0.0004997501249375312,
+   "p_holm": 0.008995502248875561,
+   "held": true,
+   "against": false
+  },
+  {
+   "critic": "opus-5.5-think",
+   "test": "T1",
+   "a": "presuppose",
+   "b": "neutral",
+   "sign": -1,
+   "what": "the original wording replicates on new items",
+   "est": -0.7607776094751644,
+   "ci": [
+    -0.954677388408821,
+    -0.588768403195513
+   ],
+   "p": 0.0004997501249375312,
+   "p_holm": 0.008995502248875561,
+   "held": true,
+   "against": false
+  },
+  {
+   "critic": "opus-5.5-think",
+   "test": "T2",
+   "a": "claim_bare",
+   "b": "neutral",
+   "sign": -1,
+   "what": "the claim alone, with no instruction to check",
+   "est": -0.9573282354305594,
+   "ci": [
+    -1.2459432419112546,
+    -0.7099633931607703
+   ],
+   "p": 0.0004997501249375312,
+   "p_holm": 0.008995502248875561,
+   "held": true,
+   "against": false
+  },
+  {
+   "critic": "opus-5.5-think",
+   "test": "T3",
+   "a": "claim_mistake",
+   "b": "neutral",
+   "sign": -1,
+   "what": "the claim in other words",
+   "est": -0.4506487618934977,
+   "ci": [
+    -0.686381931238421,
+    -0.24345469366649988
+   ],
+   "p": 0.0004997501249375312,
+   "p_holm": 0.008995502248875561,
+   "held": true,
+   "against": false
+  },
+  {
+   "critic": "opus-5.5-think",
+   "test": "T4",
+   "a": "claim_reviewer",
+   "b": "neutral",
+   "sign": -1,
+   "what": "the claim attributed to someone else",
+   "est": -0.2148978472044315,
+   "ci": [
+    -0.44150882195008034,
+    0.01590579914550343
+   ],
+   "p": 0.062468765617191405,
+   "p_holm": 0.12493753123438281,
+   "held": false,
+   "against": false
+  },
+  {
+   "critic": "opus-5.5-think",
+   "test": "T5",
+   "a": "presuppose",
+   "b": "check_only",
+   "sign": -1,
+   "what": "the claim beyond an instruction to check",
+   "est": -0.7797728460229022,
+   "ci": [
+    -1.0315301198315412,
+    -0.5600934092141959
+   ],
+   "p": 0.0004997501249375312,
+   "p_holm": 0.008995502248875561,
+   "held": true,
+   "against": false
+  },
+  {
+   "critic": "opus-5.5-think",
+   "test": "T6",
+   "a": "presuppose",
+   "b": "may_error",
+   "sign": -1,
+   "what": "the claim beyond raising the possibility",
+   "est": -0.8130853691637809,
+   "ci": [
+    -1.0516654906005516,
+    -0.6114392305246023
+   ],
+   "p": 0.0004997501249375312,
+   "p_holm": 0.008995502248875561,
+   "held": true,
+   "against": false
+  },
+  {
+   "critic": "opus-5.5-think",
+   "test": "T7",
+   "a": "claim_random",
+   "b": "neutral",
+   "sign": 0,
+   "what": "a claim the critic is told carries no information",
+   "est": -0.09222706250849422,
+   "ci": [
+    -0.31781149361663075,
+    0.13681854881562708
+   ],
+   "p": 0.42628685657171417,
+   "p_holm": 0.42628685657171417,
+   "held": false,
+   "against": false
+  },
+  {
+   "critic": "opus-5.5-think",
+   "test": "T8",
+   "a": "claim_random",
+   "b": "claim_bare",
+   "sign": 1,
+   "what": "saying so weakens the claim",
+   "est": 0.8651011729220652,
+   "ci": [
+    0.6030243932139895,
+    1.1812848610468918
+   ],
+   "p": 0.0004997501249375312,
+   "p_holm": 0.008995502248875561,
+   "held": true,
+   "against": false
+  },
+  {
+   "critic": "opus-5.5-think",
+   "test": "T9",
+   "a": "claim_correct",
+   "b": "neutral",
+   "sign": 1,
+   "what": "the opposite claim moves the threshold the other way",
+   "est": 0.7883184363178148,
+   "ci": [
+    0.5664706695700329,
+    1.1500054770900912
+   ],
+   "p": 0.0004997501249375312,
+   "p_holm": 0.008995502248875561,
+   "held": true,
+   "against": false
+  }
+ ]
+}

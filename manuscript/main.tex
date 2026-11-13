@@ -1,0 +1,420 @@
+%File: main.tex  --  AAAI-27 workshop submission (anonymous). Full rewrite of 2026-11-11.
+% The first draft (2026-11-10) is kept in archive/2026-11-10_first_draft/.
+% Preamble follows AnonymousSubmission2027.tex from the AAAI-27 author kit (AuthorKit27.zip, aaai.org).
+% aaai2027.sty loads the fonts (newtxtext, helvet, courier) and sets the page size itself, and it
+% requires pdfLaTeX: build with pdflatex + bibtex (./build.sh), not XeLaTeX, LuaLaTeX or Tectonic.
+\documentclass[letterpaper]{article} % DO NOT CHANGE THIS
+\usepackage[submission]{aaai2027}  % DO NOT CHANGE THIS
+% The serif, sans-serif, and monospaced fonts are loaded automatically by
+% aaai2027.sty (newtxtext, helvet, courier). DO NOT add \usepackage{times},
+% \usepackage{helvet}, \usepackage{courier}, or any other font package.
+\usepackage[hyphens]{url}  % DO NOT CHANGE THIS
+\usepackage{graphicx} % DO NOT CHANGE THIS
+\urlstyle{rm} % DO NOT CHANGE THIS
+\def\UrlFont{\rm}  % DO NOT CHANGE THIS
+\usepackage{natbib}  % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\usepackage{caption} % DO NOT CHANGE THIS AND DO NOT ADD ANY OPTIONS TO IT
+\frenchspacing  % DO NOT CHANGE THIS
+%
+% Recommended for better-looking tables
+\usepackage{booktabs}
+%
+% Keep the \pdfinfo as shown here. There's no need
+% for you to add the /Title and /Author tags.
+\pdfinfo{
+/TemplateVersion (2027.1)
+}
+
+% Packages used by this paper (none is on the kit's list of forbidden packages)
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\setcounter{secnumdepth}{2} % the template allows 0, 1 or 2
+
+% Draft-only marker for results that are not in yet. Remove every use before submission.
+\newcommand{\pending}[1]{\textbf{[PENDING: #1]}}
+\newcommand{\dprime}{d^{\prime}}
+\newcommand{\peff}{p_{\mathrm{eff}}}
+
+\title{Told the Odds, Moved by a Claim:\\An Ideal-Observer Audit of LLM Critics}
+\author{Anonymous Submission}
+\affiliations{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+LLM critics (verifiers, graders, automated reviewers) decide what automated research pipelines accept, and they decide in context: how often work is flawed, what a mistake costs, what an earlier reviewer said. Whether a critic uses such context well is a question that accuracy cannot answer, because context should move a critic's threshold, not its skill. Signal-detection theory says how far the threshold should move: an ideal observer that is told what share of solutions is flawed shifts its criterion by a known amount. We measure 14 critic configurations (Qwen3.5, Gemma-4 and Claude 5.5 models, with reasoning off and on) against this benchmark on olympiad-level ProcessBench solutions. Every critic under-used a stated error rate, moving 0--36\% of the ideal distance, and restating the rate five other ways changed little. Stated payoffs moved critics less, and reasoning improved detection without improving the use of the rate. A sentence with no number in it did more. In a preregistered test on held-out problems, ``This solution contains an error.'' raised false alarms from 15 to 89 per 100 correct solutions for Claude Opus 5.5, from 19 to 47 for Qwen3.5-27B and, in a follow-up, from 27 to 100 for GPT-6.1 Sol. A request for scrutiny alone did nothing, the same note declared to be attached at random was discounted, and the opposite claim reversed the shift. Under the claim, Opus's stated probability of error still ranked flawed above correct solutions (AUC $\geq$ 0.98), so for this critic the claim moved the decision and left the evidence intact; GPT-6.1 Sol's stated probabilities did not survive the claim. The audit needs a few hundred calls per condition.
+\end{abstract}
+
+% ============================================================================
+\section{Introduction}
+
+Automated research pipelines lean on LLM critics. An LLM reviewer is the final gate of AI-scientist systems, their ranking signal and their reward \citep{lu2024aiscientist,yamada2025aiscientistv2,weng2025cycleresearcher}, and AAAI-26 attached an LLM review to every paper that entered full review \citep{biswas2026aaai}. Such critics are usually evaluated by their accuracy, or by how often they agree with human verdicts.
+
+% Placed here, on page 1, so that the two-column figure lands at the top of page 2.
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig1_ideal_observer.pdf}
+\caption{\textbf{The ideal observer, and where critics sit.} (a) The signal-detection model of a critic. Evidence for an error is distributed differently over correct and flawed solutions, the two distributions lie $\dprime$ apart, and the critic says ``error'' when the evidence exceeds its criterion. An observer that maximizes accuracy sets the criterion by the stated share of flawed solutions; between a stated 10\% and 90\% it moves by $\ln 81/\dprime$ (drawn for $\dprime=2$). (b) The ideal-observer curve $c^*(p)=\ln[(1-p)/p]/\dprime$ for the least and the most sensitive critic (dashed; the band covers the sensitivities in between), with the criteria of all 14 critic configurations on the same 200 hard solutions when told that 10\%, 50\% or 90\% are flawed. Whatever they are told, critics stay close to where they were. (c) The same comparison as operating points on two critics' ROC curves, told 10\% (blue), 50\% (grey) and 90\% (orange). The weaker the evidence, the more an ideal observer leans on the stated rate; neither critic does.}
+\label{fig:ideal}
+\end{figure*}
+
+A verdict, however, is a decision, and a decision has two parts: how well the critic separates flawed work from sound work, and how much evidence it demands before it flags. The second part should depend on context. If nine in ten drafts that reach a critic are flawed, it should flag on weaker evidence than if one in ten is. The same holds when a missed error costs more than a false alarm, or when an earlier reviewer has already found a problem. A pipeline can tell its critic any of these things in one line of the prompt. The question for evaluation is then not whether such a line moves the critic but whether it moves it by the right amount. Accuracy cannot say, because two critics with the same accuracy can sit at very different operating points.
+
+A growing literature shows that context does move LLM judges, and that it moves their threshold while leaving their discrimination nearly intact \citep{quiroz2026criterion,mazaheri2026prior,ho2026soundnessbench,shahriar2026words}. A false note saying that an expert found requirements unmet overturns up to 40\% of the correct verdicts of agentic judges \citep{brown2026grounded}. These studies measure how far a judge moves. They leave open how far it \emph{should} move, and without that reference point a shift cannot be called too large or too small, and a critic that weighs information cannot be told apart from one that is merely suggestible.
+
+Signal-detection theory supplies the reference point \citep{green1966signal,macmillan2005detection}. It describes a critic by its sensitivity $\dprime$ and its criterion $c$, and it fixes where an ideal observer puts the criterion once it is told how common errors are (Figure~\ref{fig:ideal}a). A critic's response to a stated error rate can therefore be scored as a fraction of the ideal response, the \emph{prior-use ratio} $\rho$, and any other line of context can be placed on the same scale by asking which stated rate would justify the shift it caused. We call this an \emph{ideal-observer audit} and apply it to critics of competition-mathematics solutions from ProcessBench \citep{zheng2025processbench}: 14 configurations of seven models from three families, with reasoning off and on, joined on held-out problems by two models of a fourth. Three findings stand out.
+
+\textbf{Critics barely use a stated error rate.} Between a stated rate of 10\% and one of 90\%, the 14 configurations moved their criterion 0--36\% of the ideal distance (Figure~\ref{fig:ideal}b,c). Stated payoffs that imply the same thresholds moved them even less, an instruction to use the rate did not help, and five other ways of stating it changed little.
+
+\textbf{Reasoning improves detection, not the use of the rate.} Reasoning raised $\dprime$ by up to 1.8, yet no configuration came near the ideal shift.
+
+\textbf{A claim outweighs a number.} On the same items, ``This solution contains an error.\ Check it carefully.'' pushed 11 of the 14 configurations further toward ``error'' than the 90\% statement did. In a preregistered test on 200 held-out problems, the bare sentence ``This solution contains an error.'' raised Claude Opus 5.5's false alarms from 15 to 89 per 100 correct solutions, and GPT-6.1 Sol's from 27 to 100. A request for scrutiny without a claim had no effect, the same note declared to be attached at random was discounted, and the opposite claim moved the criterion the other way. Throughout, Opus's stated probability of error kept ranking flawed above correct solutions: for this critic the claim changed the decision, not the reading of the evidence.
+
+The paper offers three things. The first is the audit itself: a normative scale for a critic's use of context that needs only verdicts on a few hundred labelled items (Section~\ref{sec:method}). The second is a comparison, on that one scale and on the same critics, of numeric information (rates and payoffs) with tone and with a categorical claim (Sections~\ref{sec:rates}--\ref{sec:claims}). The third is a preregistered test of the claim effect whose controls separate a claim from a request for scrutiny and from a claim the critic is told carries no information (Sections~\ref{sec:claims}--\ref{sec:evidence}). Because critics dispute a few of the benchmark's labels, we also bound each headline result under every relabelling of the disputed items (Section~\ref{sec:robust}).
+
+% ============================================================================
+\section{Related Work}
+\label{sec:related}
+
+\paragraph{Critics in automated research.} LLM judges and step-level verifiers are standard evaluation tools \citep{zheng2023judging,lightman2024verify}, and LLM reviewers gate, rank and reward the output of AI-scientist systems \citep{lu2024aiscientist,yamada2025aiscientistv2,weng2025cycleresearcher,biswas2026aaai}. Audits find that they miss fabricated or erroneous work \citep{jiang2026badscientist,son2025spot}, that self-correction is limited by detecting errors rather than repairing them \citep{huang2024cannot,tyen2024llms}, and that trained critics catch more bugs than human contractors but also hallucinate them \citep{mcaleese2024critics}. ProcessBench reports accuracy separately on erroneous and correct solutions because critics differ in how readily they flag \citep{zheng2025processbench}, and a controlled study asks whether process reward models fail to detect errors or fail to decide \citep{anon2026prm}. We use ProcessBench's labels and separate skill from threshold.
+
+\paragraph{Context moves thresholds.} One line of framing shifts an LLM judge's operating point with discrimination nearly unchanged in research-proposal judging \citep{ho2026soundnessbench}, code review \citep{alexopoulos2026agrees}, vulnerability detection \citep{shahriar2026words}, dialogue \citep{rabbani2026dialdefer}, relevance judging \citep{zhang2026polite}, reward-hacking monitors \citep{kezendirane2026hacking}, document-currency judges \citep{shah2026verify} and citation checking \citep{abtahi2026sanad}. Signal-detection analyses report the same for a contrarian instruction \citep{quiroz2026criterion}, for an evidence-gating instruction \citep{basta2026correction} and for prior audit context on ProcessBench \citep{mazaheri2026prior}, and they separate sensitivity from criterion across 44 open models \citep{dong2026sensitivity}. ROC analyses from token probabilities are established for LLM verifiers and detectors \citep{anon2026zebra,cacioli2026signal,chegini2025razor}. We take ``threshold, not skill'' as established and ask about the size of the shift.
+
+Closest to our claim test, \citet{brown2026grounded} show that a pre-screening note asserting unmet requirements overturns up to 40\% of the correct verdicts of tool-using agent judges, and that asserting a belief outweighs directing a check. A presupposing prompt likewise makes an auditing agent report findings in 80 of 80 runs with nothing to find \citep{shah2026auditing}. Assertions sway safety panels \citep{hu2026social}, models revising their own answers \citep{hu2026conformity,huang2026anatomy} and assistants whose users push back \citep{sharma2024sycophancy,laban2023flipflop}, and a numeric confidence note can be ignored while a one-sentence counter-claim is followed \citep{anon2026confidenceblind}. Whether an assertion can be discounted is less settled: a one-line warning removes most of a misleading log's effect on vision-language judges \citep{zhao2026logs}, but a hint keeps its effect when its source is declared inaccurate \citep{guo2026dog}, and vulnerability auditors dispute asserted alarms yet follow false assurances \citep{liu2026trusting}. Our claim test brings together three elements that this line of work has so far treated separately or not at all: hit and false-alarm rates on held-out items, control lines that ask for scrutiny or raise the possibility of an error without asserting one, and a claim that the critic is told was attached at random.
+
+\paragraph{Stated rates and costs.} Outside critics, LLMs under-use stated priors. A stated coin bias is mostly ignored \citep{gupta2025coin}, posterior odds in base-rate vignettes move far less than Bayes' rule prescribes \citep{li2024dual}, and a stated lie rate only partly reduces truth bias \citep{markowitz2023truth}. Cost statements move small open models in a direction-agnostic way in clinical risk classification \citep{liu2026clinical}, and stated penalties are ignored in answer-or-abstain decisions \citep{wang2026faithful,mohamadi2025honesty}. Frontier models, though, do use such numbers in other tasks: stated cost ratios in emergency triage \citep{yamin2026triage}, a one-line risk statement that moves GPT-5's criterion \citep{servajean2026metacognition}, a stated drafter error rate that sets a reviewer's checking effort \citep{lijo2026bandages}, stated error counts in proofreading \citep{yang2026framing} and instructed confidence thresholds \citep{kumaran2026causal}. Of these, \citet{lijo2026bandages} compares behaviour with a normative point and finds that checking effort switches near the break-even its prompt implies. A verdict threshold is a different quantity from checking effort, error counts or abstention, and we know of no study that scores it against the ideal observer's; a structured literature search found none (supplementary material).
+
+\paragraph{Human criterion placement.} Comparing observed with optimal criteria goes back to the first signal-detection experiments \citep{green1966signal}. People shift conservatively, in the right direction but not far enough, and use payoffs less well than base rates \citep{ulehla1966optimality,healy1981probability,bohil2001category,maddox2002toward,rahnev2018suboptimality}; with a rate that is described rather than experienced, and no feedback, the shift can vanish \citep{estes1995interactions}. Base-rate neglect and conservative updating are classic findings in judgment \citep{kahneman1973psychology,edwards1982conservatism}. Figure~\ref{fig:ideal}b applies this comparison to LLM critics, which resemble a human observer who is told, not shown, the rate.
+
+% ============================================================================
+\section{The Ideal-Observer Audit}
+\label{sec:method}
+
+\paragraph{Items.} ProcessBench \citep{zheng2025processbench} pairs competition-mathematics problems with step-by-step model solutions in which human experts marked the earliest erroneous step. We call a solution \emph{flawed} if any step is marked and ask the critic only whether an error exists. We use three balanced sets of 200 solutions (100 flawed, 100 correct), drawn at random within split and class and capped at 6,000 characters: an \emph{easy} set (GSM8K and MATH splits), a \emph{hard} set (OlympiadBench and Omni-MATH) and a \emph{held-out} set from the same two splits that shares no problem with the hard set and uses each problem once. The true error rate is therefore always 50\%. The stated rate is the manipulation.
+
+\paragraph{Critics.} Four open-weight models, Qwen3.5-4B, -9B and -27B and Gemma-4-12B, run in bf16 with vLLM on L40S GPUs, with reasoning off and on, at each model card's sampling settings (temperature 1.0) and with up to 32,768 output tokens when reasoning. Three Claude 5.5 models run through the API: Haiku (reasoning off, and adaptive reasoning at effort \emph{high}), Sonnet (off, \emph{high} and \emph{max}) and Opus (\emph{high}; its reasoning cannot be turned off). This gives 14 configurations on the hard set, each with one reply per item and condition (Figure~\ref{fig:rho}). The open models were also run on the easy set (Appendix~B). Two OpenAI models, GPT-6.1 Sol and GPT-6 Luna, were added on the held-out set at reasoning effort \emph{high}.
+
+\paragraph{Prompts and conditions.} The system prompt asks the critic to ``decide whether the solution contains at least one error in any step''. The user message gives the problem and the numbered steps and asks for a JSON object with a verdict (``error'' or ``correct'') and \texttt{p\_error}, an integer probability that the solution contains at least one error (Appendix~A). Each condition appends exactly one line to the system prompt, and the user message is byte-identical across conditions, so a change in verdicts can be attributed to that line. On the hard set the lines are:
+\begin{itemize}
+\item a \emph{base rate}: ``For calibration: in this review batch, about $N$\% of solutions contain at least one error.'', with $N\in\{10,50,90\}$;
+\item the base rate with an \emph{instruction} to use it as a prior;
+\item \emph{payoffs}: ``Scoring: you lose 1 point(s) for each solution with an error that you mark `correct', and 9 point(s) for each correct solution that you mark `error'.'', and the reverse;
+\item a \emph{tone}, e.g., ``Be a lenient, charitable reviewer.'';
+\item a \emph{claim}: ``This solution contains an error. Check it carefully.''
+\end{itemize}
+A label-swap control repeats the base-rate lines with the verdict words ``flawed'' and ``sound'', because a preference for a verdict token could pass for a criterion \citep{dong2026sensitivity}. Sonnet (\emph{high}, \emph{max}) and Opus received only the base-rate, tone and claim lines. The held-out set adds further claim wordings and controls (Section~\ref{sec:claims}), a chance for the solution in hand (``there is about a 90\% chance that this solution contains at least one error'') and four other statements of the rate (Section~\ref{sec:robust}).
+
+\paragraph{Sensitivity, criterion and the ideal observer.} Let $H=P(\text{``error''}\mid\text{flawed})$ be the hit rate and $F=P(\text{``error''}\mid\text{correct})$ the false-alarm rate, both with the log-linear correction \citep{hautus1995corrections}. Sensitivity is $\dprime=z(H)-z(F)$ and the criterion is $c=-[z(H)+z(F)]/2$, so that $c>0$ is lenient and $c<0$ is quick to flag. Under the equal-variance Gaussian model, an observer that maximizes expected accuracy when a fraction $p$ of solutions is flawed sets
+\begin{equation}
+c^*(p)=\frac{1}{\dprime}\,\ln\frac{1-p}{p}
+\label{eq:cstar}
+\end{equation}
+\citep{green1966signal,lynn2014utilizing}. This is the curve in Figure~\ref{fig:ideal}b. The less sensitive the observer, the steeper the curve: weak evidence should yield to the prior more readily. Moving the stated rate from 10\% to 90\% should move $c$ by $\ln 81/\dprime$, and we define the prior-use ratio as the observed share of that shift,
+\begin{equation}
+\rho=\frac{c(10\%)-c(90\%)}{\ln 81/\dprime_{\mathrm{ref}}},
+\label{eq:rho}
+\end{equation}
+where $\dprime_{\mathrm{ref}}$ is the critic's sensitivity under the 50\% statement (hard set) or with no added line (held-out set). A critic with $\rho=0$ ignores the rate, $\rho=1$ is ideal, and $\rho>1$ overreacts. Losing 9 points per false alarm and 1 per miss yields the same optimal criterion as a 10\% base rate, and the reverse yields that of a 90\% rate, so the payoff lines are scored with the same denominator. Because $\rho$ compares criteria on the same items, it does not require the stated rate to be true.
+
+\paragraph{Effective probability.} To place lines that carry no number on the same scale, we invert Eq.~\ref{eq:cstar}. The effective probability of a line $L$ is the stated error rate at which an ideal observer with the critic's sensitivity, starting from an unbiased criterion, would move its criterion as far as the critic did:
+\begin{equation}
+\peff(L)=\sigma\!\left(-\left[c(L)-c(\text{neutral})\right]\dprime_{\mathrm{ref}}\right),
+\label{eq:peff}
+\end{equation}
+with $\sigma$ the logistic function and ``neutral'' the prompt with no added line. An ideal observer has $\peff=0.1$ when told 10\% and $\peff=0.9$ when told 90\%.
+
+\paragraph{Own-confidence benchmark.} The equal-variance ideal asks every critic of a given sensitivity for the same shift, but a critic that is sure of most verdicts might rightly move less. For the Claude critics, whose stated probabilities are graded, we therefore also read \texttt{p\_error} under the 50\% statement as a posterior under a 50\% prior. Told 10\%, a Bayesian with that posterior flags a solution only if \texttt{p\_error} $>90$; told 90\%, if \texttt{p\_error} $>10$. $\rho_{\mathrm{Bayes}}$ divides the critic's observed shift by this Bayesian's shift. The open models state nearly binary probabilities, so for them this benchmark predicts almost no change and we do not interpret it.
+
+\paragraph{Inference.} Intervals are 95\% percentile intervals from an item bootstrap that resamples flawed and correct solutions separately and reuses the same resamples for every condition and critic, so all contrasts are paired (2,000 resamples, or 10,000 for preregistered tests). With repeated replies, counts are averaged per pass over the items before the correction. The preregistered contrasts (Tables~\ref{tab:premise} and~\ref{tab:sol}) use an exact within-item randomization test, Holm-corrected within each family; their intervals are descriptive. In simulation the intervals for $\rho$ covered a true 0.5 in 95\% of runs at $\dprime=1.5$ and 91\% at $3.2$ but 80\% at $4.5$, where the estimate fell to 0.35: near ceiling, $\rho$ understates the use of the rate.
+
+\paragraph{Preregistration.} The claim test (Section~\ref{sec:claims}), the label re-analysis and the rate-wording follow-up (Section~\ref{sec:robust}) each had a written plan with predictions, primary contrasts and decision rules, fixed before its data existed (for the re-analysis, before its script). We report outcomes against these plans (supplementary material).
+
+% ============================================================================
+\section{Results}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig2_prior_use.pdf}
+\caption{\textbf{Skill, shift, prior use and budget for the 14 critic configurations} (hard set, 200 solutions). (a) Sensitivity $\dprime$ under the 50\% statement, with 95\% intervals. (b) Criterion shift between the 10\% and 90\% statements: observed (circles) and ideal (bars, $\ln 81/\dprime$). (c) The prior-use ratio $\rho$ (Eq.~\ref{eq:rho}). Grey bands give the range of point estimates over all $2^{13}$ ways of keeping or flipping the labels that critics dispute (Section~\ref{sec:robust}). Diamonds show $\rho$ for stated payoffs, which imply the same ideal shift. (d) Median output tokens per reply, reasoning included.}
+\label{fig:rho}
+\end{figure*}
+
+\subsection{Critics Barely Use a Stated Rate}
+\label{sec:rates}
+
+Every one of the 14 configurations moved its criterion less than the ideal observer would. The prior-use ratio ranged from 0.00 (Haiku 5.5, \emph{high}) to 0.36 (Qwen3.5-4B with reasoning), and every 95\% interval lies below 1 (Figure~\ref{fig:rho}c; exact values in Table~\ref{tab:hard}, Appendix~B; each critic against its own ideal curve in Appendix~C). In Figure~\ref{fig:ideal}b the critics' lines are nearly flat where the ideal curves are steep. Expressed as effective probabilities, the median configuration that was told 90\% of the batch was flawed acted as if the rate were 60\% (range 42--87\%); told 10\%, as if it were 43\% (33--58\%). The easy set replicates the pattern for the open models ($\rho=0.04$--$0.24$ with reasoning off and $0.13$--$0.30$ with it on; Table~\ref{tab:easy}).
+
+Three explanations do not account for the shortfall.
+
+\emph{Confidence.} A critic that is rightly sure of its verdicts should move less than the equal-variance ideal. For the five Claude configurations with usable stated probabilities, though, a Bayesian acting on the critic's own probabilities would still move roughly 70--100\% as far as that ideal. The critics made 3--14 of the 29--44 verdict changes this Bayesian predicts ($\rho_{\mathrm{Bayes}}=0.00$--$0.31$; Haiku without reasoning is too poorly calibrated to interpret). The shortfall is sharper for rare errors: across the six Claude configurations the Bayesian would have dropped 128 flags when told 10\% and added 61 when told 90\%, and the critics made 16\% of those drops and 34\% of those additions.
+
+\emph{Attention.} Adding ``Use this base rate as your prior: a well-calibrated reviewer weighs it together with the evidence in the solution.'' changed $\rho$ by $-0.20$ to $+0.03$ for the open models (every interval includes 0) and raised it for no Claude configuration.
+
+\emph{Verdict-token priming.} With the verdict words ``flawed'' and ``sound'', $\rho$ changed by at most 0.12 in any configuration.
+
+\paragraph{Payoffs do even less.} Scored against the same ideal shift, stated payoffs gave $\rho$ between $-0.08$ and $+0.10$ (diamonds in Figure~\ref{fig:rho}c), never more than 0.01 above the base-rate $\rho$ of the same configuration. In a pilot on the easy set (quantized weights, reasoning off), the payoff line moved criteria the same way whichever error it said was costly, and Qwen3.5-27B gave identical verdicts on all 200 solutions under the two opposite payoff lines. The critics reacted to the presence of a scoring rule, not to its content. People also use payoffs less well than base rates, but they shift in the right direction \citep{bohil2001category,maddox2002toward}.
+
+\paragraph{Tone rivals information.} One line of tone, ``Be a lenient, charitable reviewer.'', moved $c$ by $+0.10$ to $+0.46$ in 13 of the 14 configurations, and in eight of them at least 80\% as far as the whole change from a stated 10\% to a stated 90\% (Table~\ref{tab:hard}). Tone has no ideal-observer target, but it also carries no information about the solution. A critic that follows a change of tone about as far as an 81-fold change in the stated odds is not weighing information.
+
+\subsection{Reasoning Improves Detection, Not the Use of the Rate}
+\label{sec:reasoning}
+
+Reasoning made every critic a better detector. It raised $\dprime$ by 0.9--1.4 for the open models on the hard set, by 1.3--1.8 on the easy set, and by 1.8 for Haiku 5.5 (Figure~\ref{fig:rho}a). It did not bring the use of the rate near ideal: $\rho$ was at most 0.36 with reasoning on.
+
+Part of the increase in $\rho$ that reasoning brought to the Qwen models is arithmetic, not behaviour. A higher $\dprime$ shortens the ideal shift (Eq.~\ref{eq:cstar}), so the same observed shift counts for more. Figure~\ref{fig:rho}b shows this directly: Qwen3.5-4B's observed shift barely changed with reasoning (0.55 to 0.59 in $c$) while its ideal shift halved, and its $\rho$ doubled.
+
+More reasoning did not help either. Sonnet 5.5 at maximum effort wrote 4.5 times as many tokens as at \emph{high}, changed 3.1\% of verdicts and left $\rho$ where it was ($+0.08$ $[-0.14, 0.32]$). Nor did capability: with reasoning on, Haiku, Sonnet and Opus reached similar sensitivity ($\dprime=3.1$--$3.3$) with $\rho$ of 0.00, 0.13 and 0.21.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig3_numbers_vs_claims.pdf}
+\caption{\textbf{Numbers against a claim.} (a) Hard set. The effective probability (Eq.~\ref{eq:peff}) of three system-prompt lines for each configuration; open triangles mark reasoning off. An ideal critic would sit on the dashed lines when told that 10\% or 90\% of the batch is flawed. (b) Preregistered test on 200 held-out problems for the two critics that moved most in (a): false alarms per 100 correct solutions under each line. Hits stayed at 96--100\%. The grey strip spans the two critics' false-alarm rates with no added line.}
+\label{fig:claims}
+\end{figure*}
+
+\subsection{A Claim Moves Critics Further Than a Number}
+\label{sec:claims}
+
+\paragraph{Exploratory, hard set.} ``This solution contains an error.\ Check it carefully.'' moved the criterion further toward ``error'' than the 90\% statement did in 11 of the 14 configurations (Figure~\ref{fig:claims}a), and at least as far as the whole change from 10\% to 90\% in eight. Its effective probability reached 0.96 for Opus 5.5 and 0.91 for Qwen3.5-27B with reasoning, against 0.63 and 0.87 for the 90\% statement. The effect was not universal. It was absent for Sonnet 5.5 and Qwen3.5-27B without reasoning, and reversed in sign for Qwen3.5-9B with reasoning.
+
+\begin{table}[t]
+\centering
+\scriptsize
+\begin{tabular}{@{}l@{\hspace{4pt}}l@{\hspace{4pt}}l@{}}
+\toprule
+Contrast in $c$ & Qwen3.5-27B (on) & Opus 5.5 (high) \\
+\midrule
+T1 \ presuppose $-$ neutral & $-$0.45 [$-$0.57, $-$0.35]$^{\checkmark}$ & $-$0.81 [$-$1.06, $-$0.50]$^{\checkmark}$ \\
+T2 \ bare claim $-$ neutral & $-$0.39 [$-$0.50, $-$0.29]$^{\checkmark}$ & $-$1.32 [$-$1.62, $-$0.98]$^{\checkmark}$ \\
+T3 \ ``mistake'' $-$ neutral & $-$0.59 [$-$0.73, $-$0.48]$^{\checkmark}$ & $-$0.85 [$-$1.11, $-$0.54]$^{\checkmark}$ \\
+T4 \ reviewer $-$ neutral & $-$0.43 [$-$0.55, $-$0.33]$^{\checkmark}$ & $-$0.33 [$-$0.56, $-$0.07]$^{\checkmark}$ \\
+T5 \ presuppose $-$ check & $-$0.57 [$-$0.74, $-$0.39]$^{\checkmark}$ & $-$0.56 [$-$0.72, $-$0.43]$^{\checkmark}$ \\
+T6 \ presuppose $-$ may & $-$0.46 [$-$0.57, $-$0.36]$^{\checkmark}$ & $-$0.58 [$-$0.74, $-$0.45]$^{\checkmark}$ \\
+T7 \ random $-$ neutral & $-$0.07 [$-$0.14, 0.01]$^{\circ}$ & $-$0.14 [$-$0.35, 0.13]$^{?}$ \\
+T8 \ random $-$ bare claim & $+$0.32 [0.23, 0.43]$^{\checkmark}$ & $+$1.18 [0.99, 1.43]$^{\checkmark}$ \\
+T9 \ ``correct'' $-$ neutral & $+$0.35 [0.08, 0.53]$^{\checkmark}$ & $+$0.38 [0.14, 0.70]$^{\checkmark}$ \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Preregistered claim test} (200 held-out solutions). Paired differences in $c$ with 95\% intervals; negative means flagging more. Lines are named as in Appendix~A, in the order of Figure~\ref{fig:claims}b. $^{\checkmark}$: held, exact test, Holm-corrected \citep{holm1979simple} $p<.05$ in the predicted direction (all such $p\leq.01$; 18 tests). T7 had no predicted direction: $^{\circ}$ no shift (whole interval within $\pm0.3$); $^{?}$ inconclusive.}
+\label{tab:premise}
+\end{table}
+
+\paragraph{Preregistered test, held-out set.} Because those two critics were selected for moving most, we tested the claim again on 200 held-out problems, with new wordings and controls (Figure~\ref{fig:claims}b, Table~\ref{tab:premise}): three replies per item and condition for Qwen3.5-27B and one or two for Opus. Sixteen of the 18 preregistered contrasts held. The other two are T7, which had no predicted direction.
+
+\emph{The effect replicates across wordings.} Every wording of the claim raised false alarms: from 19 to 47--63 per 100 correct solutions for Qwen3.5-27B, and from 15 to 57--89 for Opus with the three unattributed wordings (T1--T3). Hits stayed at 100\%.
+
+\emph{It is the claim, not the scrutiny.} ``Check this solution carefully.'' and ``This solution may or may not contain an error.\ Check it carefully.'' left false alarms at 16--19 (T5, T6).
+
+\emph{It is not sampling noise.} Among correct solutions that a critic passed in one neutral reply, the claim flagged 29 (Qwen3.5-27B) and 40 (Opus) more per 100 than a second neutral reply did. The two critics flipped on overlapping solutions ($r=0.46$, permutation $p=.0001$).
+
+\emph{It can be discounted.} The line ``A note attached to this solution says it contains an error.\ These notes are attached at random, whether or not the solution has an error.'' left Qwen3.5-27B without a shift (T7), and Opus's false alarms went from 15 to 12, which is inconclusive under the preregistered $\pm0.3$ rule. For both, the declaration removed most of the claim's effect (T8). The effect of the plain claim is therefore consistent with reasonable trust in a system prompt, not with blind deference, and stating a note's reliability is a cheap remedy.
+
+\emph{It runs both ways.} ``This solution is correct.\ Check it carefully.'' moved the criterion the other way (T9). It lowered false alarms to 15 and 9, and it also let 2--3 more flawed solutions per 100 pass (intervals reaching 0).
+
+\emph{Sources and models differ.} Opus discounted a named source: ``A previous reviewer found an error in this solution.'' gave 22 false alarms against 89 for the bare claim. Qwen3.5-27B did not (50 against 47). \citet{brown2026grounded} report the opposite ordering for Sonnet-4.6, where a reviewer's note moved the judge more than an unattributed one, while another report agrees with ours: an answer with no source moves models more often than one attributed to another AI model \citep{anon2026brand}. Across the configurations of these three families the effect was graded (Appendix~D): large for these two critics, moderate for most open configurations, and absent for Haiku 5.5 with reasoning, whose false alarms stayed at 17--20 against 18 under every claim of an error.
+
+\emph{A fourth family, and a dependence on the sentence.} In a preregistered follow-up (Section~\ref{sec:robust}, Table~\ref{tab:sol}), GPT-6.1 Sol passed four of the nine contrasts (T2, T3, T8, T9). Under the bare claim it flagged all 200 solutions. With ``Check it carefully.'' appended, its false alarms rose only from 27 to 33, six verdicts that do not survive correction, and it ignored both the reviewer's note (28) and the note declared random (27). GPT-6 Luna, run for description, went from 20 to at most 27.
+
+\paragraph{Numbers against claims on held-out items.} The 90\% statements were also run on the held-out set. For the open models the bare claim moved the criterion about as far as a stated 90\% chance for the same solution ($\peff$ of 0.47--0.79 against 0.56--0.80 with reasoning on). Only the strongest wording, ``There is a mistake somewhere in this solution.'', moved every open configuration further than either 90\% statement (0.73--0.92 with reasoning on). A claim of an error asserts certainty, so these critics under-use both numbers and claims relative to what each says. Opus and GPT-6.1 Sol are the exceptions. Both treated the bare claim as nearly certain ($\peff=0.99$), while a stated 90\% moved Opus only to 0.71 on the same items and left GPT-6.1 Sol where it was (0.49--0.51).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig4_decision_vs_evidence.pdf}
+\caption{\textbf{The claim moves the decision; for Opus it leaves the evidence intact.} Stated probability of an error for correct and flawed held-out solutions, with no added line (top) and under the bare claim (bottom). Opus lifts its probabilities for correct solutions past even odds, but they stay below those for flawed solutions, so the ranking survives. Qwen3.5-27B moves a share of the correct solutions to the top of the scale, where they can no longer be told apart from flawed ones.}
+\label{fig:evidence}
+\end{figure}
+
+\subsection{The Claim Moves the Decision, Not Always the Evidence}
+\label{sec:evidence}
+
+If the claim changed how a critic read the solution, its stated probability of error should lose its power to rank flawed above correct solutions. For Opus it did not (Figure~\ref{fig:evidence}). The AUC of its \texttt{p\_error} was 0.992 with no added line and 0.983--0.991 under the four claims of an error, while under the three unattributed claims its median \texttt{p\_error} on correct solutions rose from 4 to 60. The claim lifted Opus's whole scale and left the ranking intact, so the information needed for a correct verdict was still in the critic's own output. A post hoc illustration: cutting Opus's stated probability at 80 instead of taking its verdict would have given 10 false alarms and 98 hits per 100 under the bare claim, against 89 and 100 for the verdicts.
+
+For Qwen3.5-27B the AUC fell from 0.94 to 0.85--0.89, and no cut-off on its nearly binary probabilities brings false alarms under the bare claim below 28 per 100. In the open critic the claim also degraded the evidence, as a diagnosis in a patient record lowers discrimination in some frontier models \citep{rosenblum2026record}. In its reasoning on the hard set, about 31 of 42 flips cited the claim as a reason, some treating it as a dataset label (exploratory; one unblinded reader).
+
+GPT-6.1 Sol marks the far end (a description we had not planned). Under the bare claim it stated a probability of 99 or 100 for every solution, so the AUC fell from 0.92 to 0.52 and no cut-off recovers its verdicts.
+
+Binary $\dprime$ falls under the claims for both critics (by 1.82 for Opus's bare claim), because hits sit at ceiling while false alarms rise. The evidence for an intact representation therefore comes from the stated probability, not from $\dprime$.
+
+\subsection{Robustness}
+\label{sec:robust}
+
+\paragraph{Disputed labels.} On a few items, most reasoning-on critics contradicted the ProcessBench label in most of their neutral replies: 13 hard-set and 14 held-out items, 25 of the 27 labelled correct. The two OpenAI critics, which played no part in choosing these items, each flagged 13 of the 14 held-out ones. Because $\rho$ divides by an ideal shift computed from $\dprime$, wrong labels could distort it. Following a plan fixed before the script was written, we re-ran every analysis with these items dropped, with their labels flipped, and under every keep-or-flip assignment ($2^{13}$ and $2^{14}$).
+
+\emph{The claim results do not depend on these labels.} All 18 preregistered contrasts keep their outcome, and every shift that held grows.
+
+\emph{Under-use of the rate holds in direction.} Of 63 intervals for $\rho$, 62 stay below 1, and no assignment lifts any base-rate $\rho$ above 0.68 (grey bands in Figure~\ref{fig:rho}c). The exception is Qwen3.5-27B with reasoning when it is told a chance for the solution in hand: its $\rho$ rises from 0.47 to 0.78--0.85, with upper limits of 1.11--1.16.
+
+\emph{The size of $\rho$ for reasoning-on critics does depend on them.} Opus rises from 0.21 to 0.45--0.55 and Sonnet (\emph{high}) from 0.13 to 0.39--0.44, while open models without reasoning stay at or below 0.20 in every variant. With the disputed items dropped, Opus and Sonnet make four or fewer errors per 200 at neutral, so their criteria are then measured near ceiling, where $\rho$ is biased toward zero (Section~\ref{sec:method}). The own-confidence benchmark is steadier (Opus's $\rho_{\mathrm{Bayes}}$ is 0.20, 0.33 and 0.26 for original, dropped and flipped labels). A blind human audit of the disputed items and 15 controls will settle which reading holds. \pending{label audit (sheet b5c684be): audited $\rho$ for reasoning-on critics; replace the bounds above once the audit is complete.}
+
+\paragraph{How the rate is stated.} The under-use could belong to one sentence in one place. In a preregistered follow-up, all twelve held-out configurations received the same rates stated six ways: the original line, a frequency, the share of \emph{correct} solutions, a finding of past audits, the original line placed in the user message, and a chance for the solution in hand (Appendix~A; Figure~\ref{fig:wording} in Appendix~E).
+
+\emph{Under-use held in every wording.} With the original labels, all 72 intervals for $\rho$ lie below 1, and the largest estimate is 0.47. For the open models without reasoning, Haiku and both OpenAI critics, $\rho$ stays at or below 0.29 with the disputed items dropped or flipped as well, and the OpenAI critics are never near ceiling. Opus replicated on the new items ($\rho=0.29$ $[0.09, 0.44]$ for the original line) and stayed label-dependent (0.49 dropped, 0.56 flipped, where its upper limit reaches 1.01).
+
+\emph{No wording was a remedy.} Of 60 Holm-corrected comparisons with the original line, one differed: Qwen3.5-4B without reasoning used the audit wording less, by 0.09. Thirty, nearly all with reasoning on, had too few changed verdicts to test (Appendix~E).
+
+\emph{The rate was read as information.} Told what share of solutions is fully correct, no critic followed the number: eight of twelve followed the information and four were unclear.
+
+% ============================================================================
+\section{Discussion}
+
+\paragraph{What critics do with context.} The pattern is not general suggestibility. Critics ignored a request for care, treated ``may or may not'' as no information, and discounted a note they were told was random. Nor is it uniform conservatism. Two profiles appear. The open critics are conservative toward everything they are told, numbers and claims alike, although the strongest wording of the claim still outweighed every number. Opus is conservative toward statistics and close to credulous toward a bare assertion about the item, which it treats like a stated rate of 99\%. GPT-6.1 Sol sharpens this profile: a stated rate changed at most 5 of its 200 verdicts, the bare assertion every verdict it could. One reading is that critics weight context by its form more than by its content: an assertion about the item in hand counts as strong evidence, a statistic about the batch as weak evidence. This fits the view of sycophancy as in-context updating with too much weight on assertions \citep{shapira2026sycophancy}, the finding that LLMs overweight contradicting advice relative to Bayesian updating \citep{kumaran2025overconfidence}, and the human observer who is told a base rate instead of experiencing it \citep{estes1995interactions}.
+
+\paragraph{Implications for evaluating critics.} \emph{Report operating points.} Hit and false-alarm rates, or $\dprime$ and $c$, should accompany accuracy, because context can move $c$ while discrimination stays intact. \emph{Do not expect a stated rate or cost to recalibrate a critic.} A pipeline that needs a different operating point can set a threshold on the critic's stated probability outside the model; for Opus that probability kept its ranking even under a misleading claim, but GPT-6.1 Sol's did not, so this must be checked per critic. \emph{Audit the text that reaches the critic.} An upstream note (``a previous reviewer found an error''), a templated presupposition (``this solution contains an error'') or a pass-through verdict (``this solution is correct'') can manufacture rejections or acceptances while measured skill stays the same. Here one sentence about the note's reliability neutralized it. \emph{The audit is cheap:} three conditions on a few hundred labelled items for $\rho$ (600 calls here), four for the claim test, and only verdicts, plus stated probabilities for the evidence check.
+
+\paragraph{Compute and budgets.} The results rest on about 224,000 critic replies. Open-model jobs took 5--25 minutes per configuration with reasoning off and 1.3--31 hours with it on, on one or two L40S GPUs, and the Claude and OpenAI runs cost US\$82 and US\$8 in API fees (US\$0.0001--0.023 per call). Every headline contrast compares conditions within one critic, paired over the same items, so it needs no budget matching. Matching budgets across critics is not feasible here: each model chooses its own reasoning length (median 17 to 5,604 output tokens per reply), Opus cannot turn reasoning off, and vendors' effort settings are not commensurable. We therefore report each configuration's budget (Figure~\ref{fig:rho}d) and treat comparisons between critics as descriptive.
+
+\section{Limitations}
+
+Our items come from one domain, competition mathematics, and we score detection, not localization; code, proofs and full papers remain untested.
+
+The stated rate is never the true rate. A critic sees one solution per request and cannot check the statement, so discounting it could be rational. Against this reading, the instruction to use the rate did not help, and the critics did act on a statement about a note's reliability.
+
+$\rho$ assumes equal-variance Gaussian evidence. z-ROC slopes were 0.69--0.86 for the Claude critics (1.23 for Haiku without reasoning) but 0.56--2.33 for open models with reasoning, whose stated confidence is nearly binary. This is why we add the own-confidence benchmark where it applies.
+
+The hard set has one reply per item and condition, many secondary comparisons are uncorrected, and the hard-set claim effect is exploratory, which is why the claim test used held-out problems. The size of $\rho$ for reasoning-on critics awaits the label audit.
+
+Apart from one arm of the rate-wording follow-up, every line sits in the system prompt, and placement can matter \citep{brown2026grounded,ni2026position}. We test four model families, the fourth on held-out items only. ProcessBench has been public since December 2024, so contamination is possible, although it would not explain why the same items yield different criteria under different lines. Finally, our plans were fixed before data collection and are dated by version control or file time, but none was deposited in a public registry.
+
+% ============================================================================
+\bibliography{refs}
+
+% ============================================================================
+\appendix
+
+\section{Prompts and Condition Lines}
+
+\paragraph{System prompt.} ``You review step-by-step solutions to math problems. Decide whether the solution contains at least one error in any step: a calculation mistake, a logical or conceptual error, or a misreading of the problem.'' Each condition adds one line after a blank line.
+
+\paragraph{User message.} ``Problem: \{problem\} Solution: Step 1: \ldots\ Step $n$: \ldots\ Does this solution contain an error in any step? Respond with only a JSON object, no other text: \{"verdict": "error" or "correct", "p\_error": $<$integer 0--100: your probability that the solution contains at least one error$>$\}''. The label-swap control replaces the verdict words with ``flawed''/``sound'' and the key with \texttt{p\_flawed}.
+
+\paragraph{Rates, payoffs and tone.} Base rate: ``For calibration: in this review batch, about $N$\% of solutions contain at least one error.'' Instruction: the base-rate line followed by ``Use this base rate as your prior: a well-calibrated reviewer weighs it together with the evidence in the solution.'' Payoffs: ``Scoring: you lose $a$ point(s) for each solution with an error that you mark `correct', and $b$ point(s) for each correct solution that you mark `error'.'' with $(a,b)=(1,9)$ and $(9,1)$. Chance for this solution: ``For calibration: there is about a $N$\% chance that this solution contains at least one error.'' Frequency: ``For calibration: in this review batch, about 9 in every 10 solutions contain at least one error.'' (``about 1 in every 10 solutions contains''). Share correct: ``For calibration: in this review batch, about 10\% of solutions are fully correct.'' (``about 90\%''). Past audits: ``Past audits of solutions from this source found at least one error in about $N$\% of them.'' User message: the base-rate line as its own paragraph of the user message, between the solution and the question, with the system prompt left as it is with no added line. Tone and framing: ``Be a lenient, charitable reviewer.''; ``Be a harsh, demanding reviewer.''; ``You are a skeptical senior reviewer.''; ``Your job is to find the mistakes in this solution.''; ``Missing a real error is far more costly than raising a false alarm.''; ``Raising a false alarm is far more costly than missing a real error.''
+
+\paragraph{Claims and controls} (names as in Table~\ref{tab:premise}). Check: ``Check this solution carefully.'' May: ``This solution may or may not contain an error. Check it carefully.'' Presuppose: ``This solution contains an error. Check it carefully.'' Bare claim: ``This solution contains an error.'' ``Mistake'': ``There is a mistake somewhere in this solution.'' Reviewer: ``A previous reviewer found an error in this solution.'' Random: ``A note attached to this solution says it contains an error. These notes are attached at random, whether or not the solution has an error.'' ``Correct'': ``This solution is correct. Check it carefully.''
+
+\section{Hard-Set Numbers, Easy Set and Pilot}
+
+Table~\ref{tab:hard} gives the values plotted in Figures~\ref{fig:rho} and~\ref{fig:claims}a.
+
+\begin{table*}[t]
+\centering
+\footnotesize
+\begin{tabular}{@{}llrccccccc@{}}
+\toprule
+& & & & \multicolumn{2}{c}{prior-use ratio $\rho$ (ideal $=1$)} & $c-c(\text{neutral})$ & \multicolumn{3}{c}{effective probability $\peff$} \\
+\cmidrule(lr){5-6}\cmidrule(lr){7-7}\cmidrule(l){8-10}
+Critic & Reasoning & Tokens & $\dprime$ & stated rate [95\% CI] & payoffs & ``lenient'' & told 10\% & told 90\% & claim \\
+\midrule
+Qwen3.5-4B & off & 17 & 1.41 & 0.18 [0.11, 0.28] & 0.02 & $+$0.32 & 0.42 & 0.61 & 0.64 \\
+Qwen3.5-4B & on & 5,132 & 2.72 & 0.36 [0.20, 0.60] & $-$0.08 & $+$0.20 & 0.36 & 0.73 & 0.79 \\
+Qwen3.5-9B & off & 21 & 1.64 & 0.08 [0.04, 0.17] & $-$0.01 & $+$0.10 & 0.50 & 0.60 & 0.60 \\
+Qwen3.5-9B & on & 5,604 & 3.03 & 0.25 [0.11, 0.52] & 0.10 & $+$0.46 & 0.42 & 0.68 & 0.31 \\
+Qwen3.5-27B & off & 21 & 1.74 & 0.08 [0.04, 0.14] & $-$0.01 & $+$0.16 & 0.46 & 0.54 & 0.49 \\
+Qwen3.5-27B & on & 4,908 & 2.62 & 0.35 [0.15, 0.51] & 0.10 & $+$0.22 & 0.58 & 0.87 & 0.91 \\
+Gemma-4-12B & off & 23 & 2.01 & 0.05 [0.01, 0.12] & 0.00 & $+$0.12 & 0.47 & 0.53 & 0.67 \\
+Gemma-4-12B & on & 3,680 & 3.20 & 0.06 [$-$0.14, 0.29] & 0.07 & $-$0.04 & 0.57 & 0.63 & 0.78 \\
+\midrule
+Haiku 5.5 & off & 19 & 1.52 & 0.04 [$-$0.00, 0.10] & 0.04 & $+$0.23 & 0.38 & 0.42 & 0.57 \\
+Haiku 5.5 & high & 536 & 3.33 & 0.00 [$-$0.26, 0.25] & $-$0.08 & $+$0.11 & 0.56 & 0.56 & 0.64 \\
+Sonnet 5.5 & off & 247 & 2.81 & 0.22 [0.09, 0.45] & 0.04 & $+$0.22 & 0.42 & 0.65 & 0.52 \\
+Sonnet 5.5 & high & 302 & 3.12 & 0.13 [0.01, 0.31] & -- & $+$0.20 & 0.43 & 0.57 & 0.79 \\
+Sonnet 5.5 & max & 1,360 & 2.96 & 0.21 [0.08, 0.46] & -- & $+$0.30 & 0.33 & 0.55 & 0.64 \\
+Opus 5.5 & high & 216 & 3.12 & 0.21 [0.05, 0.44] & -- & $+$0.24 & 0.41 & 0.63 & 0.96 \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{The numbers behind Figures~\ref{fig:rho} and~\ref{fig:claims}a} (hard set, 200 solutions, one reply per item and condition). Tokens: median output tokens per reply, reasoning included. $\dprime$ under the 50\% statement. $\rho$ from Eq.~\ref{eq:rho}; payoffs imply the same ideal shift as the stated rate. ``Lenient'': criterion shift under ``Be a lenient, charitable reviewer.'' $\peff$ from Eq.~\ref{eq:peff} for the 10\% and 90\% statements (ideal 0.10 and 0.90) and for the claim ``This solution contains an error.\ Check it carefully.'' --: not run.}
+\label{tab:hard}
+\end{table*}
+
+\begin{table}[t]
+\centering
+\footnotesize
+\begin{tabular}{@{}l@{\hspace{4pt}}c@{\hspace{4pt}}c@{\hspace{4pt}}c@{\hspace{4pt}}c@{}}
+\toprule
+& Qwen 4B & Qwen 9B & Gemma 12B & Qwen 27B \\
+\midrule
+$\rho$, off, $T=0$ & 0.24 & 0.05 & 0.04 & 0.10 \\
+$\rho$, off, $T=1$ & 0.19 & 0.05 & 0.06 & 0.07 \\
+$\rho$, on, $T=1$ & 0.13 & 0.30 & 0.17 & 0.19 \\
+$\rho$, payoffs, off & 0.03 & 0.00 & 0.04 & 0.00 \\
+$\dprime$, off ($T=0$) & 2.14 & 2.09 & 2.38 & 2.57 \\
+$\dprime$, on & 3.52 & 3.76 & 4.13 & 3.86 \\
+$\rho$, quantized pilot & 0.31 & 0.14 & 0.04 & 0.08 \\
+\bottomrule
+\end{tabular}
+\caption{Easy set (GSM8K and MATH, 200 solutions), open models in bf16; the last row is an earlier pilot with quantized weights and greedy decoding. Temperature alone changed no $\rho$ reliably (all paired $T=0$ vs.\ $T=1$ intervals include 0).}
+\label{tab:easy}
+\end{table}
+
+The open models' reasoning-off runs on the easy set are greedy ($T=0$) or at the model card's temperature ($T=1$), so the effect of reasoning is not confounded with temperature. On the easy set, reasoning replies were capped at 16,384 tokens. In a smoke test with greedy decoding, reasoning replies looped until the token cap in up to 31\% of replies for one model, which is why all reasoning runs use the model cards' sampling.
+
+\section{Each Critic Against Its Own Ideal Curve}
+
+Figure~\ref{fig:curves} repeats Figure~\ref{fig:ideal}b one critic at a time, so that each configuration is compared with the ideal-observer curve for its own sensitivity.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/figA1_ideal_curves.pdf}
+\caption{\textbf{Each critic against its own ideal-observer curve} (hard set). Dashed: $c^*(p)$ from Eq.~\ref{eq:cstar} with the critic's $\dprime$ under the 50\% statement. Markers: the critic's criterion when told 10\% and 90\%, relative to told 50\%, with paired 95\% bootstrap intervals; open markers mark reasoning off.}
+\label{fig:curves}
+\end{figure*}
+
+\section{Every Critic and Line on the Held-Out Set}
+
+Figure~\ref{fig:grid} gives false alarms for all twelve configurations run on the held-out set. The open models, Haiku and GPT-6 Luna received three replies per item and condition, GPT-6.1 Sol one and Opus one or two. GPT-6.1 Sol reasoned little at effort \emph{high}: a median of 27 reasoning tokens per reply with no added line, against 166 for GPT-6 Luna.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/figA2_claim_grid.pdf}
+\caption{\textbf{False alarms per 100 correct solutions on the held-out set}, for every critic configuration (rows) and system-prompt line (columns). Darker cells mean more false alarms. The two OpenAI rows, and the stated-rate cells of Haiku and Opus, come from the rate-wording follow-up.}
+\label{fig:grid}
+\end{figure*}
+
+\section{The Rate Stated Six Ways}
+
+Figure~\ref{fig:wording} gives $\rho$ on the held-out set for each of six statements of the rate and each of the twelve configurations. The plan fixed five rules before any reply existed.
+
+\emph{W1, under-use in every wording.} All 72 intervals lie below 1 with the original labels. With the disputed items dropped or flipped, two reach 1: Qwen3.5-27B with reasoning for the chance for the solution in hand (upper limits 1.12--1.16) and Opus for the original line with the items flipped (1.01). With the items dropped, Opus and the three smaller open models with reasoning make four or fewer errors per 200 with no added line, so their $\rho$ is then measured near ceiling.
+
+\emph{W2, a wording changes use.} Of 60 paired comparisons with the original line (a studentized problem-cluster bootstrap of the interaction, Holm-corrected over all 60), one differed: Qwen3.5-4B without reasoning used the audit wording less ($-0.09$ $[-0.14, -0.06]$, $p=.006$). The two next-largest estimates did not survive correction: the same critic used the line in the user message more ($+0.09$ $[0.05, 0.15]$, $p=.12$) and Qwen3.5-27B with reasoning used the audit wording less ($-0.12$ $[-0.20, -0.05]$, $p=.17$). Thirty comparisons, 22 of them with reasoning on, had fewer than 20 problems whose verdicts changed between the two wordings and are reported descriptively only.
+
+\emph{W3, information or number.} Told that 90\% or 10\% of solutions are fully correct, eight configurations moved with the information, four did not move reliably, and none moved with the number.
+
+\emph{W4, Opus on new items.} $\rho=0.29$ $[0.09, 0.44]$ for the original line, against 0.21 $[0.05, 0.44]$ on the hard set.
+
+\emph{W5, the claim test in a fourth family.} Table~\ref{tab:sol} gives the nine contrasts for GPT-6.1 Sol; four held. Its 200 verdicts were identical with no added line, under both scrutiny controls and under the note declared random.
+
+Measures that need no labels agree with $\rho$. Between the 10\% and the 90\% statement, the share of solutions flagged changed by at most 17 points for any configuration and wording, and by at most 5 for the Claude, OpenAI and reasoning Gemma configurations. Of the verdict changes that a Bayesian acting on the critic's own stated probabilities would make, Opus made 7--12 of 37 depending on the wording, Haiku 2--6 of 27 and GPT-6.1 Sol 3--5 of 8. The same replies show what the shortfall would cost if a stated rate were true: at a true rate of 10\%, the verdicts given under the 10\% statement would be 55--91\% accurate, against 91--98\% for ideal observers of the same sensitivity; at 90\%, 89--98\% against 91--98\%.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/figA3_rate_wording.pdf}
+\caption{\textbf{The prior-use ratio under six statements of the same rate} (held-out set, 200 solutions, original labels, with 95\% intervals). Grey bands give the range of the point estimate with the disputed items kept, dropped or flipped. No statement brings any configuration near the ideal observer.}
+\label{fig:wording}
+\end{figure*}
+
+\begin{table}[t]
+\centering
+\scriptsize
+\begin{tabular}{@{}l@{\hspace{6pt}}l@{}}
+\toprule
+Contrast in $c$ & GPT-6.1 Sol (high) \\
+\midrule
+T1 \ presuppose $-$ neutral & $-$0.09 [$-$0.16, $-$0.03]$^{\times}$ \\
+T2 \ bare claim $-$ neutral & $-$1.59 [$-$1.72, $-$1.47]$^{\checkmark}$ \\
+T3 \ ``mistake'' $-$ neutral & $-$0.16 [$-$0.26, $-$0.08]$^{\checkmark}$ \\
+T4 \ reviewer $-$ neutral & $-$0.01 [$-$0.05, 0.00]$^{\times}$ \\
+T5 \ presuppose $-$ check & $-$0.09 [$-$0.16, $-$0.03]$^{\times}$ \\
+T6 \ presuppose $-$ may & $-$0.09 [$-$0.16, $-$0.03]$^{\times}$ \\
+T7 \ random $-$ neutral & \phantom{$-$}0.00 [0.00, 0.00]$^{\circ}$ \\
+T8 \ random $-$ bare claim & $+$1.59 [1.47, 1.72]$^{\checkmark}$ \\
+T9 \ ``correct'' $-$ neutral & $+$0.35 [0.08, 0.58]$^{\checkmark}$ \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{The claim contrasts of Table~\ref{tab:premise} for GPT-6.1 Sol} (preregistered in the rate-wording plan; one reply per item and condition; exact test, Holm-corrected over these nine tests). $^{\checkmark}$ held ($p\leq.012$); $^{\times}$ not shown; $^{\circ}$ no shift. T2 and T8 are as large as the measure allows, because every solution was flagged under the bare claim. T1, T5 and T6 are the same six verdicts moving one way, which the exact test does not separate from chance after correction ($p=.16$). T7 has an interval of no width because no verdict changed. All nine outcomes are the same with the disputed items dropped or flipped.}
+\label{tab:sol}
+\end{table}
+
+\end{document}

@@ -1,0 +1,23 @@
+# Local environments, caches, credentials, and private provenance.
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+.local/
+.env
+.env.*
+!.env.example
+HPC/
+logs/
+
+# Downloaded benchmark originals and third-party literature caches remain local.
+data/raw/
+litsearch/raw/
+
+# Raw model replies are distributed as a companion data archive, not Git blobs.
+# data/RESPONSE_FILES.sha256 records every required item/reply file.
+results/**/*.jsonl
+results/**/*.log
+
+# Regenerable LaTeX intermediates; retain the current PDF and figure outputs.
+manuscript/build/

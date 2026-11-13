@@ -1,0 +1,43 @@
+audit_id,set,item_id,group,label_has_error,label_first_error_step,final_answer_correct,generator,n_critics,n_against_label,steps_named_by_critics,text_repaired,opus-5.5 against/replies,sonnet-5.5 against/replies,haiku-5.5 against/replies,qwen3.5:27b against/replies,gemma4:12b against/replies,qwen3.5:9b against/replies,qwen3.5:4b against/replies,opus-5.5 median P(error),sonnet-5.5 median P(error),haiku-5.5 median P(error),qwen3.5:27b median P(error),gemma4:12b median P(error),qwen3.5:9b median P(error),qwen3.5:4b median P(error)
+A01,hard,omnimath-730,contested_correct,0,,1,Qwen2.5-Math-7B-Instruct,7,6,Step 2 (4); Step 3 (1),0,1/1,0/1,1/1,1/1,1/1,1/1,1/1,80,30,66,95,100,95,90
+A02,premise,omnimath-721,control_correct,0,,1,Qwen2.5-Math-72B-Instruct,6,0,,0,0/2,,0/3,0/3,0/3,0/3,0/3,2,,2,0,0,0,0
+A03,premise,omnimath-640,contested_correct,0,,1,Qwen2.5-Math-7B-Instruct,6,6,Step 4 (4); Step 3 (1),0,2/2,,3/3,3/3,2/3,2/3,3/3,75,,78,100,100,95,100
+A04,premise,omnimath-826,control_flawed,1,5,1,Qwen2-72B-Instruct,6,0,,0,0/2,,0/3,0/3,0/2,0/3,0/3,83.5,,97,100,100,100,100
+A05,premise,omnimath-717,contested_correct,0,,1,Qwen2.5-72B-Instruct,6,5,Step 4 (5),0,2/2,,3/3,3/3,1/3,3/3,2/3,88,,96,100,0,95,90
+A06,hard,omnimath-869,control_correct,0,,1,Qwen2-7B-Instruct,7,0,,0,0/1,0/1,0/1,0/1,0/1,0/1,0/1,2,1,2,0,0,0,0
+A07,premise,olympiadbench-861,contested_correct,0,,1,Qwen2.5-Math-72B-Instruct,6,6,Step 3 (4); Step 4 (1),0,2/2,,2/3,3/3,3/3,3/3,3/3,67,,45,100,100,100,100
+A08,hard,olympiadbench-875,contested_correct,0,,1,Qwen2.5-72B-Instruct,7,7,Step 7 (3); Step 17 (2); Step 14 (1),0,1/1,1/1,1/1,1/1,1/1,1/1,1/1,97,96,97,95,100,100,95
+A09,hard,olympiadbench-971,contested_correct,0,,1,Qwen2.5-Math-7B-Instruct,7,6,Step 5 (2); Step 12 (2); Step 6 (1),0,1/1,1/1,1/1,1/1,0/1,1/1,1/1,85,85,90,100,0,95,100
+A10,premise,olympiadbench-963,control_flawed,1,3,1,Llama-3.1-8B-Instruct,6,0,,0,0/2,,0/3,0/3,0/3,0/3,0/3,96,,97,100,100,100,100
+A11,premise,omnimath-566,contested_correct,0,,1,Qwen2.5-7B-Instruct,6,3,Step 6 (3),0,1/2,,3/3,3/3,0/3,2/3,1/3,51,,68,95,0,95,0
+A12,premise,olympiadbench-961,control_correct,0,,1,Qwen2.5-Math-72B-Instruct,6,0,,0,0/2,,0/3,0/3,0/3,0/3,0/3,3,,3,0,0,0,0
+A13,premise,olympiadbench-892,contested_correct,0,,1,Qwen2.5-Math-7B-Instruct,6,6,Step 2 (4),0,2/2,,3/3,3/3,3/3,3/3,3/3,91,,97,100,100,100,100
+A14,premise,omnimath-584,contested_correct,0,,1,Llama-3.1-70B-Instruct,6,6,Step 4 (5),0,2/2,,3/3,3/3,3/3,3/3,3/3,91,,92,95,100,95,100
+A15,premise,omnimath-614,contested_correct,0,,1,Qwen2-7B-Instruct,6,6,Step 1 (5),0,2/2,,3/3,2/3,2/3,3/3,2/3,66,,40,95,100,100,95
+A16,hard,olympiadbench-690,contested_correct,0,,1,Qwen2-7B-Instruct,7,6,Step 9 (6),0,1/1,1/1,1/1,1/1,0/1,1/1,1/1,68,70,60,100,0,95,100
+A17,hard,olympiadbench-664,control_flawed,1,1,1,Qwen2-7B-Instruct,7,0,,0,0/1,0/1,0/1,0/1,0/1,0/1,0/1,70,40,80,95,100,95,100
+A18,hard,olympiadbench-674,contested_flawed,1,3,1,Qwen2.5-72B-Instruct,7,4,,0,1/1,1/1,0/1,1/1,1/1,0/1,0/1,35,22,72,0,0,90,95
+A19,premise,omnimath-986,contested_correct,0,,1,Qwen2.5-Math-72B-Instruct,6,6,Step 8 (4); Step 1 (1),0,2/2,,3/3,3/3,2/3,3/3,2/3,90,,97,100,100,95,95
+A20,premise,omnimath-901,contested_correct,0,,1,Qwen2.5-72B-Instruct,6,3,Step 5 (2); Step 3 (1),0,0/2,,0/3,2/3,3/3,0/3,2/3,6,,4,95,100,0,85
+A21,hard,omnimath-768,contested_correct,0,,1,Qwen2.5-Math-7B-Instruct,7,6,Step 6 (2); Step 5 (1); Step 4 (1),0,1/1,1/1,1/1,1/1,0/1,1/1,1/1,75,66,82,100,0,100,95
+A22,hard,omnimath-805,contested_correct,0,,1,Qwen2.5-Math-72B-Instruct,7,6,Step 6 (5),0,1/1,0/1,1/1,1/1,1/1,1/1,1/1,72,35,72,100,100,100,100
+A23,premise,omnimath-696,control_correct,0,,1,Qwen2-7B-Instruct,6,0,,1,0/2,,0/3,0/3,0/3,0/3,0/3,2,,3,0,0,0,0
+A24,premise,omnimath-897,control_correct,0,,1,Llama-3.1-70B-Instruct,6,0,,0,0/2,,0/3,0/3,0/3,0/3,0/3,3,,3,0,0,0,0
+A25,premise,olympiadbench-563,control_correct,0,,1,Llama-3.1-70B-Instruct,6,0,,0,0/2,,0/3,0/3,0/3,0/3,0/3,2,,3,0,0,0,0
+A26,premise,omnimath-790,contested_correct,0,,1,Qwen2-7B-Instruct,6,6,Step 6 (2),0,2/2,,3/3,3/3,3/3,3/3,3/3,82.5,,72,100,100,95,95
+A27,hard,omnimath-609,contested_correct,0,,1,Qwen2.5-Math-72B-Instruct,7,5,Step 9 (3); Step 8 (1),0,1/1,0/1,1/1,1/1,0/1,1/1,1/1,72,25,92,85,0,100,85
+A28,hard,omnimath-742,control_correct,0,,1,Llama-3.1-8B-Instruct,7,0,,0,0/1,0/1,0/1,0/1,0/1,0/1,0/1,1,2,2,0,0,0,0
+A29,hard,omnimath-627,control_correct,0,,1,Qwen2-72B-Instruct,7,0,,0,0/1,0/1,0/1,0/1,0/1,0/1,0/1,12,3,5,0,0,0,0
+A30,hard,olympiadbench-809,contested_correct,0,,1,Qwen2-72B-Instruct,7,4,Step 1 (4),0,1/1,1/1,1/1,0/1,0/1,0/1,1/1,62,66,82,10,0,0,95
+A31,hard,omnimath-858,control_correct,0,,1,Qwen2.5-7B-Instruct,7,0,,0,0/1,0/1,0/1,0/1,0/1,0/1,0/1,3,3,3,0,0,0,0
+A32,premise,omnimath-688,contested_correct,0,,1,Qwen2-7B-Instruct,6,6,Step 4 (3); Step 2 (2),0,2/2,,3/3,3/3,2/3,3/3,3/3,81,,92,100,90,100,90
+A33,premise,olympiadbench-848,contested_correct,0,,1,Qwen2-7B-Instruct,6,6,Step 1 (5),0,2/2,,3/3,3/3,3/3,3/3,3/3,85,,93,100,100,100,100
+A34,hard,olympiadbench-859,control_flawed,1,5,1,Qwen2-7B-Instruct,7,0,,0,0/1,0/1,0/1,0/1,0/1,0/1,0/1,99,99,99,100,100,100,100
+A35,premise,omnimath-969,contested_correct,0,,1,Qwen2-7B-Instruct,6,6,Step 5 (3); Step 6 (1); Step 8 (1); Step 3 (1),0,2/2,,3/3,3/3,3/3,3/3,3/3,89,,85,100,100,95,90
+A36,hard,omnimath-979,contested_correct,0,,1,Qwen2.5-72B-Instruct,7,7,Step 5 (4),0,1/1,1/1,1/1,1/1,1/1,1/1,1/1,72,62,85,100,100,100,100
+A37,hard,omnimath-543,contested_flawed,1,1,1,Qwen2.5-Math-7B-Instruct,7,7,,0,1/1,1/1,1/1,1/1,1/1,1/1,1/1,4,3,3,0,0,0,0
+A38,premise,omnimath-774,control_flawed,1,4,1,Qwen2-7B-Instruct,6,0,,0,0/2,,0/3,0/3,0/3,0/3,0/3,97,,97,100,100,100,100
+A39,hard,omnimath-835,contested_correct,0,,1,Qwen2.5-72B-Instruct,7,4,Step 4 (3),0,1/1,0/1,0/1,1/1,0/1,1/1,1/1,62,25,8,90,0,100,100
+A40,premise,omnimath-940,contested_correct,0,,1,Llama-3.1-70B-Instruct,6,5,Step 7 (1); Step 2 (1); Step 9 (1),0,2/2,,3/3,3/3,0/3,3/3,3/3,68,,80,100,0,98,100
+A41,hard,olympiadbench-918,contested_correct,0,,1,Qwen2.5-7B-Instruct,7,5,Step 14 (3),0,1/1,1/1,1/1,0/1,0/1,1/1,1/1,85,85,88,0,0,100,100
+A42,hard,omnimath-534,control_correct,0,,1,Qwen2.5-72B-Instruct,7,0,,0,0/1,0/1,0/1,0/1,0/1,0/1,0/1,5,3,4,0,0,0,0

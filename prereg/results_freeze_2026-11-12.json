@@ -1,0 +1,75 @@
+{
+  "status": "retrospective methodological amendment; not a preregistration",
+  "date": "2026-11-12",
+  "scope": "Saved-response results freeze for a human-authored manuscript. No new inference calls. Original manuscript and analyses are preserved.",
+  "labels": "Original labels plus the previously defined drop, flip and damaged-text exclusions. No human audit is presumed. A completed audit creates a new version.",
+  "point_estimates": "Retain the original log-linear correction per pass over items, enabling direct reconciliation.",
+  "resampling": "Resample whole problems within split and label-composition strata. Keep all conditions and replies together. Use common resamples across critics sharing the same items.",
+  "claim_tests": {
+    "families": [
+      "18 original claim contrasts",
+      "9 Sol contrasts"
+    ],
+    "method": "Exact within-item conditional randomization for complete binary replies with fixed repeat counts; paired complete-response-vector swaps for equal repeats with parsing failures. Preserve the observed numbers of repeats. Exchangeability under the null is an assumption, not inferred from a timestamp.",
+    "monte_carlo_draws": 200000,
+    "adjustment": "Holm within each original family; randomized p-values include the observed allocation.",
+    "intervals": "Descriptive paired problem bootstrap intervals, separately labeled; not inversions of the randomization test.",
+    "equivalence": "No revised population-equivalence conclusion is inferred from a zero-width or unvalidated percentile interval. Keep original equivalence classifications only as legacy results."
+  },
+  "wording_tests": {
+    "family_size": 60,
+    "estimand": "Difference in 10-to-90 criterion shifts. The shared positive reference d-prime scales the effect but does not alter the zero null.",
+    "method": "Studentized centered problem-cluster bootstrap of the interaction, including wording main effects. Holm across all 60 slots. All four conditions are recomputed jointly.",
+    "minimum_informative_problems": 20,
+    "maximum_degenerate_bootstrap_fraction": 0.01,
+    "fallback": "Descriptive only if studentization is degenerate or fewer than 20 problems contribute a nonzero within-problem interaction in verdict or parse counts. Keep the slot in the correction family with p=1. Validation failure suppresses confirmatory wording conclusions, not the data.",
+    "equivalence": "Legacy no-difference decisions are not promoted to revised equivalence claims."
+  },
+  "ceiling": "Keep the existing rule: 4 or fewer neutral errors per 200 makes rho descriptive only under that labeling.",
+  "threshold_evaluation": {
+    "status": "Retrospective problem-level cross-validation; all existing data have previously been inspected.",
+    "critics": [
+      "opus-5.5-think",
+      "qwen3.5:27b-think-bf16-t1",
+      "gpt-6.1-sol-think"
+    ],
+    "prevalences": [
+      0.1,
+      0.5,
+      0.9
+    ],
+    "folds": 5,
+    "seed": 20261112,
+    "policies": [
+      "native verdict",
+      "prespecified probability threshold 100*(1-p)",
+      "training-only empirical threshold minimizing p*FNR+(1-p)*FPR",
+      "constant error",
+      "constant correct"
+    ],
+    "conditions": [
+      "neutral",
+      "claim_bare",
+      "presuppose"
+    ],
+    "transfer": "Separate training on neutral scores and applying under a claim from training on the same claim wording.",
+    "unit": "Apply to individual replies; average within problem. Do not create a score ensemble.",
+    "ties": "Predict error iff score > threshold. Candidate thresholds -1 through 100; choose the smallest threshold among equal training risks.",
+    "uncertainty": "Full-procedure problem bootstrap with threshold selection repeated and duplicate copies kept in the same predetermined folds. Report percentile intervals as retrospective descriptive uncertainty, not new confirmatory tests."
+  },
+  "interpretation": [
+    "Gaussian SDT is a conditional reference model, not an identified optimum of actual critics",
+    "Effective probability is shift-equivalent, not an inferred internal belief",
+    "AUC concerns reported scores, not latent evidence",
+    "Declared randomness is confounded with attribution in the existing experiment",
+    "Any revised conclusion follows the data; no target significance count is imposed"
+  ],
+  "audit_amendment": {
+    "status": "fixed before human responses",
+    "completeness": "All 42 first-pass verdicts required; explicit unsure allowed, blank judgments rejected. Supersedes legacy partial-file fallback.",
+    "assistance": "Preserve independent first-pass CSV; later AI-assisted revisions or human adjudication in separate files with provenance.",
+    "gap_only": "Primary correct; secondary flawed. Report both.",
+    "unsure": "Exclude from audit-label estimates and disclose counts.",
+    "reviewers": "Separate snapshots per reviewer; no automatic consensus, no assistant counted as human."
+  }
+}

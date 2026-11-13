@@ -1,0 +1,2 @@
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2610.35942/citations?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/cit_2610.35942.json	1
+s2	https://api.semanticscholar.org/graph/v1/paper/search?query=confirmation%20bias%20LLM%20vulnerability%20detection%20benign%20framing&fields=title,externalIds,year,venue,publicationDate,abstract,authors&limit=20	s2/search_confirmation_bias_vuln.json	0

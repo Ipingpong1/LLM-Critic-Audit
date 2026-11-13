@@ -1,0 +1,2 @@
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2610.32876/citations?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/cit_2610.32876.json	1
+s2	https://api.semanticscholar.org/graph/v1/paper/arXiv:2603.18740/citations?fields=title,externalIds,year,venue,publicationDate,abstract,contexts,intents,authors&limit=1000	s2/cit_2603.18740.json	1

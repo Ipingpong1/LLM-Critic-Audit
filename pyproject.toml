@@ -1,0 +1,15 @@
+[project]
+name = "critic-sdt-pilot"
+version = "0.1.0"
+description = "Pilot: do stated base rates move an LLM critic's decision criterion the way signal-detection theory predicts?"
+requires-python = ">=3.10"
+dependencies = [
+    "anthropic==2.6.0",
+    "openai>=1.50",
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "matplotlib>=3.8",
+]
+
+[tool.uv]
+package = false

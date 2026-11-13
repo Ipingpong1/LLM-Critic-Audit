@@ -1,0 +1,172 @@
+date,database,query,filters,n_results,n_screened,n_kept,notes
+2026-11-06,official page via WebFetch (aclrollingreview.org),https://aclrollingreview.org/dates,,1,1,1,"ARR cycles (Mar/May/Aug/Oct 2026), venue table (EACL/NAACL/COLING/ACL 2027), Oct 2026 cycle timeline; fetched twice"
+2026-11-06,official page via WebFetch (aclrollingreview.org),https://aclrollingreview.org/cfp,,1,1,1,"8/4 pages, no anonymity period since 2024-02-15, opt-in no-preprint, multiple-submission rule, Limitations required, service contributor from Oct 2026"
+2026-11-06,official page via WebFetch (jmlr.org/tmlr),https://jmlr.org/tmlr/author-guide.html,,1,1,1,any length; double blind; arXiv any time; CC BY
+2026-11-06,official page via WebFetch (jmlr.org/tmlr),https://jmlr.org/tmlr/editorial-policies.html,,1,1,1,no fees; AE in 1 week; non-archival workshop overlap OK; no expanded conference papers
+2026-11-06,web search (WebSearch tool),"ACL Rolling Review sustainable reviewing policy ""qualified service contributor"" October 2026",,17,17,2,used only to locate aclweb.org policy page and PDF
+2026-11-06,official page via WebFetch (transacl.org),https://transacl.org/index.php/tacl/about/submissions,,1,1,1,"monthly deadline (1st), 10-page mention, preprints non-archival, 9-month wait after *ACL/ARR rejection, conference presentation"
+2026-11-06,official page via WebFetch (transacl.org),https://transacl.org/index.php/tacl/about,,1,1,1,no APC/submission charges; reviews due 3 weeks; AE decision 7 days; OA
+2026-11-06,official page via WebFetch (cljournal.org),https://cljournal.org/submissions.html,,1,1,1,CL article types/lengths; no double-blind; no charges; not under review elsewhere
+2026-11-06,official page via WebFetch (jmlr.org/tmlr),https://jmlr.org/tmlr/,,1,1,1,fast turnaround (no number); J2C certification
+2026-11-06,official page via WebFetch (colmweb.org),https://colmweb.org/,,1,1,0,redirect notice to colm.cc
+2026-11-06,official page via WebFetch (iclr.cc),https://iclr.cc/,,1,1,1,ICLR 2027 Apr 26-30 2027 San Francisco; deadline Sep 25 2026 passed; decisions Dec 16 2026
+2026-11-06,official page via WebFetch (aclweb.org),https://aclweb.org/portal/content/acl-sustainable-reviewing-policy,,1,1,1,policy effective Oct 2026 ARR; qualification criteria
+2026-11-06,official page via WebFetch (colm.cc),https://colm.cc/,,1,1,1,COLM 2026 Oct 6-9 2026 San Francisco; no 2027 info
+2026-11-06,official page via WebFetch (iclr.cc),https://iclr.cc/Conferences/2027/CallForWorkshops,,1,1,1,ICLR 2027 workshops: suggested paper deadline 1 Feb 2027; notification 26 Feb 2027
+2026-11-06,official page via WebFetch (iclr.cc),https://iclr.cc/Conferences/FutureMeetings,,1,1,0,only ICLR 2027 west coast
+2026-11-06,official page via WebFetch (neurips.cc),https://neurips.cc/,,1,1,1,NeurIPS 2026 Sydney Dec 6-12 + Atlanta/Paris satellites; no 2027 info
+2026-11-06,official page via WebFetch (icml.cc),https://icml.cc/,,1,1,1,ICML 2027 Rio de Janeiro Jul 31-Aug 6 2027; CFP 'posted soon'
+2026-11-06,official page via WebFetch (aclweb.org),https://www.aclweb.org/adminwiki/images/e/e2/ACL_sustainable_reviewing_policy.pdf,,1,1,1,full text read: major ML venues list includes CVPR/ECCV/ICCV/TPAMI; lottery; max 2 submissions per contributor
+2026-11-06,official page via WebFetch (neurips.cc),https://neurips.cc/Conferences/FutureMeetings,,1,1,1,2027 Europe (city/dates not listed)
+2026-11-06,official page via WebFetch (neurips.cc),https://neurips.cc/Conferences/2026/CallForPapers,,1,1,1,2026 deadlines abstract May 4 / full May 6 2026; policies in handbook
+2026-11-06,official page via WebFetch (neurips.cc),https://neurips.cc/Conferences/2026/CallForEvaluationsDatasets,,1,1,1,E&D track scope incl. evaluation methodology; double-blind default
+2026-11-06,official page via WebFetch (icml.cc),https://icml.cc/Conferences/FutureMeetings,,1,1,1,2027 Rio; 2028 Eastern US
+2026-11-06,official page via WebFetch (icml.cc),https://icml.cc/Conferences/2026/CallForPapers,,1,1,1,ICML 2026 abstract Jan 23 / paper Jan 28 2026; 8 pages; arXiv allowed; reciprocal reviewing
+2026-11-06,official page via WebFetch (neurips.cc),https://neurips.cc/Conferences/2026/MainTrackHandbook,,1,1,1,9 content pages; non-anonymous preprints OK; non-archival workshop dual submission OK; checklist mandatory
+2026-11-06,official page via WebFetch (iclr.cc),https://iclr.cc/Conferences/2027/CallForPapers,,1,1,1,double blind; arXiv allowed; all submissions incl. rejected public with names
+2026-11-06,official page via WebFetch (colm.cc),https://colm.cc/Conferences/2026/CallForPapers,,1,1,1,"COLM 2026 abstract Mar 26 / full Mar 31 2026; 9 pages; topics incl. evaluation, science of LMs, cognitive science; non-archival workshops exempt"
+2026-11-06,official page via WebFetch (icml.cc),https://icml.cc/Conferences/2027/Dates,,1,1,1,only meeting dates; no deadlines posted
+2026-11-06,official page via WebFetch (cognitivesciencesociety.org),https://cognitivesciencesociety.org/,,1,1,1,links to CogSci 2027 page; journal links
+2026-11-06,official page via WebFetch (wiley.com),https://onlinelibrary.wiley.com/page/journal/15516709/homepage/forauthors.html,,0,0,0,HTTP 403 (Cognitive Science author guidelines not readable)
+2026-11-06,official page via WebFetch (cognitivesciencesociety.org),https://cognitivesciencesociety.org/cogsci-2027/,,1,1,1,CogSci 2027 Bilbao Jul 28-31 2027; CFP not announced
+2026-11-06,official page via WebFetch (cognitivesciencesociety.org),https://cognitivesciencesociety.org/cogsci-2026/,,1,1,1,CogSci 2026 Rio Jul 22-25 2026 (post-conference page; no deadlines)
+2026-11-06,official page via WebFetch (cognitivesciencesociety.org),https://cognitivesciencesociety.org/cognitive-science-journal/,,1,1,1,Cognitive Science journal: green OA after 1-year embargo; editorialmanager submission
+2026-11-06,official page via WebFetch (iclr.cc),https://iclr.cc/Conferences/2027/AuthorGuide,,0,0,0,HTTP 404
+2026-11-06,official page via WebFetch (link.springer.com),https://link.springer.com/journal/13428,,1,1,1,via idp redirect chain; BRM: IF 5.1 (2025); hybrid; no first-decision metric shown
+2026-11-06,official page via WebFetch (psychonomic.org),https://www.psychonomic.org/page/brm,,0,0,0,HTTP 403
+2026-11-06,web search (WebSearch tool),ICLR 2027 author guide page limit dual submission policy site:iclr.cc,,17,17,2,located AuthorGuidelines URL and ICLR blog post
+2026-11-06,official page via WebFetch (nature.com),https://www.nature.com/natmachintell/journal-information,,0,0,0,redirect to idp (cookie); not read
+2026-11-06,official page via WebFetch (nature.com),https://www.nature.com/natmachintell/journal-impact,,1,1,1,via idp redirect chain; NMI first editorial decision median 10 days; submission to acceptance 231 days; IF 29.8 (2025)
+2026-11-06,official page via WebFetch (nature.com),https://www.nature.com/nathumbehav/journal-impact,,1,1,1,via idp redirect chain; NHB first editorial decision median 6 days; submission to acceptance 252 days; IF 18.8 (2025)
+2026-11-06,official page via WebFetch (iclr.cc),https://www.iclr.cc/Conferences/2027/AuthorGuidelines,,1,1,1,9 pages (10 camera-ready); arXiv allowed; non-archival workshops OK; 20-paper cap; at most one paper without eligible reciprocal reviewer
+2026-11-06,official page via WebFetch (blog.iclr.cc),https://blog.iclr.cc/?p=1150,,1,1,1,ICLR 2027 submission policies (cap; one no-reviewer paper per author); all papers de-anonymized after review
+2026-11-06,official page via WebFetch (link.springer.com),https://link.springer.com/journal/13428/how-to-publish-with-us,,1,1,1,via idp redirect chain; BRM APC GBP 2690 / USD 4090 / EUR 3090; hybrid
+2026-11-06,official page via WebFetch (link.springer.com),https://link.springer.com/journal/13428/submission-guidelines,,1,1,1,via idp redirect chain; BRM: articles and tutorials; Open Practices Statement and data availability required
+2026-11-06,official page via WebFetch (link.springer.com),https://link.springer.com/journal/42113,,1,1,1,via idp redirect chain; CBB: submission to first decision median 12 days; hybrid; scope computational basis of mind
+2026-11-06,official page via WebFetch (link.springer.com),https://link.springer.com/journal/42113/how-to-publish-with-us,,1,1,1,via idp redirect chain; CBB APC GBP 2490 / USD 3390 / EUR 2790
+2026-11-06,official page via WebFetch (nature.com),https://www.nature.com/natmachintell/open-access,,1,1,0,via idp redirect chain; redirect loop; not read
+2026-11-06,official page via WebFetch (nature.com),https://www.nature.com/natmachintell/content,,1,1,1,"via idp redirect chain; NMI Article up to 3,500 words, 6 display items, ~50 refs; Analysis same"
+2026-11-06,official page via WebFetch (nature.com),https://www.nature.com/nathumbehav/open-access,,1,1,0,via idp redirect chain; redirect loop; not read
+2026-11-06,web search (WebSearch tool),Nature Machine Intelligence article processing charge open access transformative journal APC,"allowed_domains: domains nature.com, springernature.com",10,10,1,located publishing-options page
+2026-11-06,official page via WebFetch (nature.com),https://www.nature.com/natmachintell/submission-guidelines/publishing-options,,1,1,1,via idp redirect chain; NMI Gold OA APC GBP 9390 / USD 12850 / EUR 10850; subscription route free
+2026-11-06,official page via WebFetch (nature.com),https://www.nature.com/nathumbehav/submission-guidelines/publishing-options,,1,1,1,via idp redirect chain; NHB Gold OA APC GBP 9390 / USD 12850 / EUR 10850
+2026-11-06,Bash curl (not WebFetch),attempt to read link.springer.com with a cookie jar,,0,0,0,blocked by the session's permission classifier; not retried
+2026-11-06,official page via WebFetch (aaai.org),https://aaai.org/conference/aaai/aaai-27/,,1,1,1,AAAI-27 Montreal Feb 16-23 2027; abstract Jul 21 / paper Jul 28 2026 (passed)
+2026-11-06,official page via WebFetch (aaai.org),https://aaai.org/conference/aaai/aaai-27/workshop-program/,,1,1,0,stale AAAI-25 workshop page
+2026-11-06,official page via WebFetch (ijcai.org),https://www.ijcai.org/,,1,1,1,IJCAI-27 Kyoto Aug 7-13 2027 + Hengqin Aug 15-17 2027
+2026-11-06,official page via WebFetch (conll.org),https://conll.org/,,1,1,1,CoNLL 2026 San Diego Jul 3-4 2026 with ACL; scope incl. cognitively motivated work; no 2027 info
+2026-11-06,official page via WebFetch (blackboxnlp.github.io),https://blackboxnlp.github.io/,,1,1,0,redirect notice to 2025 edition
+2026-11-06,official page via WebFetch (direct.mit.edu),https://direct.mit.edu/opmi/pages/submission-guidelines,,0,0,0,HTTP 403
+2026-11-06,official page via WebFetch (aaai.org),https://aaai.org/conference/aaai/aaai-27/workshops-call/,,1,1,1,AAAI-27 workshop papers due to organizers Nov 20 2026; notifications Dec 2 2026; workshops Feb 22-23 2027; AAAI does not publish workshop papers
+2026-11-06,official page via WebFetch (2027.ijcai.org),https://2027.ijcai.org/,,1,1,1,IJCAI-27 abstract Jan 4 2027; paper Jan 11 2027; notification Apr 21 2027
+2026-11-06,official page via WebFetch (blackboxnlp.github.io),https://blackboxnlp.github.io/2025/,,1,1,1,BlackboxNLP 2025 at EMNLP 2025: direct deadline Aug 15 2025; ARR commitment Sep 5 2025; archival and extended-abstract options
+2026-11-06,web search (WebSearch tool),Open Mind journal MIT Press article processing charge submission guidelines Discoveries in Cognitive Science,,19,19,1,located journal's Janeway submission site
+2026-11-06,web search (WebSearch tool),CoNLL 2026 call for papers submission deadline ARR,,19,19,0,mailing-list copies only; official CoNLL 2026 page checked separately
+2026-11-06,official page via WebFetch (royalsocietypublishing.org),https://royalsocietypublishing.org/rsos/registered-reports,,0,0,0,HTTP 403
+2026-11-06,official page via WebFetch (aaai.org),https://aaai.org/conference/aaai/aaai-27/aaai-27-workshop-program/,,1,1,1,47 workshops; general deadlines Nov 20 / Dec 2 2026
+2026-11-06,official page via WebFetch (aaai.org),https://aaai.org/conference/aaai/aaai-27/aaai-27-workshop-program-list/,,1,1,1,"read in 2 parts (offset 0 and 100000); identified EvalAIScientists, MATH4AI, Human-AI Collaboration, ToM4AI, NeuroAI 2.0 etc."
+2026-11-06,official page via WebFetch (eval-ai-scientists.github.io),https://eval-ai-scientists.github.io/aaai27/,,1,1,1,AAAI-27 workshop: LLM-as-a-judge reliability and calibration in scope; deadline 20 Nov 2026 06:00 UTC; non-archival; 6-8 page full papers
+2026-11-06,official page via WebFetch (2027.ijcai.org),https://2027.ijcai.org/call-for-papers-main-track/,,0,0,0,HTTP 404 (wrong URL)
+2026-11-06,official page via WebFetch (2027.ijcai.org),https://2027.ijcai.org/ijcai-2027-call-for-papers-main-track/,,1,1,1,IJCAI-27 CFP: 7+2 pages; double blind; preprints OK; non-proceedings workshops OK; reciprocal reviewer; USD 100 fee unless primary paper
+2026-11-06,web search (WebSearch tool),Royal Society Open Science registered reports article processing charge 2026,"allowed_domains: royalsocietypublishing.org, royalsociety.org",10,10,2,located publishing-metrics and open-access pages
+2026-11-06,official page via WebFetch (royalsociety.org),https://royalsociety.org/journals/publishing-metrics/,,1,1,1,RSOS IF 3.0 (2025); 100% OA
+2026-11-06,official page via WebFetch (royalsociety.org),https://royalsociety.org/journals/open-access/,,0,0,0,HTTP 403
+2026-11-06,official page via WebFetch (royalsocietypublishing.org),https://royalsocietypublishing.org/rsos/pages/for-authors,,0,0,0,HTTP 403
+2026-11-06,web search (WebSearch tool),Royal Society Open Science publishing times receipt to first decision days,"allowed_domains: royalsociety.org, royalsocietypublishing.org",9,9,1,located publishing-times page
+2026-11-06,official page via WebFetch (royalsociety.org),https://royalsociety.org/journals/authors/benefits/publishing-times/,,1,1,1,RSOS median submission to first decision 19 days (2025); submission to publication 184 days
+2026-11-06,official page via WebFetch (royalsociety.org),https://royalsociety.org/journals/authors/subscribe-to-open-for-authors/,,0,0,0,HTTP 403
+2026-11-06,web search (WebSearch tool),Royal Society Open Science Registered Reports Stage 1 in-principle acceptance all subject areas guidelines,"allowed_domains: royalsociety.org, royalsocietypublishing.org",9,9,1,RR policy page (royalsocietypublishing.org) blocked; used royalsociety.org open-science page
+2026-11-06,official page via WebFetch (royalsociety.org),https://royalsociety.org/journals/open-access/open-science/,,1,1,1,RSOS Registered Reports: Stage 1 provisional acceptance before data collection; Stage 2 publication virtually guaranteed
+2026-11-06,web search (WebSearch tool),"""Royal Society Open Science"" article processing charge £ 2026 APC",allowed_domains: royalsociety.org,10,10,0,APC only visible in a search snippet of a 403 page (GBP 1400); not recorded as verified
+2026-11-06,official page via WebFetch (royalsociety.org),https://royalsociety.org/-/media/journals/librarians/catalogue/2026-royal-society-journals-catalogue.pdf,,0,0,0,HTTP 403
+2026-11-06,official page via WebFetch (academic.oup.com),https://academic.oup.com/pnasnexus/pages/general-instructions,,1,1,1,PNAS Nexus: Research Report 6 pages preferred (max 12); Registered Reports accepted; single anonymous review; preprints allowed; APC only in calculator (fetched twice)
+2026-11-06,official page via WebFetch (cell.com),https://www.cell.com/patterns/authors,,0,0,0,HTTP 403
+2026-11-06,web search (WebSearch tool),PNAS Nexus article processing charge research report USD,"allowed_domains: academic.oup.com, pnas.org, oup.com",10,10,0,PNAS (flagship) fees only
+2026-11-06,web search (WebSearch tool),Patterns Cell Press article publishing charge open access journal APC USD,"allowed_domains: cell.com, elsevier.com",10,10,0,"APC USD 4,900 seen only in snippets; cell.com pages return 403"
+2026-11-06,official page via WebFetch (pnas.org),https://www.pnas.org/author-center/pnas-nexus,,0,0,0,HTTP 403
+2026-11-06,official page via WebFetch (cell.com),https://www.cell.com/patterns/information-for-authors/publishing-options,,0,0,0,HTTP 403
+2026-11-06,web search (WebSearch tool),"""PNAS Nexus"" open access charge OUP APC list ""PNAS Nexus""",allowed_domains: academic.oup.com,10,10,0,no APC figure found
+2026-11-06,web search (WebSearch tool),Transactions on Machine Learning Research 2025 LLM-as-a-judge bias evaluation paper,"allowed_domains: openreview.net, jmlr.org",9,9,0,no TMLR judge-bias paper confirmed
+2026-11-06,web search (WebSearch tool),JAIR 2025 large language models evaluation judge cognitive biases article,allowed_domains: jair.org,10,10,1,JAIR 82 (2025) text-generation systematic review (covers LLM-as-judge)
+2026-11-06,web search (WebSearch tool),Transactions of the Association for Computational Linguistics 2025 LLM judges evaluators reliability,"allowed_domains: aclanthology.org, transacl.org, direct.mit.edu",10,10,0,no TACL judge paper; EMNLP 2025 examples noted
+2026-11-06,web search (WebSearch tool),Computational Linguistics journal 2025 large language models evaluation human-like bias article,"allowed_domains: direct.mit.edu, aclanthology.org",10,10,0,no CL empirical example
+2026-11-06,web search (WebSearch tool),ACL 2025 OR EMNLP 2025 LLM-as-a-judge bias leniency false positive verifier paper aclanthology,allowed_domains: aclanthology.org,9,9,3,Findings EMNLP 2025 'Can You Trick the Grader?'; GEM 2025 'Judging the Judges'; IJCNLP-AACL 2025 position bias
+2026-11-06,web search (WebSearch tool),COLM 2025 accepted paper LLM judge evaluation bias OpenReview,"allowed_domains: openreview.net, colmweb.org, colm.cc",9,9,2,COLM 2025 'Assessing Judging Bias in Large Reasoning Models'; 'Pairwise or Pointwise?'
+2026-11-06,web search (WebSearch tool),"aclanthology 2025.tacl-1 LLM evaluator OR judge OR ""language models"" calibration behavior",allowed_domains: aclanthology.org,9,9,2,TACL 2025 uncertainty-quantification benchmark (2025.tacl-1.11); EMNLP 2025 conformal judge (2025.emnlp-main.569)
+2026-11-06,web search (WebSearch tool),"""Large Language Models Are Biased Because They Are Large Language Models"" Computational Linguistics 2025","allowed_domains: direct.mit.edu, aclanthology.org",9,9,1,CL 51(3) 2025 position paper
+2026-11-06,web search (WebSearch tool),"openreview ""Accepted by TMLR"" large language models evaluators judges consistency 2025 OR 2026",allowed_domains: openreview.net,10,10,2,TMLR: 'Through the Judge's Eyes' (Feb 2026); 'ReFeR' (Aug 2025)
+2026-11-06,web search (WebSearch tool),jair.org 2025 large language models empirical study reasoning behaviour article,allowed_domains: jair.org,10,10,1,JAIR 2025 RDoLT (LLM reasoning prompting)
+2026-11-06,web search (WebSearch tool),NeurIPS 2025 poster LLM-as-a-judge bias reliability evaluation,"allowed_domains: neurips.cc, proceedings.neurips.cc",9,9,2,NeurIPS 2025 'Validating LLM-as-a-Judge Systems under Rating Indeterminacy'; RBD debiasing poster
+2026-11-06,web search (WebSearch tool),ICLR 2026 accepted LLM judge verifier false positives bias poster,"allowed_domains: iclr.cc, openreview.net",10,10,2,ICLR 2026 'Noisy but Valid'; 'BiasScope'
+2026-11-06,web search (WebSearch tool),escholarship Proceedings of the Annual Meeting of the Cognitive Science Society 2025 large language models signal detection OR metacognition OR base rate,allowed_domains: escholarship.org,10,10,0,proceedings volume located; no specific item kept
+2026-11-06,web search (WebSearch tool),Cognitive Science journal 2025 large language models cognitive biases article Wiley cogs,allowed_domains: onlinelibrary.wiley.com,10,10,2,Cognitive Science 2025 'Can LLMs Simulate Spoken Human Conversations?'; 2026 'LLMs Persuade Without Planning Theory of Mind'
+2026-11-06,web search (WebSearch tool),Behavior Research Methods 2025 large language models evaluation psychometric article,allowed_domains: link.springer.com,9,9,1,BRM 2026 'A validity-guided workflow for robust LLM research in psychology'
+2026-11-06,web search (WebSearch tool),Computational Brain & Behavior 2025 large language models cognitive modeling article,allowed_domains: link.springer.com,9,9,0,no comparable LLM-behavior paper found
+2026-11-06,web search (WebSearch tool),Open Mind Discoveries in Cognitive Science 2025 large language models article,allowed_domains: direct.mit.edu,9,9,1,Open Mind 2025 'Relative Value Encoding in Large Language Models'
+2026-11-06,web search (WebSearch tool),PNAS Nexus 2025 large language models cognitive biases decision making research report,allowed_domains: academic.oup.com,9,9,2,PNAS Nexus 2025 resume-evaluation bias (pgaf089); 'Fragile preferences' order effects
+2026-11-06,web search (WebSearch tool),"""Proceedings of the Annual Meeting of the Cognitive Science Society"" 47 2025 ""language models"" humans comparison escholarship item",allowed_domains: escholarship.org,9,9,2,CogSci 2025 'Humans learn proactively in ways that language models don't'; 'Language models demonstrate the good-enough processing seen in humans'
+2026-11-06,web search (WebSearch tool),Nature Machine Intelligence 2025 large language models evaluation cognitive psychology behaviour article,allowed_domains: nature.com,9,9,1,NMI 2025 'Visual cognition in multimodal large language models'
+2026-11-06,web search (WebSearch tool),Nature Human Behaviour 2025 large language models human-like reasoning biases article,allowed_domains: nature.com,10,10,0,NHB 2025 Akata et al. repeated games cited only in a reference list; URL not confirmed
+2026-11-06,web search (WebSearch tool),Royal Society Open Science 2025 large language models article bias evaluation,allowed_domains: royalsocietypublishing.org,10,10,2,RSOS 2025 'Robustness of LLMs in moral judgements'; 'Generalization bias in LLM summarization'
+2026-11-06,web search (WebSearch tool),Patterns Cell Press 2025 large language models evaluation article LLM judge OR benchmark,allowed_domains: cell.com,10,10,0,only 2025 review articles
+2026-11-06,web search (WebSearch tool),AAAI 2026 proceedings LLM-as-a-judge bias evaluation paper ojs.aaai.org,"allowed_domains: ojs.aaai.org, aaai.org",9,9,2,AAAI-26 'UDA: Unsupervised Debiasing Alignment for Pair-wise LLM-as-a-Judge'; 'PRECISE'
+2026-11-06,official page via WebFetch (jair.org),https://www.jair.org/index.php/jair/about/submissions,,1,1,1,JAIR: no fees; decision ~8-12 weeks; arXiv allowed; extended conference versions allowed with new material
+2026-11-06,web search (WebSearch tool),TACL submission length limit 10 pages appendices announcement transacl,"allowed_domains: transacl.org, aclweb.org",10,10,1,located TACL appendices announcement
+2026-11-06,official page via WebFetch (cognitivesciencesociety.org),https://cognitivesciencesociety.org/cognitive-science-journal/,,1,1,1,link targets for editorial policy PDF and Wiley instructions (second fetch)
+2026-11-06,web search (WebSearch tool),ACL 2027 conference location dates call for papers 65th Annual Meeting,,16,16,2,located 2027.aclweb.org and aclweb portal CFP
+2026-11-06,web search (WebSearch tool),NAACL 2027 conference location dates; EACL 2027 location dates,,20,20,1,located joint workshop call (aclweb portal) and 2027.eacl.org
+2026-11-06,official page via WebFetch (aclweb.org),https://www.aclweb.org/portal/content/acl-2027-first-call-papers,,1,1,1,ACL 2027 Kyoto Aug 17-22 2027; ARR deadline Jan 4 2027; 'no deanonymized preprint ... in the month prior to submission'; theme track; fetched twice
+2026-11-06,official page via WebFetch (2027.aclweb.org),https://2027.aclweb.org/,,1,1,1,ACL 2027 ARR deadline January 4 2027; commitment TBA
+2026-11-06,official page via WebFetch (aclweb.org),https://www.aclweb.org/portal/content/joint-call-workshops-proposals-2027,,1,1,1,"2027 *ACL workshop paper deadlines: EACL Dec 15 2026; COLING Jan 5 2027; NAACL Feb 5 2027; ACL Apr 25 2027; EMNLP 2027 early Nov, Mexico/Central America"
+2026-11-06,official page via WebFetch (2027.aclweb.org),https://2027.aclweb.org/calls/main_conference_papers/,,0,0,0,HTTP 404
+2026-11-06,web search (WebSearch tool),"ACL policy preprints anonymity period removed 2024 ""no anonymity period"" ACL Rolling Review preprint policy","allowed_domains: aclweb.org, aclrollingreview.org",9,9,1,located ARR anonymity update page
+2026-11-06,official page via WebFetch (aclrollingreview.org),https://aclrollingreview.org/anonymity/,,1,1,1,ARR policy (Jan 15 2024): preprints may be posted any time from Feb 15 2024 cycles
+2026-11-06,web search (WebSearch tool),IJCAI 2025 proceedings large language models judge evaluation bias paper ijcai.org/proceedings/2025,allowed_domains: ijcai.org,10,10,2,IJCAI-25 'Wisdom from Diversity' (0037); 'TP-Eval' (0232)
+2026-11-06,web search (WebSearch tool),CoNLL 2025 language models human behavior comparison paper aclanthology 2025.conll-1,allowed_domains: aclanthology.org,9,9,1,CoNLL 2025 'Human-likeness of LLMs in the Mental Lexicon'
+2026-11-06,web search (WebSearch tool),*SEM 2026 Joint Conference on Lexical and Computational Semantics call for papers deadline,,10,10,1,located starsem2026.github.io/calls
+2026-11-06,web search (WebSearch tool),BlackboxNLP 2026 workshop EMNLP 2026 call for papers deadline,,17,17,1,located blackboxnlp.github.io/2026/call
+2026-11-06,web search (WebSearch tool),"ICML 2025 poster LLM-as-a-judge OR ""LLM judges"" bias evaluation icml.cc virtual 2025","allowed_domains: icml.cc, proceedings.mlr.press",9,9,2,ICML 2026 'Quantifying Biases in LLM-as-a-Judge Evaluations'; 'How to Correctly Report LLM-as-a-Judge Evaluations'
+2026-11-06,official page via WebFetch (2027.eacl.org),https://2027.eacl.org/,,1,1,1,EACL 2027 Athens Mar 9-14 2027; ARR deadline Aug 3 2026
+2026-11-06,official page via WebFetch (2027.eacl.org),https://2027.eacl.org/program/workshops/,,1,1,1,14 EACL 2027 workshops (titles only); CHOMPS adjacent
+2026-11-06,official page via WebFetch (blackboxnlp.github.io),https://blackboxnlp.github.io/2026/call,,1,1,1,"BlackboxNLP 2026 (EMNLP 2026): direct Jul 17 2026, ARR commit Aug 24 2026; archival 8 pages or 2-page non-archival abstracts; preprints any time"
+2026-11-06,official page via WebFetch (starsem2026.github.io),https://starsem2026.github.io/calls,,1,1,1,*SEM 2026: Feb 13 2026 direct deadline; 8/4 pages; no anonymity period; concurrent submissions declared
+2026-11-06,official page via WebFetch (jmlr.org/tmlr),https://jmlr.org/tmlr/reviewer-guide.html,,1,1,1,reviews due 2 weeks (<=12 pages) or 4 weeks (>12 pages); recommendations 2 weeks after all reviews
+2026-11-06,official page via WebFetch (nature.com),https://www.nature.com/nature-portfolio/editorial-policies/preprints-and-conference-proceedings,,0,0,0,via idp chain; HTTP 404 (wrong URL)
+2026-11-06,official page via WebFetch (cljournal.org),https://cljournal.org/,,1,1,1,CL OA since 2009; announcement title 'Average time to first decision (46 days)'; page last modified 2021
+2026-11-06,official page via WebFetch (transacl.org),https://transacl.org/index.php/tacl/announcement/view/105,,1,1,1,"TACL: 10 content pages; appendices up to 5 + 3 pages, not reviewed; effective Mar 1 2024"
+2026-11-06,official page via WebFetch (cognitivesciencesociety.org),https://cognitivesciencesociety.org/proceedings-publication-faq/,,1,1,1,proceedings on eScholarship; links to journal-publication policy
+2026-11-06,web search (WebSearch tool),ACL admin wiki Reports TACL Journal 2026 turnaround time submissions acceptance rate,allowed_domains: aclweb.org,10,10,1,located admin-wiki TACL reports
+2026-11-06,official page via WebFetch (aclweb.org),https://www.aclweb.org/adminwiki/index.php/2024Q1_Reports:_TACL_Journal,,1,1,0,no statistics
+2026-11-06,official page via WebFetch (aclweb.org),https://www.aclweb.org/adminwiki/index.php/2025Q1_Reports:_TACL_Journal,,1,1,1,"739 submissions in 2024, 93 accepted so far"
+2026-11-06,official page via WebFetch (aclweb.org),https://www.aclweb.org/adminwiki/index.php/2025Q1_Reports:_Computational_Linguistics_Journal,,0,0,0,HTTP 404
+2026-11-06,web search (WebSearch tool),"Nature Portfolio editorial policies preprints conference proceedings ""conference"" submission policy page",allowed_domains: nature.com,9,9,1,located correct policy URL
+2026-11-06,official page via WebFetch (aclweb.org),https://www.aclweb.org/adminwiki/index.php/2021Q1_Reports:_TACL_Journal,,1,1,1,TACL 2020 mean time to first decision 45.2 days (median 44)
+2026-11-06,official page via WebFetch (aaai.org),https://aaai.org/conference/aaai/aaai-27/policies-aaai-27-authors/,,1,1,1,AAAI-27 dates; in-person presentation required
+2026-11-06,web search (WebSearch tool),"""Playing repeated games with large language models"" Nature Human Behaviour 2025",allowed_domains: nature.com,10,10,1,NHB 2025 s41562-025-02172-y
+2026-11-06,web search (WebSearch tool),Patterns journal 2025 2026 research article large language model reviewers OR evaluation OR reliability fulltext S2666-3899,allowed_domains: cell.com,9,9,1,Patterns 2026 clinical QA LLM evaluation article
+2026-11-06,official page via WebFetch (nature.com),https://www.nature.com/nature-portfolio/editorial-policies/preprints-conference-proceedings,,1,1,1,via idp chain; preprints not prior publication; proceedings overlap OK with substantial extension
+2026-11-06,web search (WebSearch tool),AAAI-27 main technical track call for papers page limit seven pages anonymity preprint,allowed_domains: aaai.org,9,9,2,located main-track call and submission instructions
+2026-11-06,official page via WebFetch (aaai.org),https://aaai.org/conference/aaai/aaai-27/main-technical-track-call/,,1,1,1,7 pages + 2 refs; max 10 submissions per author; qualified authors review; no simultaneous archival submission
+2026-11-06,web search (WebSearch tool),"2027 workshop call for papers LLM evaluation OR ""LLM-as-a-judge"" OR ""evaluating evaluations"" deadline 2027",,10,10,1,only CHOMPS 2027 (EACL) with Dec 15 2026 deadline; adjacent
+2026-11-06,official page via WebFetch (aaai.org),https://aaai.org/conference/aaai/aaai-27/submission-instructions/,,1,1,1,AAAI-27: arXiv and non-archival workshops permitted; double blind
+2026-11-06,web search (WebSearch tool),NAACL 2027 San Francisco official site workshops list 2027.naacl.org,,10,10,0,no workshop list yet
+2026-11-06,web search (WebSearch tool),CogSci 2026 call for papers submission deadline full paper 6 pages Rio de Janeiro cognitivesciencesociety.org,allowed_domains: cognitivesciencesociety.org,10,10,2,located submissions and submissions-FAQ pages
+2026-11-06,official page via WebFetch (cognitivesciencesociety.org),http://www.cognitivesciencesociety.org/wp-content/uploads/2015/09/csc_editorial_policy.pdf,,0,0,0,HTTP 404
+2026-11-06,official page via WebFetch (cognitivesciencesociety.org),https://cognitivesciencesociety.org/submissions/,,1,1,1,CogSci 2026 deadline Feb 2 2026; 6 pages; double blind; proceedings not archival for journals; abstract-only option
+2026-11-06,official page via WebFetch (cognitivesciencesociety.org),https://cognitivesciencesociety.org/submissions-faq/,,1,1,1,preprints OK (no broad advertising during review); concurrent proceedings submissions allowed; journal extension ~30% new
+2026-11-06,official page via WebFetch (openreview.net),https://openreview.net/forum?id=1jLQ629Yps,,0,0,0,browser-verification page; not read (not bypassed)
+2026-11-06,official page via WebFetch (openreview.net),https://openreview.net/forum?id=SlRtFwBdzP,,0,0,0,browser-verification page; not read (not bypassed)
+2026-11-06,official page via WebFetch (escholarship.org),https://escholarship.org/uc/item/47c985zr,,0,0,0,empty (script-rendered)
+2026-11-06,official page via WebFetch (aclanthology.org),https://aclanthology.org/2025.findings-emnlp.790/,,1,1,1,verified: 'Can You Trick the Grader?' Findings of EMNLP 2025
+2026-11-06,official page via WebFetch (academic.oup.com),https://academic.oup.com/pnasnexus/article/4/3/pgaf089/8071848,,1,1,1,verified: PNAS Nexus 4(3) Mar 2025 LLM resume-evaluation bias
+2026-11-06,official page via WebFetch (iclr.cc),https://iclr.cc/virtual/2026/poster/10008079,,1,1,1,verified: 'Noisy but Valid' ICLR 2026 poster
+2026-11-06,official page via WebFetch (colmweb.org),https://colmweb.org/2025/AcceptedPapers.html,,1,1,1,"verified COLM 2025 titles: 'Assessing Judging Bias in Large Reasoning Models', 'PersonaEval', 'Scoring Verifiers', 'Verifying the Verifiers'"
+2026-11-06,official page via WebFetch (jmlr.org/tmlr),https://jmlr.org/tmlr/papers/,,1,1,1,"read offsets 0, 200000, 300000 of 664815 chars; verified TMLR Aug 2026 'Quantitative LLM Judges Using Post-Hoc Score Calibration' and 'Below the Reliability Floor'"
+2026-11-06,web search (WebSearch tool),aclanthology 2025.blackboxnlp-1 language models behavior bias analysis paper,allowed_domains: aclanthology.org,9,9,1,BlackboxNLP 2025 'The Comparative Trap' (LLM evaluator bias)
+2026-11-06,web search (WebSearch tool),aclanthology 2025.starsem-1 large language models reasoning evaluation paper,allowed_domains: aclanthology.org,9,9,1,*SEM 2025 'Math Natural Language Inference: This Should Be Easy!'
+2026-11-06,web search (WebSearch tool),Cognitive Science journal author guidelines Regular Article word limit Letter Brief Report Wiley 15516709,"allowed_domains: onlinelibrary.wiley.com, cognitivesciencesociety.org",10,10,1,"12,000-word regular / 18,000 extended seen only in snippet (Wiley page 403)"
+2026-11-06,official page via WebFetch (icml.cc),https://icml.cc/Conferences/2026/Dates,,1,1,1,ICML 2026 notification Apr 30 2026
+2026-11-06,web search (WebSearch tool),Journal-to-Conference track J2C certification TMLR eligibility NeurIPS 2026 OR ICLR 2027 OR ICML 2026,"allowed_domains: neurips.cc, iclr.cc, icml.cc, jmlr.org",10,10,1,located J2C track page
+2026-11-06,official page via WebFetch (neurips.cc),https://neurips.cc/public/JournalToConference,,1,1,1,J2C: TMLR with J2C/Featured/Outstanding cert; published >= Jan 1 2025 (2-year window); ICLR 2027 request deadline Dec 18 2026; not proceedings publication
+2026-11-06,official page via WebFetch (springer.com),https://www.springer.com/journal/13428,,1,1,0,301 redirect to link.springer.com (then idp cookie redirect); followed via idp chain
+2026-11-06,official page via WebFetch (2027.ijcai.org),https://2027.ijcai.org/,,1,1,1,"second read, link extraction; located main-track CFP URL"

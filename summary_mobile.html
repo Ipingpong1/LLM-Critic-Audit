@@ -1,0 +1,173 @@
+<title>Critic Base-Rate Pilot</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one narrow reading column, phone first; numbers in mono, model colors match the figures. */
+:root {
+  --bg: #f6f7f9; --surface: #ffffff; --fg: #1b2230; --muted: #5a6476; --line: #dde1e8;
+  --accent: #2a78d6; --q4: #8fbbea; --q9: #2a78d6; --q27: #0f4a8f; --gem: #eb6834; --ideal: #9aa3b2;
+  --display: "Newsreader", Georgia, serif;
+  --body: "Public Sans", -apple-system, system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #12161d; --surface: #1a2029; --fg: #e6e9ef; --muted: #9aa3b2; --line: #2c3440;
+  --accent: #6ea8ef; --q27: #3f7fd0; --ideal: #5c6676; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #12161d; --surface: #1a2029; --fg: #e6e9ef; --muted: #9aa3b2; --line: #2c3440;
+  --accent: #6ea8ef; --q27: #3f7fd0; --ideal: #5c6676; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font: 16px/1.55 var(--body); }
+main { max-width: 640px; margin: 0 auto; padding-block: 24px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 28px; }
+h1, h2 { font-family: var(--display); font-weight: 600; text-wrap: balance; margin: 0; line-height: 1.2; }
+h1 { font-size: 1.9rem; }
+h2 { font-size: 1.35rem; }
+p { margin: 0; }
+section { display: flex; flex-direction: column; gap: 12px; }
+.eyebrow { font: 600 .72rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.lede { color: var(--muted); }
+.oneline { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+.oneline strong { color: var(--accent); }
+ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 8px; }
+li::marker { color: var(--muted); }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+code { font: .85em var(--mono); }
+.defs { font-size: .92rem; color: var(--muted); }
+.defs b { color: var(--fg); font-weight: 600; }
+
+/* rho bars, drawn on a 0..1 scale (1 = ideal observer) */
+.bars { display: flex; flex-direction: column; gap: 10px; }
+.bar-row { display: grid; grid-template-columns: 5.5rem 1fr 3.2rem; align-items: center; gap: 10px; font-size: .9rem; }
+.track { position: relative; height: 14px; border-radius: 4px; background: var(--line); }
+.fill { position: absolute; inset: 0 auto 0 0; border-radius: 4px; }
+.ci { position: absolute; top: 50%; height: 2px; background: var(--fg); opacity: .55; transform: translateY(-50%); }
+.scale { display: grid; grid-template-columns: 5.5rem 1fr 3.2rem; gap: 10px; font: .72rem var(--mono); color: var(--muted); }
+.scale span:nth-child(2) { display: flex; justify-content: space-between; }
+.swatch { display: inline-block; width: .7em; height: .7em; border-radius: 2px; margin-right: .35em; vertical-align: baseline; }
+
+.tbl-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: .86rem; }
+th, td { padding: 8px 10px; text-align: right; white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; white-space: normal; min-width: 8.5rem; }
+thead th { font: 600 .72rem var(--mono); color: var(--muted); border-bottom: 1px solid var(--line); }
+tbody tr + tr td { border-top: 1px solid var(--line); }
+td.num { font-size: .82rem; }
+.neg { color: var(--accent); }
+.pos { color: var(--gem); }
+.na { color: var(--muted); }
+tr.ref td { color: var(--muted); font-style: italic; }
+.note { font-size: .82rem; color: var(--muted); }
+
+figure { margin: 0; display: flex; flex-direction: column; gap: 6px; }
+figure img { width: 100%; max-width: 100%; border-radius: 8px; border: 1px solid var(--line); background: #fff; }
+figcaption { font-size: .82rem; color: var(--muted); }
+ol { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 8px; }
+</style>
+
+<main>
+  <header style="display:flex;flex-direction:column;gap:10px">
+    <span class="eyebrow">Pilot results · Nov 3, 2026</span>
+    <h1>Do LLM critics use what you tell them?</h1>
+    <p class="lede">Four open models review 200 ProcessBench math solutions (half flawed) and say “error” or “correct”. One line in the system prompt changes per condition. Signal-detection theory separates skill from threshold.</p>
+  </header>
+
+  <p class="oneline"><strong>In one line:</strong> the critics barely use a stated base rate, largely ignore stated costs, and don’t improve when told to use either, yet one line of tone (“be harsh”, “be lenient”) moves their threshold as far or further than the whole 10% → 90% base-rate change. No framing changes their skill.</p>
+
+  <section>
+    <span class="eyebrow">Terms</span>
+    <p class="defs"><b>d′</b> skill at telling flawed from correct. <b>c</b> threshold: positive is lenient, negative is flag-happy. <b>ρ</b> prior use: how far c moves from a stated 10% to 90% error rate, divided by how far an ideal observer would move. 0 ignores the rate, 1 is ideal.</p>
+  </section>
+
+  <section>
+    <h2>Stated base rate is badly under-used</h2>
+    <div class="bars" role="img" aria-label="Prior-use ratio rho per model: 4b 0.31, 9b 0.14, gemma 0.04, 27b 0.08; ideal is 1">
+      <div class="bar-row"><span><i class="swatch" style="background:var(--q4)"></i>qwen 4b</span><div class="track"><div class="fill" style="width:31%;background:var(--q4)"></div><div class="ci" style="left:21%;width:28%"></div></div><span class="num">0.31</span></div>
+      <div class="bar-row"><span><i class="swatch" style="background:var(--q9)"></i>qwen 9b</span><div class="track"><div class="fill" style="width:14%;background:var(--q9)"></div><div class="ci" style="left:7%;width:18%"></div></div><span class="num">0.14</span></div>
+      <div class="bar-row"><span><i class="swatch" style="background:var(--q27)"></i>qwen 27b</span><div class="track"><div class="fill" style="width:8%;background:var(--q27)"></div><div class="ci" style="left:2%;width:16%"></div></div><span class="num">0.08</span></div>
+      <div class="bar-row"><span><i class="swatch" style="background:var(--gem)"></i>gemma 12b</span><div class="track"><div class="fill" style="width:4%;background:var(--gem)"></div><div class="ci" style="left:1%;width:9%"></div></div><span class="num">0.04</span></div>
+      <div class="scale"><span></span><span><span>0</span><span>0.5</span><span>1 = ideal</span></span><span></span></div>
+    </div>
+    <p class="note">Bars show ρ; the thin line is the 95% item-bootstrap CI. Every interval excludes 0 and 1.</p>
+    <ul>
+      <li>Within qwen, <b>smaller models use the prior more</b> (0.31 → 0.14 → 0.08) while skill rises (d′ 1.79 → 2.24 → 2.57). 4b is reliably above both larger models.</li>
+      <li><b>The prompt moves the threshold, not the skill:</b> AUC is flat across conditions for every model (0.90–0.96).</li>
+      <li>Default strictness differs a lot: with no instruction the 4b flags 26% of correct solutions, the 27b only 4%.</li>
+      <li>The internal logprob score shifts 15–33% of the Bayesian amount (ln 81), a bit more than the verdicts.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Instructions and payoffs don’t help</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>ρ</th><th>4b</th><th>9b</th><th>gemma</th><th>27b</th></tr></thead>
+      <tbody>
+        <tr><td>Stated base rate</td><td class="num">0.31</td><td class="num">0.14</td><td class="num">0.04</td><td class="num">0.08</td></tr>
+        <tr><td>+ “use it as your prior”</td><td class="num">0.28</td><td class="num">0.12</td><td class="num">0.04</td><td class="num">0.09</td></tr>
+        <tr><td>Payoffs 9:1</td><td class="num">0.01</td><td class="num">0.05</td><td class="num">0.01</td><td class="num">0.00</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Telling the critic to use the base rate changes ρ by at most ±0.03.</li>
+      <li>Payoffs don’t move the threshold the right way. The 27b gives <b>identical verdicts on all 200 items</b> under the two opposite payoff lines. Models react to the presence of a scoring rule, not its content.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Tone beats information</h2>
+    <p class="note">Shift in c vs. no line. Blue = more flag-happy, orange = more lenient. – = not run.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Framing</th><th>4b</th><th>9b</th><th>gemma</th><th>27b</th></tr></thead>
+      <tbody>
+        <tr><td>“contains an error”</td><td class="num neg">−0.59</td><td class="num neg">−0.34</td><td class="num neg">−0.15</td><td class="num na">–</td></tr>
+        <tr><td>“find the mistakes”</td><td class="num neg">−0.18</td><td class="num neg">−0.45</td><td class="num na">–</td><td class="num na">–</td></tr>
+        <tr><td>“harsh reviewer”</td><td class="num neg">−0.64</td><td class="num neg">−0.24</td><td class="num neg">−0.11</td><td class="num na">–</td></tr>
+        <tr><td>“skeptical senior”</td><td class="num neg">−0.26</td><td class="num neg">−0.16</td><td class="num na">–</td><td class="num na">–</td></tr>
+        <tr><td>“lenient reviewer”</td><td class="num pos">+0.39</td><td class="num pos">+0.40</td><td class="num pos">+0.18</td><td class="num pos">+0.13</td></tr>
+        <tr><td>“misses cost more”</td><td class="num">0.00</td><td class="num neg">−0.18</td><td class="num">−0.03</td><td class="num">−0.07</td></tr>
+        <tr><td>“false alarms cost more”</td><td class="num">−0.04</td><td class="num">0.00</td><td class="num">+0.04</td><td class="num">−0.04</td></tr>
+        <tr class="ref"><td>whole base-rate effect</td><td class="num">0.72</td><td class="num">0.28</td><td class="num">0.09</td><td class="num">0.13</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Harsh-to-lenient spans 1.03 / 0.64 / 0.29 (4b / 9b / gemma), larger than each model’s full base-rate shift.</li>
+      <li><b>No framing changes skill</b> (AUC within 0.01). Extra flags are mostly false alarms: 4b under “harsh” gains 9 hits and 23 false alarms. Relevant to adversarial critics told an error exists.</li>
+      <li>Cost asymmetry is ignored in words too. No model gets more lenient when told false alarms are costly, only when told to be lenient.</li>
+      <li>Even the 27b, which ignores rates and payoffs, follows “be lenient” as far as its whole base-rate effect.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Saying vs. doing</h2>
+    <p>Asked before any solution which way to lean, every model says “error” by default. Under a 10% base rate the 27b correctly says “correct” in both option orders, yet barely shifts its verdicts. Only 2 of 8 replies name the right costlier mistake when false alarms cost 9 points.</p>
+  </section>
+
+  <section>
+    <h2>Figures</h2>
+    <figure>
+      <img src="base_rate_pilot.png" alt="ROC curves per model with base-rate operating points, and criterion against stated log-odds with the ideal line">
+      <figcaption>Left: operating points slide along each model’s ROC curve. Right: c vs stated log-odds; dashed line is the ideal observer.</figcaption>
+    </figure>
+    <figure>
+      <img src="followups.png" alt="Follow-up arms and strictness framings per model">
+      <figcaption>Follow-up arms (left) and strictness framings (right).</figcaption>
+    </figure>
+  </section>
+
+  <section>
+    <h2>Caveats</h2>
+    <p class="note">Four open models (three sizes from one family), one dataset, temperature 0, one sample, stated not true base rate, possible contamination, one phrasing per framing. Thinking was off throughout.</p>
+  </section>
+
+  <section>
+    <h2>Next steps</h2>
+    <ol>
+      <li><b>Thinking on</b> (HPC) for all four models, plus a frontier API model.</li>
+      <li><b>Fill the strictness gaps:</b> 27b on four framings, gemma on two.</li>
+      <li><b>Pin down the payoff failure:</b> more phrasings, a bigger manipulation check, an arm that states the optimal threshold directly.</li>
+      <li><b>Test the scaling trend</b> with more sizes and another family.</li>
+      <li>Code domain, grounding by execution, one-step revision.</li>
+    </ol>
+  </section>
+</main>

@@ -1,0 +1,1 @@
+openalex	https://api.openalex.org/works?filter=author.id:A5065892263,from_publication_date:2025-01-01&per-page=200&select=id,doi,title,publication_date,primary_location,abstract_inverted_index,type	openalex/authorworks_abs_Cacioli.json	0

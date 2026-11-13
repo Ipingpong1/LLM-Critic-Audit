@@ -1,0 +1,5 @@
+2026-11-13 03:55:54 job 22966595 on gl050.hpc.nyu.edu: Qwen/Qwen3.5-27B, label qwen3.5:27b-think-bf16-t1, TP 2, restart 0
+NVIDIA L40S, 46068 MiB
+NVIDIA L40S, 46068 MiB
+waiting for vLLM (Qwen/Qwen3.5-27B) on port 8595 ...
+2026-11-13 03:58:44 vLLM is up
