@@ -1,6 +1,6 @@
 # LLM critics: context, decisions, and signal detection
 
-Research code and saved experiments for **Told the Odds, Moved by a Claim**.
+Research code and saved experiments for **Where LLM Critics Draw the Line, and What Moves It**.
 The project compares mathematical critics' responses to stated error rates,
 error costs, tone, and assertions using ProcessBench solution labels and
 signal-detection analyses.

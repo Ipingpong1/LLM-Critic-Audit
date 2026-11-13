@@ -1,4 +1,4 @@
-# Code and item sets: "Told the Odds, Moved by a Claim"
+# Code and item sets: "Where LLM Critics Draw the Line, and What Moves It"
 
 Anonymized source for the paper. Raw model replies are not in this folder: they are distributed as a companion archive (`critic-responses.tar.gz`) whose files are listed, with checksums, in `data/RESPONSE_FILES.sha256`. Restore the archive at this folder's root, then:
 

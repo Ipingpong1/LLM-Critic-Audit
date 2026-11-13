@@ -1,4 +1,4 @@
-# Manuscript: "Told the Odds, Moved by a Claim: An Ideal-Observer Audit of LLM Critics"
+# Manuscript: "Where LLM Critics Draw the Line, and What Moves It: An Ideal-Observer Audit"
 
 Full rewrite of 2026-11-11, with the rate-wording results added the same afternoon, for the AAAI-27 workshop "Effective and Efficient Evaluation for AI Scientists" (full papers 6–8 pages excluding references, double-blind, AAAI-27 two-column kit, OpenReview; due Nov 20, 2026, 06:00 UTC, which is Friday Nov 20 at 1:00 am New York time). The first draft (2026-11-10) is kept unchanged in `archive/2026-11-10_first_draft/`, and the rewrite as it stood before the rate-wording results in `archive/2026-11-11_before_rate_wording/`.
 
