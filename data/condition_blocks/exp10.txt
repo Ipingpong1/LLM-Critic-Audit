@@ -1,0 +1,124 @@
+The ten solutions below were reviewed just before this one, from the same batch, and their verdicts have been audited.
+
+Example 1
+Problem: If $0^{\circ}<x<90^{\circ}$ and $3 \sin (x)-\cos \left(15^{\circ}\right)=0$, what is the value of $x$ to the nearest tenth of a degree?
+Solution:
+Step 1: To find the value of \( x \), we can start by isolating \( \sin(x) \) in the given equation: \( 3 \sin(x) - \cos(15^\circ) = 0 \). Add \( \cos(15^\circ) \) to both sides: \( 3 \sin(x) = \cos(15^\circ) \). Divide both sides by 3: \( \sin(x) = \cos(15^\circ) / 3 \).
+Step 2: We know that \( \cos(15^\circ) \) is approximately 0.9659. So, \( \sin(x) \approx 0.9659 / 3 \approx 0.3219 \).
+Step 3: Now, we need to find the angle \( x \) whose sine is approximately 0.3219. We can use the inverse sine function (also known as arcsine) to find this angle: \( x \approx \arcsin(0.3219) \).
+Step 4: Using a calculator, we get: \( x \approx 18.8^\circ \).
+Step 5: Since the problem asks for the value of \( x \) to the nearest tenth of a degree, our final answer is: \(\boxed{18.8^\circ}\).
+Audited verdict: correct
+
+Example 2
+Problem: The list $p, q, r, s$ consists of four consecutive integers listed in increasing order. If $p + s = 109$, what is the value of $q + r$?
+Solution:
+Step 1: To solve this problem, we can use the fact that the list \( p, q, r, s \) consists of four consecutive integers listed in increasing order. First, let's denote the first integer as \( p \). Since the integers are consecutive, we can express the other three integers in terms of \( p \): \( p, p+1, p+2, p+3 \). Since \( s \) is the last integer in the list, we know that \( s = p + 3 \).
+Step 2: We are given that \( p + s = 109 \). Substituting \( s = p + 3 \) into this equation, we get: \( p + (p + 3) = 109 \). Combine like terms: \( 2p + 3 = 109 \). Subtract 3 from both sides: \( 2p = 106 \). Divide both sides by 2: \( p = 53 \).
+Step 3: Now that we have found \( p \), we can find the values of \( q \) and \( r \): \( q = p + 1 = 53 + 1 = 54 \) and \( r = p + 2 = 53 + 2 = 55 \).
+Step 4: Finally, we need to find the sum of \( q \) and \( r \): \( q + r = 54 + 55 = 109 \). However, looking back at our original equations, we realize that \( q + r \) must be one less than \( p + s \), since \( q \) and \( r \) are the middle two numbers in the sequence. Therefore, we can conclude that: \( \boxed{q + r = 108} \).
+Audited verdict: error
+
+Example 3
+Problem: What percentage of students did not receive a muffin, given that 38\% of students received a muffin?
+Solution:
+Step 1: To find the percentage of students who did not receive a muffin, we first understand that the percentage of students who received a muffin is 38%. This means that 38% of students received a muffin.
+Step 2: Since percentages must add up to 100% for the entire group (all students), we can find the percentage of students who did not receive a muffin by subtracting the percentage of those who received a muffin from 100%. So, the calculation is as follows: \[ \text{Percentage of students who did not receive a muffin} = 100\% - 38\% \] \[ = 62\% \]
+Step 3: Therefore, 62% of the students did not receive a muffin. Putting the final answer within \boxed{}, we get: \boxed{62\%}.
+Audited verdict: correct
+
+Example 4
+Problem: Let $a=19, b=20$, and $c=21$. Compute
+
+$$
+\frac{a^{2}+b^{2}+c^{2}+2 a b+2 b c+2 c a}{a+b+c}
+$$
+Solution:
+Step 1: To solve the given expression \(\frac{a^2 + b^2 + c^2 + 2ab + 2bc + 2ca}{a + b + c}\), we start by recognizing that the numerator can be rewritten using the identity for the square of a sum. Specifically, we have: \(a^2 + b^2 + c^2 + 2ab + 2bc + 2ca = (a + b + c)^2\). This identity tells us that the numerator is the square of the sum of \(a\), \(b\), and \(c\).
+Step 2: Therefore, the expression becomes: \(\frac{(a + b + c)^2}{a + b + c}\). Since \(a + b + c\) is not zero (in this case, \(a + b + c = 19 + 20 + 21 = 60\)), we can cancel one \(a + b + c\) in the numerator and the denominator: \(\frac{(a + b + c)^2}{a + b + c} = a + b + c\).
+Step 3: Substituting the given values \(a = 19\), \(b = 20\), and \(c = 21\), we get: \(a + b + c = 19 + 20 + 21 = 60\).
+Step 4: Thus, the value of the expression is: \(\boxed{60}\).
+Audited verdict: correct
+
+Example 5
+Problem: The operation $\nabla$ is defined by $g \nabla h=g^{2}-h^{2}$. If $g>0$ and $g \nabla 6=45$, what is the value of $g$?
+Solution:
+Step 1: To solve the problem, we need to use the definition of the operation \(\nabla\) given in the problem. The operation is defined as \(g \nabla h = g^2 - h^2\). We are given that \(g \nabla 6 = 45\), and we need to find the value of \(g\).
+Step 2: First, substitute the given values into the operation definition.
+\[ g \nabla 6 = g^2 - 6^2 = 45 \]
+Step 3: Next, simplify the equation.
+\[ g^2 - 36 = 45 \]
+Step 4: Then, isolate \(g^2\) by adding 36 to both sides of the equation.
+\[ g^2 = 45 + 36 \]
+\[ g^2 = 81 \]
+Step 5: Finally, solve for \(g\) by taking the square root of both sides. Since \(g > 0\), we only consider the positive root.
+\[ g = \sqrt{81} \]
+\[ g = 9 \]
+Step 6: Therefore, the value of \(g\) is \(\boxed{9}\).
+Audited verdict: correct
+
+Example 6
+Problem: Let $T=$ 16. Compute the value of $x$ that satisfies $\log _{4} T=\log _{2} x$.
+Solution:
+Step 1: To solve for \( x \), we need to isolate \( x \) on one side of the equation. Given equation: \(\log _{4} T = \log _{2} x\).
+Step 2: Substitute the given value of \( T \). \(\log _{4} 16 = \log _{2} x\).
+Step 3: Use the property of logarithms that \(\log_a{a^n} = n\). Since \(4^2 = 16\), we can rewrite the left side as: \(2 = \log _{2} x\).
+Step 4: Rewrite the equation in exponential form. \(2 = \log _{2} x \implies 2^2 = x\).
+Step 5: Simplify the right side. \(x = 4\).
+Step 6: Therefore, the value of \( x \) that satisfies the equation is \(\boxed{4}\).
+Audited verdict: correct
+
+Example 7
+Problem: If $u=-6$ and $x=rac{1}{3}(3-4 u)$, what is the value of $x$?
+Solution:
+Step 1: To find the value of \( x \), we will substitute the given value of \( u \) into the equation for \( x \). Given: \( u = -6 \) and \( x = \frac{1}{3}(3 - 4u) \).
+Step 2: Step 1: Substitute the value of \( u \) into the equation for \( x \).
+\( x = \frac{1}{3}(3 - 4(-6)) \)
+Step 3: Step 2: Simplify the expression inside the parentheses.
+\( x = \frac{1}{3}(3 + 24) \)
+Step 4: Step 3: Combine the numbers inside the parentheses.
+\( x = \frac{1}{3}(27) \)
+Step 5: Step 4: Multiply \( \frac{1}{3} \) by 27 to find the value of \( x \).
+\( x = 9 \)
+Step 6: Therefore, the value of \( x \) is: \(\boxed{9}\)
+Audited verdict: correct
+
+Example 8
+Problem: Express, as concisely as possible, the value of the product $$\left(0^{3}-350\right)\left(1^{3}-349\right)\left(2^{3}-348\right)\left(3^{3}-347\right) \cdots\left(349^{3}-1\right)\left(350^{3}-0\right)$$
+Solution:
+Step 1: To find the value of the product \(\left(0^{3}-350\right)\left(1^{3}-349\right)\left(2^{3}-348\right)\left(3^{3}-347\right) \cdots\left(349^{3}-1\right)\left(350^{3}-0\right)\), we need to consider the general term of the product. The \(n\)-th term of the product is \((n^3 - (350-n))\).
+Step 2: Let's evaluate the term when \(n = 7\): \[ 7^3 - (350 - 7) = 343 - 343 = 0. \]
+Step 3: Since one of the terms in the product is zero, the entire product is zero. Therefore, the value of the product is: \[ \boxed{0}. \]
+Audited verdict: correct
+
+Example 9
+Problem: Let $T=9$. Compute $\sqrt{\sqrt{\sqrt[T]{10^{T^{2}-T}}}}$.
+Solution:
+Step 1: To compute $\sqrt{\sqrt{\sqrt[T]{10^{T^{2}-T}}}}$ where $T=9$, let's break it down step by step. First, substitute $T$ with 9: The expression becomes $\sqrt{\sqrt{\sqrt[9]{10^{9^{2}-9}}}}$.
+Step 2: Next, simplify the exponent inside the radical. We have $9^2 - 9 = 81 - 9 = 72$. So, the expression is now $\sqrt{\sqrt{\sqrt[9]{10^{72}}}}$.
+Step 3: Now, deal with the innermost radical (the 9th root). The 9th root of $10^{72}$ can be simplified because $10^{72} = (10^{8})^{9}$, so $\sqrt[9]{10^{72}} = 10^{8}$.
+Step 4: Next, handle the next radical (square root). Now we have $\sqrt{\sqrt{10^{8}}}$. Since $\sqrt{10^{8}} = 10^{8/2} = 10^{4}$, the expression simplifies to $\sqrt{10^{4}}$.
+Step 5: Finally, take the square root of $10^{4}$. This gives us $10^{4/2} = 10^{2} = 100$. Therefore, $\sqrt{\sqrt{\sqrt[9]{10^{9^{2}-9}}}} = \boxed{100}$. This completes the computation.
+Audited verdict: correct
+
+Example 10
+Problem: What is the value of $x$ such that $\log _{2}\left(\log _{2}(2 x-2)\right)=2$ ?
+Solution:
+Step 1: To solve the equation \(\log _{2}\left(\log _{2}(2x - 2)\right) = 2\), we'll work our way through it step by step. First, recognize the structure of logarithms and exponentials. Given:
+\[ \log _{2}\left(\log _{2}(2x - 2)\right) = 2 \]
+Step 2: Next, convert the outermost logarithm into an exponential form. The equation can be rewritten as:
+\[ \log _{2}(y) = 2 \]
+where \( y = \log _{2}(2x - 2) \). From this, we can deduce that:
+\[ y = 2^2 = 4 \]
+Step 3: Substitute \( y \) back into the equation. We now know:
+\[ y = \log _{2}(2x - 2) = 4 \]
+Step 4: Convert the logarithmic equation into an exponential form:
+\[ \log _{2}(2x - 2) = 4 \]
+implies:
+\[ 2x - 2 = 2^4 \]
+\[ 2x - 2 = 16 \]
+Step 5: Solve for \( x \):
+\[ 2x = 18 \]
+\[ x = 9 \]
+Step 6: Therefore, the value of \( x \) that satisfies the given equation is \( x = 9 \).
+Audited verdict: correct

@@ -145,9 +145,19 @@ Carried over unchanged from `prereg/premise.md` and `prereg/rate_wording.md`: un
 
 The fourteen conditions in `pilot/prompts.py`, reading the example blocks and paper texts from `data/condition_blocks/`; `scripts/build_followup_blocks.py` for the pool (`data/examples_experienced.jsonl`), the three example blocks and the four paper texts, recording a hash of each; a `FOLLOWUP=1` mode in `scripts/torch_submit.sh` with the raised model length; `scripts/followup.sh` for the Claude batches and the OpenAI runs; `scripts/followup_analysis.py` on `pilot/inference.py` for families A to D under each label variant; the simulated check; the smoke test. The cluster jobs are submitted by the PI; the assistant has no cluster access.
 
+## Run log
+
+Written 2026-11-13 while building, before any held-out item was sent. No verdict rate of any new reply has been looked at.
+
+- **Blocks fixed.** `scripts/build_followup_blocks.py` wrote the pool and the seven blocks; hashes in `data/condition_blocks/blocks.sha256`. The example blocks run 9,300–11,500 characters, the paper 34,000 (the methods-only text 6,400).
+- **Exact token counts** (count-tokens endpoint, free, mean over three items, Opus tokenizer): note 1,286; bayes 1,365; examples 5,751–6,617; paper 13,330–13,492; methods only 3,718. The plan's estimates (2,500 and 8,000) were low: LaTeX and mathematics tokenize at about 2.5 characters per token. At batch prices with 330 output tokens per call, step 1 is $13.1 and the paper arm $40.4, against $10.5 and $26 expected.
+- **Analysis on simulated replies** (`results/sim/followup/`, 2,000 resamples): two simulated critics with true ρ = 0.5 on the told rate, three samples each. The plain one, built with no instruction or example effect and a note that moves it by 0.05, read B1 "no", C1 "no", D not run, and "attribution alone discounts" for family A. The raised one, built with ρ ≈ 0.9 under the instruction, the examples and the paper, a true-rate paper that cancels the shift, and a note that moves it by 0.4, read B1 and C1 "yes" (ρ 0.80 and 0.87), D1 and D3 held, D2 not shown (self and other built equal), D4 held with ρ_true 0.03, and "the reliability statement does the work" for family A. Every built-in value sat inside its interval.
+
+- **Smoke test** (2026-11-13, 01:39–01:41; `results/followup/smoke/`): 4 items already used elsewhere (`data/items_hard_a40.jsonl`, 2 flawed, 2 correct), one reply each, real time: Opus on all 14 new conditions (56 replies), Haiku, GPT-6.1 Sol and GPT-6 Luna on the 6 shared ones (24 each). 128 of 128 parsed, no refusal, no reply cut off. Cached prompt tokens were billed as cache reads (Opus: 229,000 of 446,000 input tokens; Haiku 46,000 of 93,000). Opus wrote a median of 308 output tokens (largest 726), so the 330 used in the estimates stands. Cost $1.44 (Opus), $0.02 (Haiku), $0.08 (Sol), $0.01 (Luna). Verdicts were not looked at. The code was committed at this point, before any held-out item was sent.
+
 ## Deviations
 
-None yet.
+1. **Caps raised before launch, and prompt caching turned on** (2026-11-13, before any call). With the exact token counts, the plan's caps would stall both Opus steps: the runner re-checks each later batch at the measured cost plus 20%, so a run expected at $13 needs a cap of about $17, and one expected at $40 about $48. Caps are now $17 (step 1) and $48 (the paper arm), $68 for the three Claude runs together, equal to the credit. To bring the real spend well under that, the Claude requests mark the system prompt for prompt caching (`--cache-system` in `pilot/run.py`): the example block or the paper is identical across the 200 requests of a condition, and cached reads are billed at a tenth of the input price. The model's input is unchanged; what changes is the request's billing. The runner now counts cached tokens in the spend ledger. `paper_true` is kept; it would be the first to go only if the smoke test shows replies far longer than 330 tokens.
 
 ## Results
 
