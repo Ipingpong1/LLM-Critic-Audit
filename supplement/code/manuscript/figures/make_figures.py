@@ -776,6 +776,56 @@ def numbers_freeze():
         f"d'={v['d_prime']}: {100 * v['coverage']:.0f}% coverage, mean estimate {v['mean_estimate']:.2f}" for v in val["rho_coverage"]))
 
 
+def numbers_followup():
+    """Every number the text takes from the rate-use follow-up (results/followup/analysis/followup.json; plan in
+    prereg/rate_use_followup.md): Section 4.1 (Attention, Trust), Section 4.3 (attribution), the Discussion paragraph
+    on the paper arm, the Limitations, Appendix F and its table. Original labels."""
+    j = json.load(open(ROOT / "results/followup/analysis/followup.json"))
+    o = j["results"]["original"]
+    f2 = lambda x: f"{x:+.2f}" if x < 0 else f"{x:.2f}"
+    ci = lambda lo_hi: "[" + ", ".join(f"{x:.2f}" for x in lo_hi) + "]"
+    print("\n== rate-use follow-up (held-out set, original labels; intervals descriptive)")
+    print("  Appendix F table, rho told / rule spelled out / shown (d' at exp50) / d'(exp50) - d'(neutral):")
+    for name, c in o["critics"].items():
+        if "bayes" not in c["arms"]:
+            continue
+        cc = next(r for r in o["C"] if r["critic"] == name)
+        print(f"    {name:28s} {f2(c['arms']['br']['rho'])} {ci(c['arms']['br']['ci'])}  {f2(c['arms']['bayes']['rho'])} {ci(c['arms']['bayes']['ci'])}"
+              f"  {f2(c['arms']['exp']['rho'])} {ci(c['arms']['exp']['ci'])}  {f2(cc['d_exp50_minus_neutral'])} {ci(cc['d_exp50_minus_neutral_ci'])}")
+    bd = [r["rho_diff"] for r in o["B"]]
+    sh = [r["B3"]["stated_p_shift_logodds"] for r in o["B"]]
+    fol = [v for r in o["B"] for v in r["B3"]["verdict_follows_posterior_rule"].values()]
+    print(f"  B (Attention, Appendix F): rho_instr - rho_br from {min(bd):+.2f} to {max(bd):+.2f}; intervals above 0: "
+          f"{sum(r['rho_diff_ci'][0] > 0 for r in o['B'])}; eligible tests {sum(r['inferential_status'] == 'eligible' for r in o['B'])}, "
+          f"smallest Holm p among them {min(r['p_holm'] for r in o['B'] if r['inferential_status'] == 'eligible'):.2f}; "
+          f"posterior shift {min(sh):+.2f} to {max(sh):+.2f} log-odds (ideal 4.39); verdict follows own posterior {100 * min(fol):.0f}-{100 * max(fol):.0f}%")
+    cd = [r["rho_diff"] for r in o["C"]]
+    dd = [r["d_exp50_minus_neutral"] for r in o["C"]]
+    cs = [(r["critic"], r["c_exp50_minus_neutral"], r["c_exp50_minus_neutral_ci"]) for r in o["C"]]
+    opus = next(r for r in o["C"] if r["critic"] == "opus-5.5-think")
+    print(f"  C (Trust, Appendix F): rho_exp - rho_br from {min(cd):+.2f} to {max(cd):+.2f}; intervals above 0: {sum(r['rho_diff_ci'][0] > 0 for r in o['C'])}; "
+          f"Opus {opus['rho_diff']:+.2f} {ci(opus['rho_diff_ci'])}; d'(exp50) - d'(neutral) from {min(dd):+.2f} to {max(dd):+.2f}, "
+          f"intervals including 0: {sum(lo <= 0 <= hi for _, _, (lo, hi) in [(0, 0, r['d_exp50_minus_neutral_ci']) for r in o['C']])} of {len(o['C'])}")
+    print("    c(exp50) - c(neutral) with interval excluding 0: " + "; ".join(f"{n} {v:+.2f} {ci(c)}" for n, v, c in cs if not (c[0] <= 0 <= c[1])))
+    print("  A (Section 4.3, Appendix F): false alarms per 100 correct, neutral / note_bare / claim_random / claim_reviewer / claim_bare:")
+    for name, c in o["critics"].items():
+        if "false_alarms" in c:
+            fa = c["false_alarms"]
+            print(f"    {name:28s} " + " / ".join(f"{fa[k]:.0f}" for k in ("neutral", "note_bare", "claim_random", "claim_reviewer", "claim_bare")))
+    for r in o["A"]:
+        print(f"    {r['critic']:28s} {r['test']} {r['a']} - {r['b']}: {r['estimate']:+.2f} {ci(r['ci'])}, Holm p = {r['p_holm']:.4f}, {'held' if r['held'] else ('not shown' if r['sign'] else ('no shift' if r.get('no_shift') else 'inconclusive'))}")
+    print("    readings: " + "; ".join(f"{k}: {v}" for k, v in o["A_reading"].items()))
+    arms = o["critics"]["opus-5.5-think"]["arms"]
+    print("  D (Discussion paragraph): Opus rho br / paper_self / paper_other / paper_methods / paper_true: "
+          + " / ".join(f"{f2(arms[a]['rho'])} {ci(arms[a]['ci'])}" for a in ("br", "paper_self", "paper_other", "paper_methods", "paper_true")))
+    print("    " + "; ".join(f"{k} {v['rho_diff']:+.2f} {ci(v['rho_diff_ci'])} ({v['inferential_status']}, {v['informative_problems']} informative problems)"
+                             for k, v in o["D"].items() if isinstance(v, dict) and "rho_diff" in v))
+    spend = lambda path: sum(json.loads(l)["usd"] for l in open(ROOT / path))
+    n_rows = sum(1 for f in (ROOT / "results/followup").glob("*.jsonl") for _ in open(f))
+    print(f"  Compute: {n_rows:,} follow-up replies (224,000 before + these = about {224000 + n_rows:,}); API fees to date "
+          f"US${spend('results/api_spend.jsonl'):.0f} (Claude) and US${spend('results/openai_spend.jsonl'):.0f} (OpenAI)")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--only", default=None, help="one of 1, 2, 3, 4, A1, A2, A3, numbers")
@@ -786,7 +836,7 @@ def main():
     word = json.load(open(ROOT / "results/rate_wording/analysis/rate_wording.json"))
     jobs = {"1": lambda: fig1(hard), "2": lambda: fig2(hard, ranges), "3": lambda: fig3(hard), "4": lambda: fig4(prem),
             "A1": lambda: figA1(hard), "A2": figA2, "A3": lambda: figA3(word),
-            "numbers": lambda: (numbers(hard, prem, ranges), numbers_wording(word), numbers_freeze())}
+            "numbers": lambda: (numbers(hard, prem, ranges), numbers_wording(word), numbers_freeze(), numbers_followup())}
     for name, job in jobs.items():
         if args.only in (None, name):
             job()

@@ -15,6 +15,10 @@
 #                                      # held-out items, the new rate wordings, 3 samples -> results/rate_wording/ (prereg/rate_wording.md)
 #   RATEWORD=smoke NOTHINK_SAMPLING=card ONLY='4b-nothink' scripts/torch_submit.sh
 #                                      # those wordings on 40 items already used elsewhere -> results/torch_smoke/rate_wording/
+#   FOLLOWUP=1 NOTHINK_SAMPLING=card THINK_SAMPLING=card NOTHINK_SAMPLES=3 THINK_SAMPLES=3 ONLY='nothink|27b-think' scripts/torch_submit.sh
+#                                      # held-out items, the rate-use follow-up conditions, 3 samples -> results/followup/ (prereg/rate_use_followup.md)
+#   FOLLOWUP=smoke NOTHINK_SAMPLING=card ONLY='4b-nothink' scripts/torch_submit.sh
+#                                      # those conditions on 40 items already used elsewhere -> results/torch_smoke/followup/
 #
 # Optional: ACCOUNT (Slurm account), ONLY (regex on the label, e.g. ONLY='9b|27b-think'), DRY=1 (print only),
 # THINK_LOGPROBS=1 (also record verdict-token logprobs when thinking; large replies),
@@ -34,7 +38,14 @@ export CACHE=${CACHE:-/scratch/$USER/.cache}
 
 export ITEMS=
 THINK_MAX_TOKENS=16384; THINK_TIMEOUT=3600; THINK_HOURS=12
-if [ -n "${RATEWORD:-}" ]; then
+if [ -n "${FOLLOWUP:-}" ]; then
+  # Rate-use follow-up (prereg/rate_use_followup.md): the 6 new conditions on the held-out items, 6 x 200 = 1200 per sample.
+  # The example blocks add about 2,500 prompt tokens, so the model length is raised to 40,960; reply limits as PREMISE.
+  # The plan runs the four thinking-off models and the 27B with thinking on: ONLY='nothink|27b-think'.
+  DIR=results/followup; export CONDITIONS=followup_api LIMIT= ITEMS=data/items_premise.jsonl
+  if [ "$FOLLOWUP" = smoke ]; then DIR=results/torch_smoke/followup; ITEMS=data/items_hard_a40.jsonl; fi
+  THINK_MAX_TOKENS=32768; THINK_TIMEOUT=7200; THINK_HOURS=24; export MAX_MODEL_LEN=40960
+elif [ -n "${RATEWORD:-}" ]; then
   # Rate wording run (prereg/rate_wording.md): the 9 conditions the open models lack on the held-out items,
   # 9 x 200 = 1800 per sample. Same items, labels, sampling and reply limits as PREMISE, so the rows join by label.
   DIR=results/rate_wording; export CONDITIONS=rate_wording_new LIMIT= ITEMS=data/items_premise.jsonl

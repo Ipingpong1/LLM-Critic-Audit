@@ -183,15 +183,22 @@ async def call_openai(client, args, messages, sample) -> dict:
 
 # ---------------------------------------------------------------- Claude API
 
-def usd(model: str, input_tokens: int, output_tokens: int, batch: bool) -> float:
+def usd(model: str, input_tokens: int, output_tokens: int, batch: bool, cache_write: int = 0, cache_read: int = 0) -> float:
+    """Cost of one call. Cached prompt tokens (--cache-system) are billed at 1.25x on write and 0.1x on read; the API
+    reports them apart from input_tokens, so they are added here, at the same batch discount."""
     pin, pout = PRICES[model]
-    return (input_tokens * pin + output_tokens * pout) / 1e6 * (0.5 if batch else 1.0)
+    return (input_tokens * pin + (cache_write or 0) * 1.25 * pin + (cache_read or 0) * 0.1 * pin
+            + output_tokens * pout) / 1e6 * (0.5 if batch else 1.0)
 
 
 def anthropic_params(args, messages) -> dict:
     """Messages API request for one trial. No temperature/top_p/top_k: these models reject them."""
     params = dict(model=args.model, max_tokens=args.max_tokens, system=messages[0]["content"],
                   messages=[{"role": "user", "content": messages[1]["content"]}])
+    if args.cache_system:
+        # Prompt caching on the system prompt: the same text as a block with a cache marker. The model's input is
+        # unchanged; identical system prompts across requests are then billed as cache reads (rate-use follow-up).
+        params["system"] = [{"type": "text", "text": messages[0]["content"], "cache_control": {"type": "ephemeral"}}]
     if args.thinking == "off":
         # No extended thinking: `between_tools` on Sonnet 5.5 (`disabled` is a 400 there), `disabled` on Haiku 5.5.
         params["thinking"] = dict(THINKING_OFF[args.model])
@@ -207,9 +214,12 @@ def read_message(msg, model: str, batch: bool) -> dict:
     text = "".join(b.text for b in msg.content if b.type == "text")
     thinking = "\n\n".join(b.thinking for b in msg.content if b.type == "thinking" and getattr(b, "thinking", None))
     u = msg.usage
+    cw, cr = getattr(u, "cache_creation_input_tokens", None) or 0, getattr(u, "cache_read_input_tokens", None) or 0
     rec = dict(raw=text or None, reasoning=thinking or None, finish_reason=msg.stop_reason,
-               prompt_tokens=u.input_tokens, completion_tokens=u.output_tokens, p_error_lp=None,
-               cost_usd=round(usd(model, u.input_tokens, u.output_tokens, batch), 6), api_model=msg.model)
+               prompt_tokens=u.input_tokens + cw + cr, completion_tokens=u.output_tokens, p_error_lp=None,
+               cost_usd=round(usd(model, u.input_tokens, u.output_tokens, batch, cw, cr), 6), api_model=msg.model)
+    if cw or cr:
+        rec.update(cache_write_tokens=cw, cache_read_tokens=cr)
     if msg.stop_reason == "refusal":
         sd = getattr(msg, "stop_details", None)
         rec["refusal_category"] = getattr(sd, "category", None) if sd else None
@@ -359,7 +369,8 @@ def run_batch(args, todo, done, out, label):
         if args.dry_run:
             first = dict(reqs[0]["params"])
             first["messages"] = f"<user message, {len(first['messages'][0]['content'])} chars>"
-            first["system"] = first["system"][-90:]
+            sys_text = first["system"] if isinstance(first["system"], str) else first["system"][0]["text"]
+            first["system"] = ("<cached system block> ..." if args.cache_system else "...") + sys_text[-90:]
             print(f"dry run: {len(todo)} requests in {len(chunks)} batch(es), nothing sent. First: "
                   f"{reqs[0]['custom_id']} {mapping[reqs[0]['custom_id']]} {json.dumps(first)}")
             print("conditions:", dict(sorted(Counter(c for c, _, _ in todo).items())))
@@ -545,6 +556,8 @@ def main():
     ap.add_argument("--est-output-tokens", type=int, default=None,
                     help="Claude batch: expected output tokens per call, for the cost estimate")
     ap.add_argument("--poll", type=float, default=30, help="Claude batch: seconds between status checks")
+    ap.add_argument("--cache-system", action="store_true",
+                    help="Claude API: mark the system prompt for prompt caching (same model input; repeated long prompts bill as cache reads)")
     ap.add_argument("--dry-run", action="store_true", help="Claude batch: build the batch and print the estimate, send nothing")
     ap.add_argument("--concurrency", type=int, default=4, help="parallel requests; ~2-4 for Ollama, 32-128 for vLLM")
     ap.add_argument("--limit", type=int, default=None, help="only use the first N items (balanced), for smoke tests")

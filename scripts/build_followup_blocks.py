@@ -18,7 +18,9 @@ OUT = ROOT / "data" / "condition_blocks"
 POOL = ROOT / "data" / "examples_experienced.jsonl"
 HARD = ROOT / "data" / "items_hard.jsonl"
 PREMISE = ROOT / "data" / "items_premise.jsonl"
-TEX = ROOT / "manuscript" / "main.tex"
+# The manuscript as it stood when the blocks were built (2026-11-12 build, archived 2026-11-13 before the follow-up's
+# results were written in). The live main.tex has since changed, and the REVEAL passages below no longer occur in it.
+TEX = ROOT / "manuscript" / "archive" / "2026-11-13_before_followup" / "main.tex"
 TITLE = "Told the Odds, Moved by a Claim: An Ideal-Observer Audit of LLM Critics"
 INTRO_EXP = ("The ten solutions below were reviewed just before this one, from the same batch, "
              "and their verdicts have been audited.")

@@ -221,6 +221,14 @@ Is a frontier critic at ceiling on these items, and does a harder item set fix t
   - **The claim effect is in a fourth family.** On GPT-6.1 Sol 7 of 9 claim tests held; it ignores a reviewer's finding and a claim attached at random. Under "This solution contains an error." it flagged all 200 solutions, and with "Check it carefully." added only 6 more correct ones than at neutral. A stated 90% rate changed 1 of its 200 verdicts.
   - **Outside the plan:** under that sentence GPT-6.1 Sol's stated P(error) is 99 or 100 for every solution, so it stops discriminating (AUC 0.52), unlike Opus (0.99). Both OpenAI critics flag 13 of the 14 contested items at neutral, though those items were picked from other critics' replies.
 
+- **Rate-use follow-up (Nov 13; `prereg/rate_use_followup.md`, tables in `results/followup/analysis/followup.md`):** three preregistered questions about the under-use of the stated rate, on the 200 held-out items, for the nine critic runs that have the rate conditions there, plus an exploratory arm for Opus; 29,200 new replies, 72 without a verdict. The plan was approved and committed before any code existed, the code before any held-out item was sent, and no verdict was looked at until every job had finished.
+  - **Attribution (Q1).** A bare note ("A note attached to this solution says it contains an error.") without the declaration that notes are random: Opus 24 false alarms per 100 correct solutions against 89 under the bare claim and 12 under the note declared random; Qwen3.5-27B with thinking 52 against 47 and 23; GPT-6.1 Sol 28 against 100 and 27. Reading, by the plan's rules: for Opus and Qwen3.5-27B the reliability statement does the work, for Sol attribution alone discounts.
+  - **Instruction (Q2).** Told to treat the rate as a prior, combine it with the evidence, report the posterior and answer "error" only above 50%, no run used the rate more (ρ differences −0.18 to +0.11, no interval above 0). The reported posteriors moved by −0.09 to 1.00 log-odds between the 10% and 90% rates (ideal 4.39) and the verdicts followed them in 99–100% of replies: the rule is applied to a posterior that hardly moves with the prior. The expectation held most firmly before the data, that the instruction would help, failed.
+  - **Experience (Q3).** Shown the rate as ten audited verdicts from the same batch (one, five or nine flawed), no run used it more than the told rate (differences −0.41 to 0.00; Opus's interval below 0), and the block left d′ unchanged (−0.29 to +0.13, every interval including 0). It moved criteria: the three Qwen thinking-off runs flagged more with the balanced block, Haiku less.
+  - **The paper (Q4, exploratory).** Opus with this manuscript's body in the system prompt: ρ 0.05 [0.01, 0.12] against 0.29 for the plain line; 0.21 when the paper was about "Model M", 0.08 for the Method section alone, 0.07 with the statements that the rate is false kept. Every version states the item composition (100 flawed, 100 correct), so the critic can infer that the rate is false; the arm cannot separate that from reading about itself.
+  - **Pipeline.** Two conditions of Qwen3.5-9B thinking off were over 2% unparsed (2.2% and 3.7%, all cut off at 1,024 tokens); the bounds leave the reading unchanged. Readings identical under the three label variants. Cost: $23.87 in API fees (Claude $19.22, OpenAI $4.65); the five cluster jobs took 5–15 minutes with thinking off and 14 hours for the 27B with thinking on.
+  - **In the paper.** Abstract, Section 4.1 (Attention, new item Trust), Section 4.3, Discussion (Estes analogy half fits; a new paragraph on the paper arm), Limitations (the normative premise), Appendix F (new); Table 1 moved to Appendix E to keep the body at eight pages.
+
 ## Layout
 
 ```
@@ -252,6 +260,9 @@ scripts/stage_b_check.py        per-condition health check (unparsed, refusals, 
 scripts/build_audit_sheet.py    label audit: blind sheet of the items most thinking-on critics disagree with the label on, plus controls
 scripts/rate_wording.sh         rate wording run, Claude and OpenAI part (prereg/rate_wording.md); DRY=1 for a Claude dry run
 scripts/rate_wording_analysis.py rate wording run: rules W1-W5 and the planned secondary measures, under each label variant
+scripts/followup.sh             rate-use follow-up, Claude and OpenAI part (prereg/rate_use_followup.md); STEP=smoke|1..5; DRY=1 for a Claude dry run
+scripts/followup_analysis.py    rate-use follow-up: families A-D under each label variant (results/followup/analysis/)
+scripts/build_followup_blocks.py rate-use follow-up: the example pool, the three example blocks and the four paper texts, with hashes
 scripts/with_openai_key.sh      run one command with the OpenAI API key from the macOS Keychain
 scripts/label_sensitivity.py    label re-analysis: every headline number with the contested items left out, flipped, and (with --audit) as audited
 audit/              label audit: audit_sheet.html (blind; judge here first), audit_key.csv and audit_key.html (labels and critic reasoning; open after)
@@ -260,6 +271,7 @@ results/torch/      bf16 runs on NYU Torch: thinking off (T = 0 and T = 1.0) and
 results/torch_hard/ bf16 runs on NYU Torch on the 200 hard items, thinking off and on (T = 1.0)
 results/premise/    premise test on 200 held-out items (data/items_premise.jsonl): replies, power.md, analysis/ (premise.md: pre-registered tests; premise.png: figure)
 results/label_sensitivity/ label re-analysis: report.md (tables, no item named) and report.json
+results/followup/   rate-use follow-up on the held-out items: replies (API and cluster), cluster_logs/, smoke/, analysis/ (followup.md, followup.json)
 results/torch_smoke/ 20-item Torch smoke tests
 results/pilot/      full pilots on the Mac, thinking off: qwen3.5 4b/9b/27b and gemma4:12b, every arm (the results above)
 results/checks/     manipulation-check replies (scripts/manipulation_check.py)

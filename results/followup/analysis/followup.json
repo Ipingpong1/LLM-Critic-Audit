@@ -1,0 +1,5162 @@
+{
+ "bootstrap": 10000,
+ "draws": 200000,
+ "variants": [
+  "original",
+  "drop",
+  "flip"
+ ],
+ "results": {
+  "original": {
+   "critics": {
+    "gemma4:12b-nothink-bf16-t1": {
+     "d_neutral": 2.540154987956739,
+     "errors_per_200": 21.333333333333332,
+     "arms": {
+      "br": {
+       "rho": 0.06682725692879085,
+       "ci": [
+        0.02350969830849565,
+        0.14324644394650224
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.08111514356280293,
+       "ci": [
+        0.042812159856516076,
+        0.13906842477446374
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.028678542852064424,
+       "ci": [
+        -0.036740212569584,
+        0.10235313503468561
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "gemma4:12b-think-bf16-t1": {
+     "d_neutral": 3.3909894937817455,
+     "errors_per_200": 11.764705882352942,
+     "arms": {
+      "br": {
+       "rho": 0.06615071718034532,
+       "ci": [
+        -0.12594308966513293,
+        0.2254179847503648
+       ],
+       "ref": "neutral",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "gpt-6-luna-think": {
+     "d_neutral": 2.807017510596279,
+     "errors_per_200": 21.666666666666668,
+     "arms": {
+      "br": {
+       "rho": 0.07045987710355651,
+       "ci": [
+        -0.014378865539615671,
+        0.19429464770725693
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.026762493454702465,
+       "ci": [
+        -0.017911347564294883,
+        0.06658782018026418
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.008313389071952192,
+       "ci": [
+        -0.024212374896710548,
+        0.04357931869481426
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "gpt-6.1-sol-think": {
+     "d_neutral": 3.1852083478251583,
+     "errors_per_200": 27.0,
+     "arms": {
+      "br": {
+       "rho": 0.16933676284780672,
+       "ci": [
+        0.0,
+        0.32243190427695967
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "bayes": {
+       "rho": 0.16889152477283417,
+       "ci": [
+        0.0,
+        0.32326774106032075
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "exp": {
+       "rho": 0.034017222654221566,
+       "ci": [
+        0.0,
+        0.07592123519720252
+       ],
+       "ref": "exp50",
+       "samples": 1
+      }
+     },
+     "ceiling": false,
+     "false_alarms": {
+      "neutral": 27.0,
+      "note_bare": 28.000000000000004,
+      "claim_bare": 100.0,
+      "claim_random": 27.0,
+      "claim_reviewer": 28.000000000000004
+     }
+    },
+    "haiku-5.5-think": {
+     "d_neutral": 3.495136438244892,
+     "errors_per_200": 17.666666666666668,
+     "arms": {
+      "br": {
+       "rho": 0.016519182666881398,
+       "ci": [
+        -0.013497271763676894,
+        0.05310435332464474
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.1314471838254149,
+       "ci": [
+        -0.053289695603182974,
+        0.2692175530843836
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": -0.09600062367347664,
+       "ci": [
+        -0.2172522766595183,
+        0.06051869559569213
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "opus-5.5-think": {
+     "d_neutral": 3.1957123908339673,
+     "errors_per_200": 16.0,
+     "arms": {
+      "br": {
+       "rho": 0.2901232105890656,
+       "ci": [
+        0.09101704163539712,
+        0.43161044799497733
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "bayes": {
+       "rho": 0.10535218393506186,
+       "ci": [
+        0.03796001721278597,
+        0.20870249557984594
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "exp": {
+       "rho": -0.11971238124963074,
+       "ci": [
+        -0.24577686809106497,
+        0.0746196095398257
+       ],
+       "ref": "exp50",
+       "samples": 1
+      },
+      "paper_self": {
+       "rho": 0.05266280704314585,
+       "ci": [
+        0.011622724403809336,
+        0.11540628192981643
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "paper_other": {
+       "rho": 0.21433136478133435,
+       "ci": [
+        0.014332481538868236,
+        0.34855053667524394
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "paper_methods": {
+       "rho": 0.08187919816953972,
+       "ci": [
+        0.026326281945294336,
+        0.16726189252842866
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "paper_true": {
+       "rho": 0.06931277629944267,
+       "ci": [
+        0.0,
+        0.15776340116945842
+       ],
+       "ref": "neutral",
+       "samples": 1
+      }
+     },
+     "ceiling": false,
+     "false_alarms": {
+      "neutral": 15.0,
+      "note_bare": 24.0,
+      "claim_bare": 89.0,
+      "claim_random": 12.0,
+      "claim_reviewer": 22.0
+     }
+    },
+    "qwen3.5:4b-nothink-bf16-t1": {
+     "d_neutral": 1.5237336165339201,
+     "errors_per_200": 52.666666666666664,
+     "arms": {
+      "br": {
+       "rho": 0.13974944745211984,
+       "ci": [
+        0.09515398982347044,
+        0.21224329643564718
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.09215926451507428,
+       "ci": [
+        0.05539960503978487,
+        0.15224717000786184
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.09379703894236019,
+       "ci": [
+        0.05140079765419691,
+        0.1549437260759135
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "qwen3.5:4b-think-bf16-t1": {
+     "d_neutral": 3.2240043367971647,
+     "errors_per_200": 15.333333333333334,
+     "arms": {
+      "br": {
+       "rho": 0.13536100252680444,
+       "ci": [
+        0.07349879822881591,
+        0.2165969226414154
+       ],
+       "ref": "neutral",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "qwen3.5:9b-nothink-bf16-t1": {
+     "d_neutral": 1.6296818021760522,
+     "errors_per_200": 47.412353923205345,
+     "arms": {
+      "br": {
+       "rho": 0.07999021139454222,
+       "ci": [
+        0.045502420146951564,
+        0.1333235732855883
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.0776796732072516,
+       "ci": [
+        0.04999684664066791,
+        0.11690056617712587
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.041107916116199794,
+       "ci": [
+        -0.0035167674439262843,
+        0.09737149033333346
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "qwen3.5:9b-think-bf16-t1": {
+     "d_neutral": 3.5588423504509303,
+     "errors_per_200": 16.026711185308848,
+     "arms": {
+      "br": {
+       "rho": 0.20306130479143308,
+       "ci": [
+        0.08308133791041962,
+        0.332623542240318
+       ],
+       "ref": "neutral",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "qwen3.5:27b-nothink-bf16-t1": {
+     "d_neutral": 2.120600165074471,
+     "errors_per_200": 29.333333333333332,
+     "arms": {
+      "br": {
+       "rho": 0.06644785663183198,
+       "ci": [
+        0.03874040508635651,
+        0.10687543798439254
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.10957388959475177,
+       "ci": [
+        0.07089058012535293,
+        0.16316821510531643
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.06960809627054675,
+       "ci": [
+        0.018113633599651572,
+        0.12977362432951517
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "qwen3.5:27b-think-bf16-t1": {
+     "d_neutral": 3.4293347712090014,
+     "errors_per_200": 19.463087248322147,
+     "arms": {
+      "br": {
+       "rho": 0.36131286655545825,
+       "ci": [
+        0.23102424888383521,
+        0.5048067707587719
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.3477338746781496,
+       "ci": [
+        0.21892387575943167,
+        0.4891403687587674
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.21535577121718621,
+       "ci": [
+        0.10373229791231599,
+        0.33128463342373166
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false,
+     "false_alarms": {
+      "neutral": 19.333333333333332,
+      "note_bare": 51.864406779661024,
+      "claim_bare": 46.666666666666664,
+      "claim_random": 23.333333333333332,
+      "claim_reviewer": 50.16949152542372
+     }
+    }
+   },
+   "A": [
+    {
+     "estimate": -0.014778682518952924,
+     "p": 1.0,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      1
+     ],
+     "counts_by_class": [
+      [
+       100,
+       100,
+       100
+      ],
+      [
+       28,
+       27,
+       100
+      ]
+     ],
+     "discordant_by_class": [
+      0,
+      1
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "gpt-6.1-sol-think",
+     "test": "A1",
+     "a": "note_bare",
+     "b": "neutral",
+     "sign": -1,
+     "what": "a note's claim moves the threshold",
+     "ci": [
+      -0.04807156477570973,
+      0.0
+     ],
+     "p_holm": 1.0,
+     "held": false,
+     "no_shift": true
+    },
+    {
+     "estimate": -1.5778254913936263,
+     "p": 4.235164736271502e-22,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      1
+     ],
+     "counts_by_class": [
+      [
+       100,
+       100,
+       100
+      ],
+      [
+       100,
+       28,
+       100
+      ]
+     ],
+     "discordant_by_class": [
+      0,
+      72
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "gpt-6.1-sol-think",
+     "test": "A2",
+     "a": "claim_bare",
+     "b": "note_bare",
+     "sign": -1,
+     "what": "the system prompt's own claim moves more than a note's",
+     "ci": [
+      -1.705163307370786,
+      -1.453857206515758
+     ],
+     "p_holm": 3.8116482626443515e-21,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": -0.014778682518952924,
+     "p": 1.0,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      1
+     ],
+     "counts_by_class": [
+      [
+       100,
+       100,
+       100
+      ],
+      [
+       28,
+       27,
+       100
+      ]
+     ],
+     "discordant_by_class": [
+      0,
+      1
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "gpt-6.1-sol-think",
+     "test": "A3",
+     "a": "note_bare",
+     "b": "claim_random",
+     "sign": 0,
+     "what": "the note against the note declared random",
+     "ci": [
+      -0.04807156477570973,
+      0.0
+     ],
+     "p_holm": 1.0,
+     "held": false,
+     "no_shift": true
+    },
+    {
+     "estimate": -0.3644385057025445,
+     "p": 4.516023415581408e-05,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      2
+     ],
+     "counts_by_class": [
+      [
+       100,
+       198,
+       100
+      ],
+      [
+       24,
+       30,
+       100
+      ]
+     ],
+     "discordant_by_class": [
+      1,
+      10
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "opus-5.5-think",
+     "test": "A1",
+     "a": "note_bare",
+     "b": "neutral",
+     "sign": -1,
+     "what": "a note's claim moves the threshold",
+     "ci": [
+      -0.5938283820775878,
+      -0.09210908563453346
+     ],
+     "p_holm": 0.00022580117077907038,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": -0.9521457738315973,
+     "p": 5.421010862427522e-20,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      1
+     ],
+     "counts_by_class": [
+      [
+       100,
+       100,
+       100
+      ],
+      [
+       89,
+       24,
+       100
+      ]
+     ],
+     "discordant_by_class": [
+      0,
+      65
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "opus-5.5-think",
+     "test": "A2",
+     "a": "claim_bare",
+     "b": "note_bare",
+     "sign": -1,
+     "what": "the system prompt's own claim moves more than a note's",
+     "ci": [
+      -1.1665895271899274,
+      -0.7859804220374798
+     ],
+     "p_holm": 4.336808689942018e-19,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": -0.22916830064788246,
+     "p": 0.00048828125,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      1
+     ],
+     "counts_by_class": [
+      [
+       100,
+       100,
+       100
+      ],
+      [
+       24,
+       12,
+       100
+      ]
+     ],
+     "discordant_by_class": [
+      0,
+      12
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "opus-5.5-think",
+     "test": "A3",
+     "a": "note_bare",
+     "b": "claim_random",
+     "sign": 0,
+     "what": "the note against the note declared random",
+     "ci": [
+      -0.36989086233140855,
+      -0.11831793426660253
+     ],
+     "p_holm": 0.001953125,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": -0.4504700089118343,
+     "p": 4.9999750001249995e-06,
+     "method": "paired_problem_vector_swap_monte_carlo",
+     "informative_problems": 51,
+     "draws": 200000,
+     "mc_p_interval": [
+      0.0,
+      1.8444227173720117e-05
+     ],
+     "assumption": "Whole condition-specific response vectors exchangeable within problem under the null",
+     "critic": "qwen3.5:27b-think-bf16-t1",
+     "test": "A1",
+     "a": "note_bare",
+     "b": "neutral",
+     "sign": -1,
+     "what": "a note's claim moves the threshold",
+     "ci": [
+      -0.5722977956569819,
+      -0.34562719637576633
+     ],
+     "p_holm": 3.4999825000875e-05,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": 0.06225389420188554,
+     "p": 0.10034949825250873,
+     "method": "paired_problem_vector_swap_monte_carlo",
+     "informative_problems": 47,
+     "draws": 200000,
+     "mc_p_interval": [
+      0.09903150117936753,
+      0.10167009509311603
+     ],
+     "assumption": "Whole condition-specific response vectors exchangeable within problem under the null",
+     "critic": "qwen3.5:27b-think-bf16-t1",
+     "test": "A2",
+     "a": "claim_bare",
+     "b": "note_bare",
+     "sign": -1,
+     "what": "the system prompt's own claim moves more than a note's",
+     "ci": [
+      -0.010737652000102437,
+      0.1351696081829723
+     ],
+     "p_holm": 0.3010484947575262,
+     "held": false,
+     "no_shift": true
+    },
+    {
+     "estimate": -0.3827971192381867,
+     "p": 4.9999750001249995e-06,
+     "method": "paired_problem_vector_swap_monte_carlo",
+     "informative_problems": 44,
+     "draws": 200000,
+     "mc_p_interval": [
+      0.0,
+      1.8444227173720117e-05
+     ],
+     "assumption": "Whole condition-specific response vectors exchangeable within problem under the null",
+     "critic": "qwen3.5:27b-think-bf16-t1",
+     "test": "A3",
+     "a": "note_bare",
+     "b": "claim_random",
+     "sign": 0,
+     "what": "the note against the note declared random",
+     "ci": [
+      -0.4951257061787091,
+      -0.2829370369932159
+     ],
+     "p_holm": 3.4999825000875e-05,
+     "held": true,
+     "no_shift": false
+    }
+   ],
+   "B": [
+    {
+     "estimate": 0.02471793714894227,
+     "ci": [
+      -0.09978676569596447,
+      0.13026099704934543
+     ],
+     "se": 0.05396574087602564,
+     "informative_problems": 18,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.08111514356280293,
+     "rho_a_ci": [
+      0.042812159856516076,
+      0.13906842477446374
+     ],
+     "rho_b": 0.06682725692879085,
+     "rho_b_ci": [
+      0.02350969830849565,
+      0.14324644394650224
+     ],
+     "rho_diff": 0.014287886634012079,
+     "rho_diff_ci": [
+      -0.06116277215310118,
+      0.07855070030805006
+     ],
+     "critic": "gemma4:12b-nothink-bf16-t1",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": -0.08591626851466794,
+      "stated_p_shift_logodds_br": 0.19211797487283283,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": -0.06840923860012127,
+     "ci": [
+      -0.2370763128586294,
+      0.04487000601814007
+     ],
+     "se": 0.06362987474431198,
+     "informative_problems": 13,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.026762493454702465,
+     "rho_a_ci": [
+      -0.017911347564294883,
+      0.06658782018026418
+     ],
+     "rho_b": 0.07045987710355651,
+     "rho_b_ci": [
+      -0.014378865539615671,
+      0.19429464770725693
+     ],
+     "rho_diff": -0.043697383648854046,
+     "rho_diff_ci": [
+      -0.1774511341153581,
+      0.03098476221673063
+     ],
+     "critic": "gpt-6-luna-think",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.050713781174699046,
+      "stated_p_shift_logodds_br": 0.043373991622909114,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": -0.0006142694193072007,
+     "ci": [
+      -0.0460528235503781,
+      0.044358013672090024
+     ],
+     "se": 0.021932571542130026,
+     "informative_problems": 2,
+     "degenerate_fraction": 0.13280000000000003,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.16889152477283417,
+     "rho_a_ci": [
+      0.0,
+      0.32326774106032075
+     ],
+     "rho_b": 0.16933676284780672,
+     "rho_b_ci": [
+      0.0,
+      0.32243190427695967
+     ],
+     "rho_diff": -0.00044523807497254264,
+     "rho_diff_ci": [
+      -0.032765937094781206,
+      0.032455612213454665
+     ],
+     "critic": "gpt-6.1-sol-think",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.16099041972433725,
+      "stated_p_shift_logodds_br": 0.13171159616739625,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": 0.1444994398538899,
+     "ci": [
+      -0.09360011685162521,
+      0.3188947188822817
+     ],
+     "se": 0.10498162306736976,
+     "informative_problems": 12,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.1314471838254149,
+     "rho_a_ci": [
+      -0.053289695603182974,
+      0.2692175530843836
+     ],
+     "rho_b": 0.016519182666881398,
+     "rho_b_ci": [
+      -0.013497271763676894,
+      0.05310435332464474
+     ],
+     "rho_diff": 0.1149280011585335,
+     "rho_diff_ci": [
+      -0.0753840496186257,
+      0.25657878476681856
+     ],
+     "critic": "haiku-5.5-think",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.04325267931165572,
+      "stated_p_shift_logodds_br": 0.1760835907931636,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": -0.2540800868740728,
+     "ci": [
+      -0.4814383886610436,
+      0.011747297844503974
+     ],
+     "se": 0.13909111715091965,
+     "informative_problems": 5,
+     "degenerate_fraction": 0.00539999999999996,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.10535218393506186,
+     "rho_a_ci": [
+      0.03796001721278597,
+      0.20870249557984594
+     ],
+     "rho_b": 0.2901232105890656,
+     "rho_b_ci": [
+      0.09101704163539712,
+      0.43161044799497733
+     ],
+     "rho_diff": -0.18477102665400374,
+     "rho_diff_ci": [
+      -0.31376757617370177,
+      0.009859839863818713
+     ],
+     "critic": "opus-5.5-think",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.5312464330546974,
+      "stated_p_shift_logodds_br": 0.5472101543397445,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": -0.13725013145941323,
+     "ci": [
+      -0.31085934003047433,
+      0.027532159765175788
+     ],
+     "se": 0.07984228104386694,
+     "informative_problems": 56,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.08239176082391761,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.2965857677433903,
+      0.013151072307289013
+     ],
+     "rho_a": 0.09215926451507428,
+     "rho_a_ci": [
+      0.05539960503978487,
+      0.15224717000786184
+     ],
+     "rho_b": 0.13974944745211984,
+     "rho_b_ci": [
+      0.09515398982347044,
+      0.21224329643564718
+     ],
+     "rho_diff": -0.04759018293704556,
+     "rho_diff_ci": [
+      -0.1172312197610603,
+      0.009313748779823525
+     ],
+     "critic": "qwen3.5:4b-nothink-bf16-t1",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.932070719724444,
+      "stated_p_shift_logodds_br": 1.0999116552743884,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 0.9966666666666667,
+       "bayes90": 0.995
+      }
+     },
+     "p_holm": 0.6591340865913409,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": -0.006230383483706636,
+     "ci": [
+      -0.13687957016890984,
+      0.10208753329352548
+     ],
+     "se": 0.057956722567661836,
+     "informative_problems": 42,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.9139086091390861,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.12777014800696052,
+      0.09929408702179804
+     ],
+     "rho_a": 0.0776796732072516,
+     "rho_a_ci": [
+      0.04999684664066791,
+      0.11690056617712587
+     ],
+     "rho_b": 0.07999021139454222,
+     "rho_b_ci": [
+      0.045502420146951564,
+      0.1333235732855883
+     ],
+     "rho_diff": -0.0023105381872906283,
+     "rho_diff_ci": [
+      -0.05212327990110605,
+      0.039284842375006304
+     ],
+     "critic": "qwen3.5:9b-nothink-bf16-t1",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.5487249583845899,
+      "stated_p_shift_logodds_br": 0.5757889426308627,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": 0.08936864299999919,
+     "ci": [
+      -0.005087973873830134,
+      0.18873636848332495
+     ],
+     "se": 0.04773039230645331,
+     "informative_problems": 34,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.065993400659934,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.001368918494277352,
+      0.18872013049810604
+     ],
+     "rho_a": 0.10957388959475177,
+     "rho_a_ci": [
+      0.07089058012535293,
+      0.16316821510531643
+     ],
+     "rho_b": 0.06644785663183198,
+     "rho_b_ci": [
+      0.03874040508635651,
+      0.10687543798439254
+     ],
+     "rho_diff": 0.043126032962919794,
+     "rho_diff_ci": [
+      -0.0025826111435009094,
+      0.09249261738344097
+     ],
+     "critic": "qwen3.5:27b-nothink-bf16-t1",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.5833053986878768,
+      "stated_p_shift_logodds_br": 0.35068741520190594,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 0.593940605939406,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": -0.017400514489726016,
+     "ci": [
+      -0.08193826304653329,
+      0.048344581402645165
+     ],
+     "se": 0.033721769276992726,
+     "informative_problems": 32,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.6128387161283871,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.08091527562556346,
+      0.05146517861761976
+     ],
+     "rho_a": 0.3477338746781496,
+     "rho_a_ci": [
+      0.21892387575943167,
+      0.4891403687587674
+     ],
+     "rho_b": 0.36131286655545825,
+     "rho_b_ci": [
+      0.23102424888383521,
+      0.5048067707587719
+     ],
+     "rho_diff": -0.013578991877308655,
+     "rho_diff_ci": [
+      -0.06528733797389977,
+      0.03720349553854277
+     ],
+     "critic": "qwen3.5:27b-think-bf16-t1",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.9978175305367553,
+      "stated_p_shift_logodds_br": 1.0604809138043998,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    }
+   ],
+   "C": [
+    {
+     "estimate": -0.062484734761224625,
+     "ci": [
+      -0.21590039894209928,
+      0.0655055091163291
+     ],
+     "se": 0.06595345625510118,
+     "informative_problems": 18,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.028678542852064424,
+     "rho_a_ci": [
+      -0.036740212569584,
+      0.10235313503468561
+     ],
+     "rho_b": 0.06682725692879085,
+     "rho_b_ci": [
+      0.02350969830849565,
+      0.14324644394650224
+     ],
+     "rho_diff": -0.03814871407672643,
+     "rho_diff_ci": [
+      -0.1371118918768286,
+      0.0343570798722661
+     ],
+     "critic": "gemma4:12b-nothink-bf16-t1",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.16793447644863058,
+     "d_exp50_minus_neutral_ci": [
+      -0.5135865074158624,
+      0.09175947395649836
+     ],
+     "c_exp50_minus_neutral": -0.03147144776964916,
+     "c_exp50_minus_neutral_ci": [
+      -0.16519874975315235,
+      0.14019494984291744
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.09786480255945096,
+     "ci": [
+      -0.2669175772268869,
+      0.03943093743575075
+     ],
+     "se": 0.07390171845273509,
+     "informative_problems": 14,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.008313389071952192,
+     "rho_a_ci": [
+      -0.024212374896710548,
+      0.04357931869481426
+     ],
+     "rho_b": 0.07045987710355651,
+     "rho_b_ci": [
+      -0.014378865539615671,
+      0.19429464770725693
+     ],
+     "rho_diff": -0.06214648803160432,
+     "rho_diff_ci": [
+      -0.18948124219369655,
+      0.027037223559017186
+     ],
+     "critic": "gpt-6-luna-think",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": 0.12929340443288329,
+     "d_exp50_minus_neutral_ci": [
+      -0.3075740544738206,
+      0.6375715598028235
+     ],
+     "c_exp50_minus_neutral": -0.06464670221644164,
+     "c_exp50_minus_neutral_ci": [
+      -0.31571597173020255,
+      0.15376482499450717
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.18757138971642662,
+     "ci": [
+      -0.39824429650454185,
+      0.05665871311990883
+     ],
+     "se": 0.13453340139290423,
+     "informative_problems": 4,
+     "degenerate_fraction": 0.014399999999999968,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.034017222654221566,
+     "rho_a_ci": [
+      0.0,
+      0.07592123519720252
+     ],
+     "rho_b": 0.16933676284780672,
+     "rho_b_ci": [
+      0.0,
+      0.32243190427695967
+     ],
+     "rho_diff": -0.13531954019358516,
+     "rho_diff_ci": [
+      -0.2924038584078059,
+      0.041439788175012045
+     ],
+     "critic": "gpt-6.1-sol-think",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": 0.0607805799464769,
+     "d_exp50_minus_neutral_ci": [
+      0.0,
+      0.1604613681977698
+     ],
+     "c_exp50_minus_neutral": 0.03039028997323845,
+     "c_exp50_minus_neutral_ci": [
+      0.0,
+      0.0802306840988849
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.1524907650185191,
+     "ci": [
+      -0.3508853524997193,
+      0.07006396928840534
+     ],
+     "se": 0.11825025446808869,
+     "informative_problems": 9,
+     "degenerate_fraction": 9.999999999998899e-05,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": -0.09600062367347664,
+     "rho_a_ci": [
+      -0.2172522766595183,
+      0.06051869559569213
+     ],
+     "rho_b": 0.016519182666881398,
+     "rho_b_ci": [
+      -0.013497271763676894,
+      0.05310435332464474
+     ],
+     "rho_diff": -0.11251980634035805,
+     "rho_diff_ci": [
+      -0.2453344753937357,
+      0.054947176720177654
+     ],
+     "critic": "haiku-5.5-think",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.29238635796569623,
+     "d_exp50_minus_neutral_ci": [
+      -0.6109627269622441,
+      0.1942363788501492
+     ],
+     "c_exp50_minus_neutral": 0.33956471008063727,
+     "c_exp50_minus_neutral_ci": [
+      0.09807584090240429,
+      0.5039292053216969
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.5613946661452494,
+     "ci": [
+      -0.9942604044930351,
+      -0.06819497407296982
+     ],
+     "se": 0.27090422376877576,
+     "informative_problems": 10,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": -0.11971238124963074,
+     "rho_a_ci": [
+      -0.24577686809106497,
+      0.0746196095398257
+     ],
+     "rho_b": 0.2901232105890656,
+     "rho_b_ci": [
+      0.09101704163539712,
+      0.43161044799497733
+     ],
+     "rho_diff": -0.40983559183869633,
+     "rho_diff_ci": [
+      -0.6526901208797248,
+      -0.056755376895963834
+     ],
+     "critic": "opus-5.5-think",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": 0.04275800176547673,
+     "d_exp50_minus_neutral_ci": [
+      -0.11650547589367788,
+      0.2157260374808203
+     ],
+     "c_exp50_minus_neutral": 0.021379000882738364,
+     "c_exp50_minus_neutral_ci": [
+      -0.05825273794683905,
+      0.10786301874040993
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.10014875885029673,
+     "ci": [
+      -0.2870175436018849,
+      0.06315880665726939
+     ],
+     "se": 0.08711417848463528,
+     "informative_problems": 67,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.2555744425557444,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.2883108137915001,
+      0.06295476161121227
+     ],
+     "rho_a": 0.09379703894236019,
+     "rho_a_ci": [
+      0.05140079765419691,
+      0.1549437260759135
+     ],
+     "rho_b": 0.13974944745211984,
+     "rho_b_ci": [
+      0.09515398982347044,
+      0.21224329643564718
+     ],
+     "rho_diff": -0.04595240850975965,
+     "rho_diff_ci": [
+      -0.11193852170674394,
+      0.011036031653368722
+     ],
+     "critic": "qwen3.5:4b-nothink-bf16-t1",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.16288319692480946,
+     "d_exp50_minus_neutral_ci": [
+      -0.46019621894488655,
+      0.14231540242404173
+     ],
+     "c_exp50_minus_neutral": -0.28522632756816024,
+     "c_exp50_minus_neutral_ci": [
+      -0.44140124682601056,
+      -0.13971571212669054
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.09712728760871414,
+     "ci": [
+      -0.2770354894087943,
+      0.07654593254144369
+     ],
+     "se": 0.08725443018146027,
+     "informative_problems": 62,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.2765723427657234,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.2690001759088734,
+      0.08430810627482149
+     ],
+     "rho_a": 0.041107916116199794,
+     "rho_a_ci": [
+      -0.0035167674439262843,
+      0.09737149033333346
+     ],
+     "rho_b": 0.07999021139454222,
+     "rho_b_ci": [
+      0.045502420146951564,
+      0.1333235732855883
+     ],
+     "rho_diff": -0.03888229527834243,
+     "rho_diff_ci": [
+      -0.10760470153275681,
+      0.022879606997674797
+     ],
+     "critic": "qwen3.5:9b-nothink-bf16-t1",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.10609786470187332,
+     "d_exp50_minus_neutral_ci": [
+      -0.44191276705383087,
+      0.21934662907980754
+     ],
+     "c_exp50_minus_neutral": -0.18652187471364967,
+     "c_exp50_minus_neutral_ci": [
+      -0.35319781263899686,
+      -0.026456856298858078
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": 0.019212848504783275,
+     "ci": [
+      -0.1189412505169979,
+      0.1540067675411414
+     ],
+     "se": 0.06806575598679981,
+     "informative_problems": 49,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.7762223777622238,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.11529954665927364,
+      0.15598408126203517
+     ],
+     "rho_a": 0.06960809627054675,
+     "rho_a_ci": [
+      0.018113633599651572,
+      0.12977362432951517
+     ],
+     "rho_b": 0.06644785663183198,
+     "rho_b_ci": [
+      0.03874040508635651,
+      0.10687543798439254
+     ],
+     "rho_diff": 0.0031602396387147708,
+     "rho_diff_ci": [
+      -0.06295311746257287,
+      0.06541609462435204
+     ],
+     "critic": "qwen3.5:27b-nothink-bf16-t1",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.1711501273831022,
+     "d_exp50_minus_neutral_ci": [
+      -0.48310588870950366,
+      0.10776436151405135
+     ],
+     "c_exp50_minus_neutral": -0.1836058868418644,
+     "c_exp50_minus_neutral_ci": [
+      -0.3333050590778613,
+      -0.03109925937192129
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.17983324612708063,
+     "ci": [
+      -0.3896349962845159,
+      0.027156880789448414
+     ],
+     "se": 0.11300082374917633,
+     "informative_problems": 37,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.20127987201279873,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.4563118087301739,
+      0.08980582264781656
+     ],
+     "rho_a": 0.21535577121718621,
+     "rho_a_ci": [
+      0.10373229791231599,
+      0.33128463342373166
+     ],
+     "rho_b": 0.36131286655545825,
+     "rho_b_ci": [
+      0.23102424888383521,
+      0.5048067707587719
+     ],
+     "rho_diff": -0.14595709533827203,
+     "rho_diff_ci": [
+      -0.3150639827574461,
+      0.01514945276503108
+     ],
+     "critic": "qwen3.5:27b-think-bf16-t1",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.0872027138859468,
+     "d_exp50_minus_neutral_ci": [
+      -0.20545163146940132,
+      0.015807388221150735
+     ],
+     "c_exp50_minus_neutral": -0.048194950296551964,
+     "c_exp50_minus_neutral_ci": [
+      -0.10734980297034546,
+      0.003726496997774713
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    }
+   ],
+   "D": {
+    "D1": {
+     "estimate": -0.3265336619852154,
+     "ci": [
+      -0.5688573179479968,
+      -0.04481052802963861
+     ],
+     "se": 0.1436142204331937,
+     "informative_problems": 8,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.05266280704314585,
+     "rho_a_ci": [
+      0.011622724403809336,
+      0.11540628192981643
+     ],
+     "rho_b": 0.2901232105890656,
+     "rho_b_ci": [
+      0.09101704163539712,
+      0.43161044799497733
+     ],
+     "rho_diff": -0.23746040354591974,
+     "rho_diff_ci": [
+      -0.3752144250609558,
+      -0.037412156131007235
+     ],
+     "p_holm": 1.0,
+     "held": false
+    },
+    "D2": {
+     "estimate": -0.222311700804932,
+     "ci": [
+      -0.4572656964198048,
+      0.06005947537977827
+     ],
+     "se": 0.14345728443998224,
+     "informative_problems": 10,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.05266280704314585,
+     "rho_a_ci": [
+      0.011622724403809336,
+      0.11540628192981643
+     ],
+     "rho_b": 0.21433136478133435,
+     "rho_b_ci": [
+      0.014332481538868236,
+      0.34855053667524394
+     ],
+     "rho_diff": -0.1616685577381885,
+     "rho_diff_ci": [
+      -0.2990908836255637,
+      0.05029547780902536
+     ],
+     "p_holm": 1.0,
+     "held": false
+    },
+    "D3": {
+     "estimate": -0.04017568841808561,
+     "ci": [
+      -0.1390906773005547,
+      0.046813914200356396
+     ],
+     "se": 0.04661699707607833,
+     "informative_problems": 6,
+     "degenerate_fraction": 0.0026000000000000467,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.05266280704314585,
+     "rho_a_ci": [
+      0.011622724403809336,
+      0.11540628192981643
+     ],
+     "rho_b": 0.08187919816953972,
+     "rho_b_ci": [
+      0.026326281945294336,
+      0.16726189252842866
+     ],
+     "rho_diff": -0.02921639112639387,
+     "rho_diff_ci": [
+      -0.10700090661733459,
+      0.03449949707653282
+     ],
+     "p_holm": 1.0,
+     "held": false
+    },
+    "D4": {
+     "estimate": 0.02289550321659628,
+     "ci": [
+      -0.10294158651892038,
+      0.14379308515990885
+     ],
+     "se": 0.06191862449854871,
+     "informative_problems": 8,
+     "degenerate_fraction": 0.00019999999999997797,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.06931277629944267,
+     "rho_a_ci": [
+      0.0,
+      0.15776340116945842
+     ],
+     "rho_b": 0.05266280704314585,
+     "rho_b_ci": [
+      0.011622724403809336,
+      0.11540628192981643
+     ],
+     "rho_diff": 0.016649969256296825,
+     "rho_diff_ci": [
+      -0.07749130567646564,
+      0.11195319427618597
+     ],
+     "p_holm": 1.0,
+     "held": false
+    },
+    "D5": {
+     "rho_self": 0.05266280704314585,
+     "ci": [
+      0.011622724403809336,
+      0.11540628192981643
+     ],
+     "overshoot": false
+    },
+    "ceiling": false
+   },
+   "A_reading": {
+    "opus-5.5-think": "the reliability statement does the work (A3 held and negative, A1 held)",
+    "qwen3.5:27b-think-bf16-t1": "the reliability statement does the work (A3 held and negative, A1 held)",
+    "gpt-6.1-sol-think": "attribution alone discounts (A2 held, A3 no shift)"
+   }
+  },
+  "drop": {
+   "critics": {
+    "gemma4:12b-nothink-bf16-t1": {
+     "d_neutral": 2.910457100409143,
+     "errors_per_200": 13.620071684587813,
+     "arms": {
+      "br": {
+       "rho": 0.08500146974056216,
+       "ci": [
+        0.029053396332741305,
+        0.18239295082518056
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.10957068649716163,
+       "ci": [
+        0.05690809325140607,
+        0.19138114416526988
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.051571593253513924,
+       "ci": [
+        -0.04641690606477424,
+        0.17289950889020617
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "gemma4:12b-think-bf16-t1": {
+     "d_neutral": 4.381568458745161,
+     "errors_per_200": 1.8083182640144666,
+     "arms": {
+      "br": {
+       "rho": 0.1897358513246751,
+       "ci": [
+        -0.07306100784651895,
+        0.429317041002554
+       ],
+       "ref": "neutral",
+       "samples": 3
+      }
+     },
+     "ceiling": true
+    },
+    "gpt-6-luna-think": {
+     "d_neutral": 3.3287055901189566,
+     "errors_per_200": 9.67741935483871,
+     "arms": {
+      "br": {
+       "rho": 0.08795919650511567,
+       "ci": [
+        -0.027052947574544538,
+        0.24472705690868546
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.031963098784463274,
+       "ci": [
+        -0.056201156880105914,
+        0.11999595886146483
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.010896594421947212,
+       "ci": [
+        -0.0751030891414896,
+        0.10821789972861438
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "gpt-6.1-sol-think": {
+     "d_neutral": 3.5466897015466987,
+     "errors_per_200": 15.053763440860216,
+     "arms": {
+      "br": {
+       "rho": 0.20454231796702052,
+       "ci": [
+        0.0,
+        0.38594024650619746
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "bayes": {
+       "rho": 0.20247993566613326,
+       "ci": [
+        0.0,
+        0.3841214935458828
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "exp": {
+       "rho": 0.06164189689638352,
+       "ci": [
+        0.0,
+        0.14704615310557417
+       ],
+       "ref": "exp50",
+       "samples": 1
+      }
+     },
+     "ceiling": false,
+     "false_alarms": {
+      "neutral": 16.27906976744186,
+      "note_bare": 17.441860465116278,
+      "claim_bare": 100.0,
+      "claim_random": 16.27906976744186,
+      "claim_reviewer": 17.441860465116278
+     }
+    },
+    "haiku-5.5-think": {
+     "d_neutral": 4.107573326735336,
+     "errors_per_200": 5.376344086021505,
+     "arms": {
+      "br": {
+       "rho": 0.06494022847752508,
+       "ci": [
+        -0.04095317311614571,
+        0.19782410165962208
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.03970696470126404,
+       "ci": [
+        -0.24092443518463874,
+        0.2944519212047994
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": -0.14723702634647418,
+       "ci": [
+        -0.37135343068683785,
+        0.13946484717618907
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "opus-5.5-think": {
+     "d_neutral": 3.99267442054654,
+     "errors_per_200": 3.763440860215054,
+     "arms": {
+      "br": {
+       "rho": 0.48974570419150054,
+       "ci": [
+        0.17780742480945375,
+        0.8010135532731639
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "bayes": {
+       "rho": 0.3056511156209224,
+       "ci": [
+        0.10474563275611867,
+        0.6068521634521747
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "exp": {
+       "rho": -0.12743859218481585,
+       "ci": [
+        -0.3143186484046031,
+        0.18037874566092135
+       ],
+       "ref": "exp50",
+       "samples": 1
+      },
+      "paper_self": {
+       "rho": 0.1515495165420321,
+       "ci": [
+        0.0325891524159339,
+        0.3710848272794565
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "paper_other": {
+       "rho": 0.2901899562660375,
+       "ci": [
+        -0.04116172520478353,
+        0.5626962251386164
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "paper_methods": {
+       "rho": 0.20591083698467794,
+       "ci": [
+        0.05621722002195573,
+        0.510532070794504
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "paper_true": {
+       "rho": 0.11987368347865979,
+       "ci": [
+        -0.05006754975852642,
+        0.37902975129523975
+       ],
+       "ref": "neutral",
+       "samples": 1
+      }
+     },
+     "ceiling": true,
+     "false_alarms": {
+      "neutral": 2.9069767441860463,
+      "note_bare": 12.790697674418606,
+      "claim_bare": 87.20930232558139,
+      "claim_random": 1.1627906976744187,
+      "claim_reviewer": 10.465116279069768
+     }
+    },
+    "qwen3.5:4b-nothink-bf16-t1": {
+     "d_neutral": 1.6915474626628892,
+     "errors_per_200": 43.727598566308245,
+     "arms": {
+      "br": {
+       "rho": 0.16046259880807442,
+       "ci": [
+        0.11019559619951183,
+        0.2366081194675126
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.10245037711931954,
+       "ci": [
+        0.06055726797606041,
+        0.16877937266912166
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.10549839165898615,
+       "ci": [
+        0.05913593789602572,
+        0.1714813513498564
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "qwen3.5:4b-think-bf16-t1": {
+     "d_neutral": 4.018365435165721,
+     "errors_per_200": 3.5842293906810037,
+     "arms": {
+      "br": {
+       "rho": 0.3180820738468995,
+       "ci": [
+        0.20322567569691807,
+        0.4594176411121532
+       ],
+       "ref": "neutral",
+       "samples": 3
+      }
+     },
+     "ceiling": true
+    },
+    "qwen3.5:9b-nothink-bf16-t1": {
+     "d_neutral": 1.8865107656073374,
+     "errors_per_200": 36.26570915619389,
+     "arms": {
+      "br": {
+       "rho": 0.09481608887326379,
+       "ci": [
+        0.054431598245460636,
+        0.15478375569344288
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.09238098372995832,
+       "ci": [
+        0.05855025361041645,
+        0.13829875537939437
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.052212715454317715,
+       "ci": [
+        -0.00043806248257109167,
+        0.11682190150301143
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "qwen3.5:9b-think-bf16-t1": {
+     "d_neutral": 4.243764557340856,
+     "errors_per_200": 3.949730700179533,
+     "arms": {
+      "br": {
+       "rho": 0.3166485659977041,
+       "ci": [
+        0.15060081727698751,
+        0.4832203328076655
+       ],
+       "ref": "neutral",
+       "samples": 3
+      }
+     },
+     "ceiling": true
+    },
+    "qwen3.5:27b-nothink-bf16-t1": {
+     "d_neutral": 2.6422882445971485,
+     "errors_per_200": 17.921146953405017,
+     "arms": {
+      "br": {
+       "rho": 0.08650769175098845,
+       "ci": [
+        0.04775318120737727,
+        0.14251173604745107
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.15744466547905428,
+       "ci": [
+        0.10326785298903955,
+        0.22880656806210353
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.10296010498470884,
+       "ci": [
+        0.0382408514745793,
+        0.1796237851601226
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "qwen3.5:27b-think-bf16-t1": {
+     "d_neutral": 4.01623897790524,
+     "errors_per_200": 6.498194945848375,
+     "arms": {
+      "br": {
+       "rho": 0.6130622433017823,
+       "ci": [
+        0.43958967184335446,
+        0.8266194764587917
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.6231896873210794,
+       "ci": [
+        0.4595661330992802,
+        0.8157741155495796
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.4080992476340467,
+       "ci": [
+        0.24447331314235898,
+        0.5941444329413667
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false,
+     "false_alarms": {
+      "neutral": 6.976744186046512,
+      "note_bare": 44.26877470355731,
+      "claim_bare": 38.372093023255815,
+      "claim_random": 11.24031007751938,
+      "claim_reviewer": 42.125984251968504
+     }
+    }
+   },
+   "A": [
+    {
+     "estimate": -0.022512575567448512,
+     "p": 1.0,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      1
+     ],
+     "counts_by_class": [
+      [
+       100,
+       100,
+       100
+      ],
+      [
+       15,
+       14,
+       86
+      ]
+     ],
+     "discordant_by_class": [
+      0,
+      1
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "gpt-6.1-sol-think",
+     "test": "A1",
+     "a": "note_bare",
+     "b": "neutral",
+     "sign": -1,
+     "what": "a note's claim moves the threshold",
+     "ci": [
+      -0.07852371275933068,
+      0.0
+     ],
+     "p_holm": 1.0,
+     "held": false,
+     "no_shift": true
+    },
+    {
+     "estimate": -1.7248493408502992,
+     "p": 8.470329472543003e-22,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      1
+     ],
+     "counts_by_class": [
+      [
+       100,
+       100,
+       100
+      ],
+      [
+       86,
+       15,
+       86
+      ]
+     ],
+     "discordant_by_class": [
+      0,
+      71
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "gpt-6.1-sol-think",
+     "test": "A2",
+     "a": "claim_bare",
+     "b": "note_bare",
+     "sign": -1,
+     "what": "the system prompt's own claim moves more than a note's",
+     "ci": [
+      -1.9110321995117587,
+      -1.5874529248293858
+     ],
+     "p_holm": 7.623296525288703e-21,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": -0.022512575567448512,
+     "p": 1.0,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      1
+     ],
+     "counts_by_class": [
+      [
+       100,
+       100,
+       100
+      ],
+      [
+       15,
+       14,
+       86
+      ]
+     ],
+     "discordant_by_class": [
+      0,
+      1
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "gpt-6.1-sol-think",
+     "test": "A3",
+     "a": "note_bare",
+     "b": "claim_random",
+     "sign": 0,
+     "what": "the note against the note declared random",
+     "ci": [
+      -0.07852371275933068,
+      0.0
+     ],
+     "p_holm": 1.0,
+     "held": false,
+     "no_shift": true
+    },
+    {
+     "estimate": -0.5538789967506964,
+     "p": 6.774035123372112e-05,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      2
+     ],
+     "counts_by_class": [
+      [
+       100,
+       198,
+       100
+      ],
+      [
+       11,
+       5,
+       86
+      ]
+     ],
+     "discordant_by_class": [
+      1,
+      9
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "opus-5.5-think",
+     "test": "A1",
+     "a": "note_bare",
+     "b": "neutral",
+     "sign": -1,
+     "what": "a note's claim moves the threshold",
+     "ci": [
+      -0.8862750028876928,
+      -0.22663122714657746
+     ],
+     "p_holm": 0.00033870175616860555,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": -1.116126907097186,
+     "p": 1.0842021724855044e-19,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      1
+     ],
+     "counts_by_class": [
+      [
+       100,
+       100,
+       100
+      ],
+      [
+       75,
+       11,
+       86
+      ]
+     ],
+     "discordant_by_class": [
+      0,
+      64
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "opus-5.5-think",
+     "test": "A2",
+     "a": "claim_bare",
+     "b": "note_bare",
+     "sign": -1,
+     "what": "the system prompt's own claim moves more than a note's",
+     "ci": [
+      -1.368616031727357,
+      -0.9232946422731357
+     ],
+     "p_holm": 8.673617379884035e-19,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": -0.49912693221518734,
+     "p": 0.001953125,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      1
+     ],
+     "counts_by_class": [
+      [
+       100,
+       100,
+       100
+      ],
+      [
+       11,
+       1,
+       86
+      ]
+     ],
+     "discordant_by_class": [
+      0,
+      10
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "opus-5.5-think",
+     "test": "A3",
+     "a": "note_bare",
+     "b": "claim_random",
+     "sign": 0,
+     "what": "the note against the note declared random",
+     "ci": [
+      -0.8024529258834967,
+      -0.2822111898286618
+     ],
+     "p_holm": 0.0078125,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": -0.6495535331014027,
+     "p": 4.9999750001249995e-06,
+     "method": "paired_problem_vector_swap_monte_carlo",
+     "informative_problems": 50,
+     "draws": 200000,
+     "mc_p_interval": [
+      0.0,
+      1.8444227173720117e-05
+     ],
+     "assumption": "Whole condition-specific response vectors exchangeable within problem under the null",
+     "critic": "qwen3.5:27b-think-bf16-t1",
+     "test": "A1",
+     "a": "note_bare",
+     "b": "neutral",
+     "sign": -1,
+     "what": "a note's claim moves the threshold",
+     "ci": [
+      -0.8202959789222611,
+      -0.515541458965448
+     ],
+     "p_holm": 3.4999825000875e-05,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": 0.07258679334045914,
+     "p": 0.10573947130264348,
+     "method": "paired_problem_vector_swap_monte_carlo",
+     "informative_problems": 47,
+     "draws": 200000,
+     "mc_p_interval": [
+      0.10439057533205433,
+      0.10709086388894198
+     ],
+     "assumption": "Whole condition-specific response vectors exchangeable within problem under the null",
+     "critic": "qwen3.5:27b-think-bf16-t1",
+     "test": "A2",
+     "a": "claim_bare",
+     "b": "note_bare",
+     "sign": -1,
+     "what": "the system prompt's own claim moves more than a note's",
+     "ci": [
+      -0.014520441961788883,
+      0.16120266058814625
+     ],
+     "p_holm": 0.31721841390793043,
+     "held": false,
+     "no_shift": true
+    },
+    {
+     "estimate": -0.52419122288204,
+     "p": 4.9999750001249995e-06,
+     "method": "paired_problem_vector_swap_monte_carlo",
+     "informative_problems": 44,
+     "draws": 200000,
+     "mc_p_interval": [
+      0.0,
+      1.8444227173720117e-05
+     ],
+     "assumption": "Whole condition-specific response vectors exchangeable within problem under the null",
+     "critic": "qwen3.5:27b-think-bf16-t1",
+     "test": "A3",
+     "a": "note_bare",
+     "b": "claim_random",
+     "sign": 0,
+     "what": "the note against the note declared random",
+     "ci": [
+      -0.6789601095158606,
+      -0.4002458543549161
+     ],
+     "p_holm": 3.4999825000875e-05,
+     "held": true,
+     "no_shift": false
+    }
+   ],
+   "B": [
+    {
+     "estimate": 0.03709663811633679,
+     "ci": [
+      -0.10917463163759372,
+      0.17313644267973333
+     ],
+     "se": 0.0679489070354097,
+     "informative_problems": 16,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.10957068649716163,
+     "rho_a_ci": [
+      0.05690809325140607,
+      0.19138114416526988
+     ],
+     "rho_b": 0.08500146974056216,
+     "rho_b_ci": [
+      0.029053396332741305,
+      0.18239295082518056
+     ],
+     "rho_diff": 0.02456921675659947,
+     "rho_diff_ci": [
+      -0.07574388375020533,
+      0.12100303196112984
+     ],
+     "critic": "gemma4:12b-nothink-bf16-t1",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": -0.09085564860667084,
+      "stated_p_shift_logodds_br": 0.17329424291807977,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": -0.07392423199694176,
+     "ci": [
+      -0.27227250181105744,
+      0.08934110240450213
+     ],
+     "se": 0.08042427265189513,
+     "informative_problems": 11,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.031963098784463274,
+     "rho_a_ci": [
+      -0.056201156880105914,
+      0.11999595886146483
+     ],
+     "rho_b": 0.08795919650511567,
+     "rho_b_ci": [
+      -0.027052947574544538,
+      0.24472705690868546
+     ],
+     "rho_diff": -0.0559960977206524,
+     "rho_diff_ci": [
+      -0.23293826004645496,
+      0.0705610678385735
+     ],
+     "critic": "gpt-6-luna-think",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.03510277443294296,
+      "stated_p_shift_logodds_br": 0.059327483903123035,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": -0.0025553501776016674,
+     "ci": [
+      -0.07852371275933068,
+      0.06766551366976525
+     ],
+     "se": 0.035566013102212315,
+     "informative_problems": 2,
+     "degenerate_fraction": 0.12739999999999996,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.20247993566613326,
+     "rho_a_ci": [
+      0.0,
+      0.3841214935458828
+     ],
+     "rho_b": 0.20454231796702052,
+     "rho_b_ci": [
+      0.0,
+      0.38594024650619746
+     ],
+     "rho_diff": -0.002062382300887261,
+     "rho_diff_ci": [
+      -0.06337523397548295,
+      0.05787655445743839
+     ],
+     "critic": "gpt-6.1-sol-think",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.1617081632960049,
+      "stated_p_shift_logodds_br": 0.13549480778715361,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": -0.02699557277516773,
+     "ci": [
+      -0.32013806463962724,
+      0.2344648640785914
+     ],
+     "se": 0.1303242255653517,
+     "informative_problems": 8,
+     "degenerate_fraction": 9.999999999998899e-05,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.03970696470126404,
+     "rho_a_ci": [
+      -0.24092443518463874,
+      0.2944519212047994
+     ],
+     "rho_b": 0.06494022847752508,
+     "rho_b_ci": [
+      -0.04095317311614571,
+      0.19782410165962208
+     ],
+     "rho_diff": -0.02523326377626104,
+     "rho_diff_ci": [
+      -0.29321315865916703,
+      0.2311111044572467
+     ],
+     "critic": "haiku-5.5-think",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.04803987301872767,
+      "stated_p_shift_logodds_br": 0.16336052202273627,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": -0.20261965387425906,
+     "ci": [
+      -0.4395755429155127,
+      0.09339848545154272
+     ],
+     "se": 0.1441749644945807,
+     "informative_problems": 3,
+     "degenerate_fraction": 0.045399999999999996,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.3056511156209224,
+     "rho_a_ci": [
+      0.10474563275611867,
+      0.6068521634521747
+     ],
+     "rho_b": 0.48974570419150054,
+     "rho_b_ci": [
+      0.17780742480945375,
+      0.8010135532731639
+     ],
+     "rho_diff": -0.18409458857057814,
+     "rho_diff_ci": [
+      -0.3796175539238751,
+      0.09655197241934914
+     ],
+     "critic": "opus-5.5-think",
+     "family": "B",
+     "ceiling": true,
+     "B3": {
+      "stated_p_shift_logodds": 0.5007545255966686,
+      "stated_p_shift_logodds_br": 0.5006079012073307,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": -0.150709196276112,
+     "ci": [
+      -0.3265874424533674,
+      0.016550298129595437
+     ],
+     "se": 0.08062170055775579,
+     "informative_problems": 53,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.060993900609939006,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.31009716100034324,
+      0.004401294589221755
+     ],
+     "rho_a": 0.10245037711931954,
+     "rho_a_ci": [
+      0.06055726797606041,
+      0.16877937266912166
+     ],
+     "rho_b": 0.16046259880807442,
+     "rho_b_ci": [
+      0.11019559619951183,
+      0.2366081194675126
+     ],
+     "rho_diff": -0.05801222168875489,
+     "rho_diff_ci": [
+      -0.13463950210591769,
+      0.006326357832700577
+     ],
+     "critic": "qwen3.5:4b-nothink-bf16-t1",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.9296782142896363,
+      "stated_p_shift_logodds_br": 1.1239541260602488,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 0.996415770609319,
+       "bayes90": 0.9946236559139785
+      }
+     },
+     "p_holm": 0.48795120487951205,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": -0.0056723480902530765,
+     "ci": [
+      -0.13878383096443742,
+      0.10875849446557381
+     ],
+     "se": 0.06024876433856913,
+     "informative_problems": 38,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.9236076392360764,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.13130404381994526,
+      0.10673133900107909
+     ],
+     "rho_a": 0.09238098372995832,
+     "rho_a_ci": [
+      0.05855025361041645,
+      0.13829875537939437
+     ],
+     "rho_b": 0.09481608887326379,
+     "rho_b_ci": [
+      0.054431598245460636,
+      0.15478375569344288
+     ],
+     "rho_diff": -0.0024351051433054716,
+     "rho_diff_ci": [
+      -0.06092861102947292,
+      0.048409778768737345
+     ],
+     "critic": "qwen3.5:9b-nothink-bf16-t1",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.536297371092932,
+      "stated_p_shift_logodds_br": 0.5589691926383213,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": 0.11797688040725013,
+     "ci": [
+      0.0146009594752868,
+      0.22579916265863254
+     ],
+     "se": 0.05277340189711556,
+     "informative_problems": 30,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.027197280271972803,
+     "draws": 10000,
+     "studentized_ci": [
+      0.01997104951183963,
+      0.22800450086522447
+     ],
+     "rho_a": 0.15744466547905428,
+     "rho_a_ci": [
+      0.10326785298903955,
+      0.22880656806210353
+     ],
+     "rho_b": 0.08650769175098845,
+     "rho_b_ci": [
+      0.04775318120737727,
+      0.14251173604745107
+     ],
+     "rho_diff": 0.07093697372806583,
+     "rho_diff_ci": [
+      0.009462637687749664,
+      0.136431385205453
+     ],
+     "critic": "qwen3.5:27b-nothink-bf16-t1",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.5953731714419339,
+      "stated_p_shift_logodds_br": 0.31648106286304917,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 0.24477552244775522,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": 0.01108114782372982,
+     "ci": [
+      -0.12433372850268007,
+      0.14184100334240765
+     ],
+     "se": 0.06550543028034495,
+     "informative_problems": 30,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.8672132786721328,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.12283275706024865,
+      0.14405505335540458
+     ],
+     "rho_a": 0.6231896873210794,
+     "rho_a_ci": [
+      0.4595661330992802,
+      0.8157741155495796
+     ],
+     "rho_b": 0.6130622433017823,
+     "rho_b_ci": [
+      0.43958967184335446,
+      0.8266194764587917
+     ],
+     "rho_diff": 0.010127444019297105,
+     "rho_diff_ci": [
+      -0.1175000215495777,
+      0.12861474967317382
+     ],
+     "critic": "qwen3.5:27b-think-bf16-t1",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 1.0224148029072522,
+      "stated_p_shift_logodds_br": 1.099843557764757,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    }
+   ],
+   "C": [
+    {
+     "estimate": -0.04453170612866242,
+     "ci": [
+      -0.22106152731316045,
+      0.12979887579335578
+     ],
+     "se": 0.08149457586576984,
+     "informative_problems": 16,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.051571593253513924,
+     "rho_a_ci": [
+      -0.04641690606477424,
+      0.17289950889020617
+     ],
+     "rho_b": 0.08500146974056216,
+     "rho_b_ci": [
+      0.029053396332741305,
+      0.18239295082518056
+     ],
+     "rho_diff": -0.03342987648704824,
+     "rho_diff_ci": [
+      -0.15573426108913777,
+      0.0799902532650244
+     ],
+     "critic": "gemma4:12b-nothink-bf16-t1",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.20639730598433426,
+     "d_exp50_minus_neutral_ci": [
+      -0.5916074054280274,
+      0.11456755425696112
+     ],
+     "c_exp50_minus_neutral": -0.050702862537501336,
+     "c_exp50_minus_neutral_ci": [
+      -0.21188937795635399,
+      0.13899220039361623
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.10227341037970528,
+     "ci": [
+      -0.28969382055049103,
+      0.06696471930563581
+     ],
+     "se": 0.0856293622573106,
+     "informative_problems": 12,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.010896594421947212,
+     "rho_a_ci": [
+      -0.0751030891414896,
+      0.10821789972861438
+     ],
+     "rho_b": 0.08795919650511567,
+     "rho_b_ci": [
+      -0.027052947574544538,
+      0.24472705690868546
+     ],
+     "rho_diff": -0.07706260208316847,
+     "rho_diff_ci": [
+      -0.24164159929449888,
+      0.05363706792803957
+     ],
+     "critic": "gpt-6-luna-think",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": 0.12929340443288329,
+     "d_exp50_minus_neutral_ci": [
+      -0.33151406709253356,
+      0.6719057401431047
+     ],
+     "c_exp50_minus_neutral": -0.06464670221644164,
+     "c_exp50_minus_neutral_ci": [
+      -0.3305377089902225,
+      0.17150271308948314
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.17908106403305935,
+     "ci": [
+      -0.4009397189194295,
+      0.09238565430750656
+     ],
+     "se": 0.13910118574856647,
+     "informative_problems": 4,
+     "degenerate_fraction": 0.01770000000000005,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.06164189689638352,
+     "rho_a_ci": [
+      0.0,
+      0.14704615310557417
+     ],
+     "rho_b": 0.20454231796702052,
+     "rho_b_ci": [
+      0.0,
+      0.38594024650619746
+     ],
+     "rho_diff": -0.142900421070637,
+     "rho_diff_ci": [
+      -0.3240739899192449,
+      0.07812025931007296
+     ],
+     "critic": "gpt-6.1-sol-think",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": 0.09651746095788205,
+     "d_exp50_minus_neutral_ci": [
+      0.0,
+      0.25620618879294943
+     ],
+     "c_exp50_minus_neutral": 0.048258730478941025,
+     "c_exp50_minus_neutral_ci": [
+      0.0,
+      0.1281030943964746
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.22324052498501956,
+     "ci": [
+      -0.5629982658317589,
+      0.15694435357640973
+     ],
+     "se": 0.17645614158282233,
+     "informative_problems": 8,
+     "degenerate_fraction": 9.999999999998899e-05,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": -0.14723702634647418,
+     "rho_a_ci": [
+      -0.37135343068683785,
+      0.13946484717618907
+     ],
+     "rho_b": 0.06494022847752508,
+     "rho_b_ci": [
+      -0.04095317311614571,
+      0.19782410165962208
+     ],
+     "rho_diff": -0.21217725482399924,
+     "rho_diff_ci": [
+      -0.5308783119555532,
+      0.1586820776760168
+     ],
+     "critic": "haiku-5.5-think",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": 0.10031769117373646,
+     "d_exp50_minus_neutral_ci": [
+      -0.3152446114379635,
+      0.6858235593704052
+     ],
+     "c_exp50_minus_neutral": 0.5359167346503539,
+     "c_exp50_minus_neutral_ci": [
+      0.2741756810960336,
+      0.7768123459261118
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.6818158856724019,
+     "ci": [
+      -1.2131216708360673,
+      -0.07584241320232832
+     ],
+     "se": 0.2999107037602124,
+     "informative_problems": 7,
+     "degenerate_fraction": 0.0004999999999999449,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": -0.12743859218481585,
+     "rho_a_ci": [
+      -0.3143186484046031,
+      0.18037874566092135
+     ],
+     "rho_b": 0.48974570419150054,
+     "rho_b_ci": [
+      0.17780742480945375,
+      0.8010135532731639
+     ],
+     "rho_diff": -0.6171842963763163,
+     "rho_diff_ci": [
+      -1.0537471462401775,
+      -0.07917645456087555
+     ],
+     "critic": "opus-5.5-think",
+     "family": "C",
+     "ceiling": true,
+     "d_exp50_minus_neutral": -0.07062100626718237,
+     "d_exp50_minus_neutral_ci": [
+      -0.5256010327933245,
+      0.4164953566470243
+     ],
+     "c_exp50_minus_neutral": -0.035310503133591076,
+     "c_exp50_minus_neutral_ci": [
+      -0.26280051639666213,
+      0.20824767832351182
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.09900802457550817,
+     "ci": [
+      -0.29237041586557283,
+      0.07111021034947178
+     ],
+     "se": 0.0902932984252502,
+     "informative_problems": 63,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.28657134286571345,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.2944774684393017,
+      0.07007374570873448
+     ],
+     "rho_a": 0.10549839165898615,
+     "rho_a_ci": [
+      0.05913593789602572,
+      0.1714813513498564
+     ],
+     "rho_b": 0.16046259880807442,
+     "rho_b_ci": [
+      0.11019559619951183,
+      0.2366081194675126
+     ],
+     "rho_diff": -0.05496420714908827,
+     "rho_diff_ci": [
+      -0.12846986423544543,
+      0.009990671825073504
+     ],
+     "critic": "qwen3.5:4b-nothink-bf16-t1",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.23300084577883262,
+     "d_exp50_minus_neutral_ci": [
+      -0.5388515166012857,
+      0.07690486840724696
+     ],
+     "c_exp50_minus_neutral": -0.3202851519951718,
+     "c_exp50_minus_neutral_ci": [
+      -0.4783875200154396,
+      -0.17264177155216764
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.086260841116505,
+     "ci": [
+      -0.27528441322899505,
+      0.09764567895135609
+     ],
+     "se": 0.09066805822524236,
+     "informative_problems": 60,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.36136386361363865,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.2691877279481156,
+      0.10143135049048183
+     ],
+     "rho_a": 0.052212715454317715,
+     "rho_a_ci": [
+      -0.00043806248257109167,
+      0.11682190150301143
+     ],
+     "rho_b": 0.09481608887326379,
+     "rho_b_ci": [
+      0.054431598245460636,
+      0.15478375569344288
+     ],
+     "rho_diff": -0.04260337341894607,
+     "rho_diff_ci": [
+      -0.12218429682091053,
+      0.03196673204092388
+     ],
+     "critic": "qwen3.5:9b-nothink-bf16-t1",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.18191358991521134,
+     "d_exp50_minus_neutral_ci": [
+      -0.5439866939978558,
+      0.16880317872352957
+     ],
+     "c_exp50_minus_neutral": -0.22442973732031868,
+     "c_exp50_minus_neutral_ci": [
+      -0.4016698444862484,
+      -0.04704706535394476
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": 0.05953702807968453,
+     "ci": [
+      -0.09382249587649154,
+      0.21213445113467952
+     ],
+     "se": 0.07671859822489684,
+     "informative_problems": 44,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.45615438456154384,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.09463824656252728,
+      0.21253635763422507
+     ],
+     "rho_a": 0.10296010498470884,
+     "rho_a_ci": [
+      0.0382408514745793,
+      0.1796237851601226
+     ],
+     "rho_b": 0.08650769175098845,
+     "rho_b_ci": [
+      0.04775318120737727,
+      0.14251173604745107
+     ],
+     "rho_diff": 0.01645241323372039,
+     "rho_diff_ci": [
+      -0.06893745082717984,
+      0.10017139644693594
+     ],
+     "critic": "qwen3.5:27b-nothink-bf16-t1",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.41794763841037863,
+     "d_exp50_minus_neutral_ci": [
+      -0.8013461929865681,
+      -0.08831891008467503
+     ],
+     "c_exp50_minus_neutral": -0.3070046423555026,
+     "c_exp50_minus_neutral_ci": [
+      -0.48632583231052484,
+      -0.13268024073340542
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.20524193134717683,
+     "ci": [
+      -0.45101306689582654,
+      0.03436470003976205
+     ],
+     "se": 0.12869235030634946,
+     "informative_problems": 35,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.17628237176282371,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.5005988588436936,
+      0.09333089708498538
+     ],
+     "rho_a": 0.4080992476340467,
+     "rho_a_ci": [
+      0.24447331314235898,
+      0.5941444329413667
+     ],
+     "rho_b": 0.6130622433017823,
+     "rho_b_ci": [
+      0.43958967184335446,
+      0.8266194764587917
+     ],
+     "rho_diff": -0.20496299566773557,
+     "rho_diff_ci": [
+      -0.4460128188606684,
+      0.02075696068974196
+     ],
+     "critic": "qwen3.5:27b-think-bf16-t1",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.16410354096424395,
+     "d_exp50_minus_neutral_ci": [
+      -0.42037650294370704,
+      0.05458571150145609
+     ],
+     "c_exp50_minus_neutral": -0.08664536383570065,
+     "c_exp50_minus_neutral_ci": [
+      -0.2152844790752679,
+      0.022242049241313427
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    }
+   ],
+   "D": {
+    "D1": {
+     "estimate": -0.37222818451753714,
+     "ci": [
+      -0.7147233982452093,
+      -0.00408087285527392
+     ],
+     "se": 0.1744389969475895,
+     "informative_problems": 4,
+     "degenerate_fraction": 0.0028000000000000247,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.1515495165420321,
+     "rho_a_ci": [
+      0.0325891524159339,
+      0.3710848272794565
+     ],
+     "rho_b": 0.48974570419150054,
+     "rho_b_ci": [
+      0.17780742480945375,
+      0.8010135532731639
+     ],
+     "rho_diff": -0.33819618764946846,
+     "rho_diff_ci": [
+      -0.6336219094521691,
+      -0.0038578566695206228
+     ],
+     "p_holm": 1.0,
+     "held": false
+    },
+    "D2": {
+     "estimate": -0.1525915461609748,
+     "ci": [
+      -0.474325283961776,
+      0.24966741238035273
+     ],
+     "se": 0.17553250146926674,
+     "informative_problems": 8,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.1515495165420321,
+     "rho_a_ci": [
+      0.0325891524159339,
+      0.3710848272794565
+     ],
+     "rho_b": 0.2901899562660375,
+     "rho_b_ci": [
+      -0.04116172520478353,
+      0.5626962251386164
+     ],
+     "rho_diff": -0.1386404397240054,
+     "rho_diff_ci": [
+      -0.41914573715602393,
+      0.25624137763081534
+     ],
+     "p_holm": 1.0,
+     "held": false
+    },
+    "D3": {
+     "estimate": -0.059831589932985874,
+     "ci": [
+      -0.33640816785686967,
+      0.19484072218851556
+     ],
+     "se": 0.11349162898232919,
+     "informative_problems": 5,
+     "degenerate_fraction": 0.005199999999999982,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.1515495165420321,
+     "rho_a_ci": [
+      0.0325891524159339,
+      0.3710848272794565
+     ],
+     "rho_b": 0.20591083698467794,
+     "rho_b_ci": [
+      0.05621722002195573,
+      0.510532070794504
+     ],
+     "rho_diff": -0.05436132044264583,
+     "rho_diff_ci": [
+      -0.3406708584413314,
+      0.17858216391546086
+     ],
+     "p_holm": 1.0,
+     "held": false
+    },
+    "D4": {
+     "estimate": -0.034863307940302235,
+     "ci": [
+      -0.3640816208423866,
+      0.24731009134207926
+     ],
+     "se": 0.1364960881564781,
+     "informative_problems": 6,
+     "degenerate_fraction": 0.0024999999999999467,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.11987368347865979,
+     "rho_a_ci": [
+      -0.05006754975852642,
+      0.37902975129523975
+     ],
+     "rho_b": 0.1515495165420321,
+     "rho_b_ci": [
+      0.0325891524159339,
+      0.3710848272794565
+     ],
+     "rho_diff": -0.03167583306337232,
+     "rho_diff_ci": [
+      -0.3470420758614047,
+      0.2504682957576722
+     ],
+     "p_holm": 1.0,
+     "held": false
+    },
+    "D5": {
+     "rho_self": 0.1515495165420321,
+     "ci": [
+      0.0325891524159339,
+      0.3710848272794565
+     ],
+     "overshoot": false
+    },
+    "ceiling": true
+   },
+   "A_reading": {
+    "opus-5.5-think": "the reliability statement does the work (A3 held and negative, A1 held)",
+    "qwen3.5:27b-think-bf16-t1": "the reliability statement does the work (A3 held and negative, A1 held)",
+    "gpt-6.1-sol-think": "attribution alone discounts (A2 held, A3 no shift)"
+   }
+  },
+  "flip": {
+   "critics": {
+    "gemma4:12b-nothink-bf16-t1": {
+     "d_neutral": 2.6460403137149284,
+     "errors_per_200": 18.0,
+     "arms": {
+      "br": {
+       "rho": 0.07284825718196798,
+       "ci": [
+        0.026822273304641254,
+        0.14329407645930864
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.09714324465862721,
+       "ci": [
+        0.05232485630142048,
+        0.16589211799168896
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.036858389022263016,
+       "ci": [
+        -0.039610399175787646,
+        0.13332341743810092
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "gemma4:12b-think-bf16-t1": {
+     "d_neutral": 3.8734115307994434,
+     "errors_per_200": 5.714285714285714,
+     "arms": {
+      "br": {
+       "rho": 0.12141933713892025,
+       "ci": [
+        -0.033262352622501365,
+        0.28935012215502126
+       ],
+       "ref": "neutral",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "gpt-6-luna-think": {
+     "d_neutral": 3.1984033839862427,
+     "errors_per_200": 10.333333333333334,
+     "arms": {
+      "br": {
+       "rho": 0.044437803433194596,
+       "ci": [
+        -0.06102980163765629,
+        0.17548866465086296
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.03943338654933047,
+       "ci": [
+        -0.04173130700790946,
+        0.1489327640765665
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.02548201279150064,
+       "ci": [
+        -0.05786814162302366,
+        0.13434370808424337
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "gpt-6.1-sol-think": {
+     "d_neutral": 3.1923363923156387,
+     "errors_per_200": 15.0,
+     "arms": {
+      "br": {
+       "rho": 0.11167559977133772,
+       "ci": [
+        0.0,
+        0.34874552766099104
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "bayes": {
+       "rho": 0.10981927214529283,
+       "ci": [
+        0.0,
+        0.3403856224916607
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "exp": {
+       "rho": 0.055646352537193966,
+       "ci": [
+        0.0,
+        0.13550738204329266
+       ],
+       "ref": "exp50",
+       "samples": 1
+      }
+     },
+     "ceiling": false,
+     "false_alarms": {
+      "neutral": 16.27906976744186,
+      "note_bare": 17.441860465116278,
+      "claim_bare": 100.0,
+      "claim_random": 16.27906976744186,
+      "claim_reviewer": 17.441860465116278
+     }
+    },
+    "haiku-5.5-think": {
+     "d_neutral": 3.6741663437299414,
+     "errors_per_200": 6.333333333333333,
+     "arms": {
+      "br": {
+       "rho": 0.05808811744716765,
+       "ci": [
+        -0.10080068627026581,
+        0.1932722990522233
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": -0.07858952087198655,
+       "ci": [
+        -0.27435930286141264,
+        0.16737223531626616
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.01970457807341839,
+       "ci": [
+        -0.24562116367717243,
+        0.2675194336222929
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "opus-5.5-think": {
+     "d_neutral": 3.760341594467913,
+     "errors_per_200": 5.0,
+     "arms": {
+      "br": {
+       "rho": 0.5617989697465976,
+       "ci": [
+        0.294975147809565,
+        1.0097586931885432
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "bayes": {
+       "rho": 0.3983446488643486,
+       "ci": [
+        0.16010124926257352,
+        0.8106343356559629
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "exp": {
+       "rho": 0.04777449271109895,
+       "ci": [
+        -0.2064347905558203,
+        0.3223521412758267
+       ],
+       "ref": "exp50",
+       "samples": 1
+      },
+      "paper_self": {
+       "rho": 0.14273088427693492,
+       "ci": [
+        0.03011598955792155,
+        0.3583125865180358
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "paper_other": {
+       "rho": 0.298465050697014,
+       "ci": [
+        0.04629108518747242,
+        0.6591887254363007
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "paper_methods": {
+       "rho": 0.28199297740714724,
+       "ci": [
+        0.08407805857880084,
+        0.6657146632295377
+       ],
+       "ref": "neutral",
+       "samples": 1
+      },
+      "paper_true": {
+       "rho": 0.26284862816055404,
+       "ci": [
+        0.028139803982239715,
+        0.6279598109377781
+       ],
+       "ref": "neutral",
+       "samples": 1
+      }
+     },
+     "ceiling": false,
+     "false_alarms": {
+      "neutral": 2.9069767441860463,
+      "note_bare": 12.790697674418606,
+      "claim_bare": 87.20930232558139,
+      "claim_random": 1.1627906976744187,
+      "claim_reviewer": 10.465116279069768
+     }
+    },
+    "qwen3.5:4b-nothink-bf16-t1": {
+     "d_neutral": 1.6428620119290014,
+     "errors_per_200": 42.666666666666664,
+     "arms": {
+      "br": {
+       "rho": 0.15278087840983498,
+       "ci": [
+        0.10732881881207135,
+        0.22110866474285704
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.1175078687863365,
+       "ci": [
+        0.06992201761952534,
+        0.19052454008094993
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.0956966634989529,
+       "ci": [
+        0.05295127192915991,
+        0.1525877295276121
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "qwen3.5:4b-think-bf16-t1": {
+     "d_neutral": 3.7187783458080697,
+     "errors_per_200": 5.333333333333333,
+     "arms": {
+      "br": {
+       "rho": 0.4745018256400369,
+       "ci": [
+        0.22255293936060616,
+        0.6849725863802631
+       ],
+       "ref": "neutral",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "qwen3.5:9b-nothink-bf16-t1": {
+     "d_neutral": 1.9369634868912748,
+     "errors_per_200": 34.0567612687813,
+     "arms": {
+      "br": {
+       "rho": 0.10251404179969181,
+       "ci": [
+        0.06067352264519602,
+        0.16605140299317522
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.10294165563026675,
+       "ci": [
+        0.06685358760141069,
+        0.1501642995963637
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.05424323801489596,
+       "ci": [
+        0.003980503810624052,
+        0.11380131506697562
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "qwen3.5:9b-think-bf16-t1": {
+     "d_neutral": 3.74275618325692,
+     "errors_per_200": 5.342237061769616,
+     "arms": {
+      "br": {
+       "rho": 0.37337841788941756,
+       "ci": [
+        0.22830297531135618,
+        0.5467111536341327
+       ],
+       "ref": "neutral",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "qwen3.5:27b-nothink-bf16-t1": {
+     "d_neutral": 2.6460403137149284,
+     "errors_per_200": 18.0,
+     "arms": {
+      "br": {
+       "rho": 0.09782022044709181,
+       "ci": [
+        0.05960530846061333,
+        0.1530429934839841
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.15614284538921905,
+       "ci": [
+        0.10252426012391316,
+        0.22531614808383166
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.082883380355653,
+       "ci": [
+        0.02198332185111414,
+        0.15582247228679205
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false
+    },
+    "qwen3.5:27b-think-bf16-t1": {
+     "d_neutral": 3.758121743916808,
+     "errors_per_200": 6.7114093959731544,
+     "arms": {
+      "br": {
+       "rho": 0.5493461893456522,
+       "ci": [
+        0.4071562554545618,
+        0.7715575366021931
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "bayes": {
+       "rho": 0.6338571942341678,
+       "ci": [
+        0.48738336253503256,
+        0.8260513902608171
+       ],
+       "ref": "neutral",
+       "samples": 3
+      },
+      "exp": {
+       "rho": 0.5191852517758409,
+       "ci": [
+        0.316108305184004,
+        0.6998392777032098
+       ],
+       "ref": "exp50",
+       "samples": 3
+      }
+     },
+     "ceiling": false,
+     "false_alarms": {
+      "neutral": 6.976744186046512,
+      "note_bare": 44.26877470355731,
+      "claim_bare": 38.372093023255815,
+      "claim_random": 11.24031007751938,
+      "claim_reviewer": 42.125984251968504
+     }
+    }
+   },
+   "A": [
+    {
+     "estimate": -0.022512575567448512,
+     "p": 1.0,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      1
+     ],
+     "counts_by_class": [
+      [
+       113,
+       113,
+       114
+      ],
+      [
+       15,
+       14,
+       86
+      ]
+     ],
+     "discordant_by_class": [
+      0,
+      1
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "gpt-6.1-sol-think",
+     "test": "A1",
+     "a": "note_bare",
+     "b": "neutral",
+     "sign": -1,
+     "what": "a note's claim moves the threshold",
+     "ci": [
+      -0.07698118527786846,
+      0.0
+     ],
+     "p_holm": 1.0,
+     "held": false,
+     "no_shift": true
+    },
+    {
+     "estimate": -1.924288612446789,
+     "p": 4.235164736271502e-22,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      1
+     ],
+     "counts_by_class": [
+      [
+       114,
+       113,
+       114
+      ],
+      [
+       86,
+       15,
+       86
+      ]
+     ],
+     "discordant_by_class": [
+      1,
+      71
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "gpt-6.1-sol-think",
+     "test": "A2",
+     "a": "claim_bare",
+     "b": "note_bare",
+     "sign": -1,
+     "what": "the system prompt's own claim moves more than a note's",
+     "ci": [
+      -2.1814139011430864,
+      -1.623862816335601
+     ],
+     "p_holm": 3.8116482626443515e-21,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": -0.022512575567448512,
+     "p": 1.0,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      1
+     ],
+     "counts_by_class": [
+      [
+       113,
+       113,
+       114
+      ],
+      [
+       15,
+       14,
+       86
+      ]
+     ],
+     "discordant_by_class": [
+      0,
+      1
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "gpt-6.1-sol-think",
+     "test": "A3",
+     "a": "note_bare",
+     "b": "claim_random",
+     "sign": 0,
+     "what": "the note against the note declared random",
+     "ci": [
+      -0.07698118527786846,
+      0.0
+     ],
+     "p_holm": 1.0,
+     "held": false,
+     "no_shift": true
+    },
+    {
+     "estimate": -0.4928687551744798,
+     "p": 4.5160234155814084e-05,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      2
+     ],
+     "counts_by_class": [
+      [
+       113,
+       223,
+       114
+      ],
+      [
+       11,
+       5,
+       86
+      ]
+     ],
+     "discordant_by_class": [
+      2,
+      9
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "opus-5.5-think",
+     "test": "A1",
+     "a": "note_bare",
+     "b": "neutral",
+     "sign": -1,
+     "what": "a note's claim moves the threshold",
+     "ci": [
+      -0.8738062846658158,
+      -0.2450416674258835
+     ],
+     "p_holm": 0.0002258011707790704,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": -1.3155661786936759,
+     "p": 5.421010862427522e-20,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      1
+     ],
+     "counts_by_class": [
+      [
+       114,
+       113,
+       114
+      ],
+      [
+       75,
+       11,
+       86
+      ]
+     ],
+     "discordant_by_class": [
+      1,
+      64
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "opus-5.5-think",
+     "test": "A2",
+     "a": "claim_bare",
+     "b": "note_bare",
+     "sign": -1,
+     "what": "the system prompt's own claim moves more than a note's",
+     "ci": [
+      -1.632112736443242,
+      -0.9684475803754525
+     ],
+     "p_holm": 4.336808689942018e-19,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": -0.6743634761527425,
+     "p": 0.00048828125,
+     "method": "exact_conditional_within_item",
+     "repeats": [
+      1,
+      1
+     ],
+     "counts_by_class": [
+      [
+       113,
+       111,
+       114
+      ],
+      [
+       11,
+       1,
+       86
+      ]
+     ],
+     "discordant_by_class": [
+      2,
+      10
+     ],
+     "assumption": "Within-item replies exchangeable across conditions under the null; fixed observed repeat counts",
+     "critic": "opus-5.5-think",
+     "test": "A3",
+     "a": "note_bare",
+     "b": "claim_random",
+     "sign": 0,
+     "what": "the note against the note declared random",
+     "ci": [
+      -1.1048065102953841,
+      -0.3640816208423866
+     ],
+     "p_holm": 0.001953125,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": -0.711576469494161,
+     "p": 4.9999750001249995e-06,
+     "method": "paired_problem_vector_swap_monte_carlo",
+     "informative_problems": 51,
+     "draws": 200000,
+     "mc_p_interval": [
+      0.0,
+      1.8444227173720117e-05
+     ],
+     "assumption": "Whole condition-specific response vectors exchangeable within problem under the null",
+     "critic": "qwen3.5:27b-think-bf16-t1",
+     "test": "A1",
+     "a": "note_bare",
+     "b": "neutral",
+     "sign": -1,
+     "what": "a note's claim moves the threshold",
+     "ci": [
+      -0.9233259814781336,
+      -0.5430354376375188
+     ],
+     "p_holm": 3.4999825000875e-05,
+     "held": true,
+     "no_shift": false
+    },
+    {
+     "estimate": 0.07277901880894166,
+     "p": 0.10573947130264348,
+     "method": "paired_problem_vector_swap_monte_carlo",
+     "informative_problems": 47,
+     "draws": 200000,
+     "mc_p_interval": [
+      0.10439057533205433,
+      0.10709086388894198
+     ],
+     "assumption": "Whole condition-specific response vectors exchangeable within problem under the null",
+     "critic": "qwen3.5:27b-think-bf16-t1",
+     "test": "A2",
+     "a": "claim_bare",
+     "b": "note_bare",
+     "sign": -1,
+     "what": "the system prompt's own claim moves more than a note's",
+     "ci": [
+      -0.014418030648365146,
+      0.16117289803866516
+     ],
+     "p_holm": 0.31721841390793043,
+     "held": false,
+     "no_shift": true
+    },
+    {
+     "estimate": -0.52419122288204,
+     "p": 4.9999750001249995e-06,
+     "method": "paired_problem_vector_swap_monte_carlo",
+     "informative_problems": 44,
+     "draws": 200000,
+     "mc_p_interval": [
+      0.0,
+      1.8444227173720117e-05
+     ],
+     "assumption": "Whole condition-specific response vectors exchangeable within problem under the null",
+     "critic": "qwen3.5:27b-think-bf16-t1",
+     "test": "A3",
+     "a": "note_bare",
+     "b": "claim_random",
+     "sign": 0,
+     "what": "the note against the note declared random",
+     "ci": [
+      -0.6764348846694566,
+      -0.40301970649052077
+     ],
+     "p_holm": 3.4999825000875e-05,
+     "held": true,
+     "no_shift": false
+    }
+   ],
+   "B": [
+    {
+     "estimate": 0.04034824663336012,
+     "ci": [
+      -0.0838055427461352,
+      0.16189928333347295
+     ],
+     "se": 0.060499369995000135,
+     "informative_problems": 18,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.09714324465862721,
+     "rho_a_ci": [
+      0.05232485630142048,
+      0.16589211799168896
+     ],
+     "rho_b": 0.07284825718196798,
+     "rho_b_ci": [
+      0.026822273304641254,
+      0.14329407645930864
+     ],
+     "rho_diff": 0.02429498747665923,
+     "rho_diff_ci": [
+      -0.051688160566663754,
+      0.10289539196668526
+     ],
+     "critic": "gemma4:12b-nothink-bf16-t1",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": -0.08591626851466794,
+      "stated_p_shift_logodds_br": 0.19211797487283283,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": -0.006875822998133385,
+     "ci": [
+      -0.17629343173707063,
+      0.17779769000555384
+     ],
+     "se": 0.07687351325541328,
+     "informative_problems": 13,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.03943338654933047,
+     "rho_a_ci": [
+      -0.04173130700790946,
+      0.1489327640765665
+     ],
+     "rho_b": 0.044437803433194596,
+     "rho_b_ci": [
+      -0.06102980163765629,
+      0.17548866465086296
+     ],
+     "rho_diff": -0.005004416883864125,
+     "rho_diff_ci": [
+      -0.135330822961794,
+      0.14408895205877204
+     ],
+     "critic": "gpt-6-luna-think",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.050713781174699046,
+      "stated_p_shift_logodds_br": 0.043373991622909114,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": -0.0025553501776016674,
+     "ci": [
+      -0.07852371275933068,
+      0.06766551366976525
+     ],
+     "se": 0.035566013102212315,
+     "informative_problems": 2,
+     "degenerate_fraction": 0.128,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.10981927214529283,
+     "rho_a_ci": [
+      0.0,
+      0.3403856224916607
+     ],
+     "rho_b": 0.11167559977133772,
+     "rho_b_ci": [
+      0.0,
+      0.34874552766099104
+     ],
+     "rho_diff": -0.0018563276260448874,
+     "rho_diff_ci": [
+      -0.058664174370902204,
+      0.053440314866081626
+     ],
+     "critic": "gpt-6.1-sol-think",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.16099041972433725,
+      "stated_p_shift_logodds_br": 0.13171159616739625,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": -0.1634718942976564,
+     "ci": [
+      -0.4102643641375246,
+      0.1613739402374824
+     ],
+     "se": 0.12688418276536906,
+     "informative_problems": 12,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": -0.07858952087198655,
+     "rho_a_ci": [
+      -0.27435930286141264,
+      0.16737223531626616
+     ],
+     "rho_b": 0.05808811744716765,
+     "rho_b_ci": [
+      -0.10080068627026581,
+      0.1932722990522233
+     ],
+     "rho_diff": -0.1366776383191542,
+     "rho_diff_ci": [
+      -0.3366234356367402,
+      0.15396911842202834
+     ],
+     "critic": "haiku-5.5-think",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.04325267931165572,
+      "stated_p_shift_logodds_br": 0.1760835907931636,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": -0.19101767331065955,
+     "ci": [
+      -0.4901784395518313,
+      0.03853784382174663
+     ],
+     "se": 0.12364826725355138,
+     "informative_problems": 5,
+     "degenerate_fraction": 0.007099999999999995,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.3983446488643486,
+     "rho_a_ci": [
+      0.16010124926257352,
+      0.8106343356559629
+     ],
+     "rho_b": 0.5617989697465976,
+     "rho_b_ci": [
+      0.294975147809565,
+      1.0097586931885432
+     ],
+     "rho_diff": -0.16345432088224898,
+     "rho_diff_ci": [
+      -0.437131335538685,
+      0.035133982706178075
+     ],
+     "critic": "opus-5.5-think",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.5312464330546974,
+      "stated_p_shift_logodds_br": 0.5472101543397445,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": -0.09435086221315281,
+     "ci": [
+      -0.27395893906260743,
+      0.09749659390803482
+     ],
+     "se": 0.08860609215340853,
+     "informative_problems": 56,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.30126987301269875,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.26243509752475125,
+      0.09725219759882983
+     ],
+     "rho_a": 0.1175078687863365,
+     "rho_a_ci": [
+      0.06992201761952534,
+      0.19052454008094993
+     ],
+     "rho_b": 0.15278087840983498,
+     "rho_b_ci": [
+      0.10732881881207135,
+      0.22110866474285704
+     ],
+     "rho_diff": -0.03527300962349848,
+     "rho_diff_ci": [
+      -0.10743166382529583,
+      0.03654798524889876
+     ],
+     "critic": "qwen3.5:4b-nothink-bf16-t1",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.932070719724444,
+      "stated_p_shift_logodds_br": 1.0999116552743884,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 0.9966666666666667,
+       "bayes90": 0.995
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": 0.0009701407636315551,
+     "ci": [
+      -0.12775067407572432,
+      0.1140400353952074
+     ],
+     "se": 0.05822408101304045,
+     "informative_problems": 42,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.9858014198580142,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.11902716932848349,
+      0.11219148234030665
+     ],
+     "rho_a": 0.10294165563026675,
+     "rho_a_ci": [
+      0.06685358760141069,
+      0.1501642995963637
+     ],
+     "rho_b": 0.10251404179969181,
+     "rho_b_ci": [
+      0.06067352264519602,
+      0.16605140299317522
+     ],
+     "rho_diff": 0.0004276138305749355,
+     "rho_diff_ci": [
+      -0.05757573999793505,
+      0.05214308626730985
+     ],
+     "critic": "qwen3.5:9b-nothink-bf16-t1",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.5487249583845899,
+      "stated_p_shift_logodds_br": 0.5757889426308627,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": 0.09686013041705294,
+     "ci": [
+      -0.0013805897507770026,
+      0.19759492168916612
+     ],
+     "se": 0.05064089022624758,
+     "informative_problems": 34,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.054894510548945105,
+     "draws": 10000,
+     "studentized_ci": [
+      0.0011651632009307272,
+      0.19938500926148012
+     ],
+     "rho_a": 0.15614284538921905,
+     "rho_a_ci": [
+      0.10252426012391316,
+      0.22531614808383166
+     ],
+     "rho_b": 0.09782022044709181,
+     "rho_b_ci": [
+      0.05960530846061333,
+      0.1530429934839841
+     ],
+     "rho_diff": 0.05832262494212724,
+     "rho_diff_ci": [
+      -0.0007726971959138993,
+      0.12033496453486853
+     ],
+     "critic": "qwen3.5:27b-nothink-bf16-t1",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.5833053986878768,
+      "stated_p_shift_logodds_br": 0.35068741520190594,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 0.49405059494050596,
+     "B1": false,
+     "B2": false
+    },
+    {
+     "estimate": 0.09882045854262089,
+     "ci": [
+      -0.07362410038269836,
+      0.2617744096313002
+     ],
+     "se": 0.07927093992725114,
+     "informative_problems": 32,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.2515748425157484,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.06079098331392266,
+      0.30018851048989026
+     ],
+     "rho_a": 0.6338571942341678,
+     "rho_a_ci": [
+      0.48738336253503256,
+      0.8260513902608171
+     ],
+     "rho_b": 0.5493461893456522,
+     "rho_b_ci": [
+      0.4071562554545618,
+      0.7715575366021931
+     ],
+     "rho_diff": 0.0845110048885156,
+     "rho_diff_ci": [
+      -0.06594950181512514,
+      0.22253838416062324
+     ],
+     "critic": "qwen3.5:27b-think-bf16-t1",
+     "family": "B",
+     "ceiling": false,
+     "B3": {
+      "stated_p_shift_logodds": 0.9978175305367553,
+      "stated_p_shift_logodds_br": 1.0604809138043998,
+      "verdict_follows_posterior_rule": {
+       "bayes10": 1.0,
+       "bayes90": 1.0
+      }
+     },
+     "p_holm": 1.0,
+     "B1": false,
+     "B2": false
+    }
+   ],
+   "C": [
+    {
+     "estimate": -0.05599048437486309,
+     "ci": [
+      -0.20176511420550522,
+      0.09674917041506059
+     ],
+     "se": 0.0716203181049335,
+     "informative_problems": 18,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.036858389022263016,
+     "rho_a_ci": [
+      -0.039610399175787646,
+      0.13332341743810092
+     ],
+     "rho_b": 0.07284825718196798,
+     "rho_b_ci": [
+      0.026822273304641254,
+      0.14329407645930864
+     ],
+     "rho_diff": -0.035989868159704966,
+     "rho_diff_ci": [
+      -0.12648983218722054,
+      0.05622069049012311
+     ],
+     "critic": "gemma4:12b-nothink-bf16-t1",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.15390151552966858,
+     "d_exp50_minus_neutral_ci": [
+      -0.44637766390784295,
+      0.12268593596998563
+     ],
+     "c_exp50_minus_neutral": -0.07695075776483429,
+     "c_exp50_minus_neutral_ci": [
+      -0.21517497903260363,
+      0.06733908118351585
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.026944340098262964,
+     "ci": [
+      -0.1942244601514215,
+      0.14800624255487152
+     ],
+     "se": 0.0764457666436911,
+     "informative_problems": 14,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.02548201279150064,
+     "rho_a_ci": [
+      -0.05786814162302366,
+      0.13434370808424337
+     ],
+     "rho_b": 0.044437803433194596,
+     "rho_b_ci": [
+      -0.06102980163765629,
+      0.17548866465086296
+     ],
+     "rho_diff": -0.018955790641693955,
+     "rho_diff_ci": [
+      -0.15052900867284452,
+      0.11685904824827621
+     ],
+     "critic": "gpt-6-luna-think",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": 0.08438945704525125,
+     "d_exp50_minus_neutral_ci": [
+      -0.23822642964556612,
+      0.5005101361205552
+     ],
+     "c_exp50_minus_neutral": -0.04219472852262551,
+     "c_exp50_minus_neutral_ci": [
+      -0.24072948615772746,
+      0.1253675866946515
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.07937572297419782,
+     "ci": [
+      -0.3485972427296865,
+      0.09588357363745548
+     ],
+     "se": 0.10581193011645952,
+     "informative_problems": 4,
+     "degenerate_fraction": 0.01639999999999997,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.055646352537193966,
+     "rho_a_ci": [
+      0.0,
+      0.13550738204329266
+     ],
+     "rho_b": 0.11167559977133772,
+     "rho_b_ci": [
+      0.0,
+      0.34874552766099104
+     ],
+     "rho_diff": -0.05602924723414375,
+     "rho_diff_ci": [
+      -0.2861011745697126,
+      0.07466632749621582
+     ],
+     "critic": "gpt-6.1-sol-think",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": 0.09651746095788205,
+     "d_exp50_minus_neutral_ci": [
+      0.0,
+      0.25620618879294943
+     ],
+     "c_exp50_minus_neutral": 0.048258730478941025,
+     "c_exp50_minus_neutral_ci": [
+      0.0,
+      0.1281030943964746
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.04754452272934173,
+     "ci": [
+      -0.3960138733572973,
+      0.3016912182540697
+     ],
+     "se": 0.16026961324162423,
+     "informative_problems": 9,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.01970457807341839,
+     "rho_a_ci": [
+      -0.24562116367717243,
+      0.2675194336222929
+     ],
+     "rho_b": 0.05808811744716765,
+     "rho_b_ci": [
+      -0.10080068627026581,
+      0.1932722990522233
+     ],
+     "rho_diff": -0.03838353937374926,
+     "rho_diff_ci": [
+      -0.35210521334327094,
+      0.2881844832847341
+     ],
+     "critic": "haiku-5.5-think",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": 0.27412906361353384,
+     "d_exp50_minus_neutral_ci": [
+      -0.21543715319775206,
+      0.7050037848172589
+     ],
+     "c_exp50_minus_neutral": 0.4490110484304555,
+     "c_exp50_minus_neutral_ci": [
+      0.2638690079183525,
+      0.7157312072641542
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.5967037129583241,
+     "ci": [
+      -1.1684761082358655,
+      -0.2155644997839839
+     ],
+     "se": 0.2246499584281858,
+     "informative_problems": 10,
+     "degenerate_fraction": 9.999999999998899e-05,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.04777449271109895,
+     "rho_a_ci": [
+      -0.2064347905558203,
+      0.3223521412758267
+     ],
+     "rho_b": 0.5617989697465976,
+     "rho_b_ci": [
+      0.294975147809565,
+      1.0097586931885432
+     ],
+     "rho_diff": -0.5140244770354987,
+     "rho_diff_ci": [
+      -1.0512111915556406,
+      -0.2080589821788532
+     ],
+     "critic": "opus-5.5-think",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.25144973074945387,
+     "d_exp50_minus_neutral_ci": [
+      -0.8185111179770923,
+      0.3312951747735602
+     ],
+     "c_exp50_minus_neutral": 0.055103859107544784,
+     "c_exp50_minus_neutral_ci": [
+      -0.19558100214908936,
+      0.36169581520873895
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.09610010545103131,
+     "ci": [
+      -0.28102486480412153,
+      0.07019681614028092
+     ],
+     "se": 0.08728028132682307,
+     "informative_problems": 67,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.270972902709729,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.2792015077311822,
+      0.06885173598164498
+     ],
+     "rho_a": 0.0956966634989529,
+     "rho_a_ci": [
+      0.05295127192915991,
+      0.1525877295276121
+     ],
+     "rho_b": 0.15278087840983498,
+     "rho_b_ci": [
+      0.10732881881207135,
+      0.22110866474285704
+     ],
+     "rho_diff": -0.057084214910882086,
+     "rho_diff_ci": [
+      -0.12598643826996767,
+      0.00336643110145714
+     ],
+     "critic": "qwen3.5:4b-nothink-bf16-t1",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.29745212384233843,
+     "d_exp50_minus_neutral_ci": [
+      -0.6094167978978072,
+      0.020511351049268333
+     ],
+     "c_exp50_minus_neutral": -0.2880595129634189,
+     "c_exp50_minus_neutral_ci": [
+      -0.44868859561474184,
+      -0.1362980785312656
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.09406672580655762,
+     "ci": [
+      -0.27134049267215954,
+      0.06860518338505356
+     ],
+     "se": 0.08448924762332477,
+     "informative_problems": 62,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.28077192280771923,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.25817623667310974,
+      0.07904295744312645
+     ],
+     "rho_a": 0.05424323801489596,
+     "rho_a_ci": [
+      0.003980503810624052,
+      0.11380131506697562
+     ],
+     "rho_b": 0.10251404179969181,
+     "rho_b_ci": [
+      0.06067352264519602,
+      0.16605140299317522
+     ],
+     "rho_diff": -0.048270803784795854,
+     "rho_diff_ci": [
+      -0.12645662182834144,
+      0.02065700510629527
+     ],
+     "critic": "qwen3.5:9b-nothink-bf16-t1",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.21601159807228676,
+     "d_exp50_minus_neutral_ci": [
+      -0.5634118464333274,
+      0.11152960098851006
+     ],
+     "c_exp50_minus_neutral": -0.20738073324178097,
+     "c_exp50_minus_neutral_ci": [
+      -0.3741617214569108,
+      -0.039835849395703865
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": 0.0073373249395186635,
+     "ci": [
+      -0.1438376939330641,
+      0.1575009051443985
+     ],
+     "se": 0.07500438186773575,
+     "informative_problems": 49,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.9274072592740726,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.1407345749528654,
+      0.1568763284744933
+     ],
+     "rho_a": 0.082883380355653,
+     "rho_a_ci": [
+      0.02198332185111414,
+      0.15582247228679205
+     ],
+     "rho_b": 0.09782022044709181,
+     "rho_b_ci": [
+      0.05960530846061333,
+      0.1530429934839841
+     ],
+     "rho_diff": -0.014936840091438808,
+     "rho_diff_ci": [
+      -0.0996589466475359,
+      0.06448017089631693
+     ],
+     "critic": "qwen3.5:27b-nothink-bf16-t1",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.5009259295035098,
+     "d_exp50_minus_neutral_ci": [
+      -0.8791260434449888,
+      -0.17632923219633975
+     ],
+     "c_exp50_minus_neutral": -0.26551549680893705,
+     "c_exp50_minus_neutral_ci": [
+      -0.44547785907989285,
+      -0.09213209752514065
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    },
+    {
+     "estimate": -0.028663640872885754,
+     "ci": [
+      -0.34715209432948957,
+      0.2128245229646424
+     ],
+     "se": 0.13906154868990264,
+     "informative_problems": 37,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "eligible",
+     "p": 0.8521147885211479,
+     "draws": 10000,
+     "studentized_ci": [
+      -0.32471327616698564,
+      0.3739260639458274
+     ],
+     "rho_a": 0.5191852517758409,
+     "rho_a_ci": [
+      0.316108305184004,
+      0.6998392777032098
+     ],
+     "rho_b": 0.5493461893456522,
+     "rho_b_ci": [
+      0.4071562554545618,
+      0.7715575366021931
+     ],
+     "rho_diff": -0.030160937569811308,
+     "rho_diff_ci": [
+      -0.3276473073651248,
+      0.1752683905628779
+     ],
+     "critic": "qwen3.5:27b-think-bf16-t1",
+     "family": "C",
+     "ceiling": false,
+     "d_exp50_minus_neutral": -0.04044211911569251,
+     "d_exp50_minus_neutral_ci": [
+      -0.3627763519261308,
+      0.284833425437374
+     ],
+     "c_exp50_minus_neutral": -0.14847607475997637,
+     "c_exp50_minus_neutral_ci": [
+      -0.3255016881172347,
+      -0.0015758497870173027
+     ],
+     "p_holm": 1.0,
+     "C1": false,
+     "C2": false,
+     "C3": false
+    }
+   ],
+   "D": {
+    "D1": {
+     "estimate": -0.4897356656777184,
+     "ci": [
+      -0.8987428477522013,
+      -0.19124317355106235
+     ],
+     "se": 0.16988882632735056,
+     "informative_problems": 8,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.14273088427693492,
+     "rho_a_ci": [
+      0.03011598955792155,
+      0.3583125865180358
+     ],
+     "rho_b": 0.5617989697465976,
+     "rho_b_ci": [
+      0.294975147809565,
+      1.0097586931885432
+     ],
+     "rho_diff": -0.4190680854696627,
+     "rho_diff_ci": [
+      -0.8282833538568146,
+      -0.16296756856908462
+     ],
+     "p_holm": 1.0,
+     "held": false
+    },
+    "D2": {
+     "estimate": -0.18199566682589408,
+     "ci": [
+      -0.5629367843691887,
+      0.16118164399598675
+     ],
+     "se": 0.16609425352807233,
+     "informative_problems": 10,
+     "degenerate_fraction": 0.0,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.14273088427693492,
+     "rho_a_ci": [
+      0.03011598955792155,
+      0.3583125865180358
+     ],
+     "rho_b": 0.298465050697014,
+     "rho_b_ci": [
+      0.04629108518747242,
+      0.6591887254363007
+     ],
+     "rho_diff": -0.1557341664200791,
+     "rho_diff_ci": [
+      -0.5055644472784563,
+      0.14399180506859108
+     ],
+     "p_holm": 1.0,
+     "held": false
+    },
+    "D3": {
+     "estimate": -0.1627459027483834,
+     "ci": [
+      -0.5311163958632508,
+      0.14464024865059444
+     ],
+     "se": 0.14869590268216032,
+     "informative_problems": 6,
+     "degenerate_fraction": 0.0022999999999999687,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.14273088427693492,
+     "rho_a_ci": [
+      0.03011598955792155,
+      0.3583125865180358
+     ],
+     "rho_b": 0.28199297740714724,
+     "rho_b_ci": [
+      0.08407805857880084,
+      0.6657146632295377
+     ],
+     "rho_diff": -0.13926209313021232,
+     "rho_diff_ci": [
+      -0.5002578241449537,
+      0.12367197729751932
+     ],
+     "p_holm": 1.0,
+     "held": false
+    },
+    "D4": {
+     "estimate": 0.14037323599725293,
+     "ci": [
+      -0.25253824633311767,
+      0.5403723782874434
+     ],
+     "se": 0.17651002028744509,
+     "informative_problems": 8,
+     "degenerate_fraction": 0.00029999999999996696,
+     "method": "studentized_centered_problem_bootstrap",
+     "inferential_status": "descriptive_only",
+     "p": 1.0,
+     "draws": 10000,
+     "reason": "Sparse/degenerate interaction: no revised significance or equivalence claim",
+     "rho_a": 0.26284862816055404,
+     "rho_a_ci": [
+      0.028139803982239715,
+      0.6279598109377781
+     ],
+     "rho_b": 0.14273088427693492,
+     "rho_b_ci": [
+      0.03011598955792155,
+      0.3583125865180358
+     ],
+     "rho_diff": 0.12011774388361912,
+     "rho_diff_ci": [
+      -0.22443874569933298,
+      0.503825138375202
+     ],
+     "p_holm": 1.0,
+     "held": false
+    },
+    "D5": {
+     "rho_self": 0.14273088427693492,
+     "ci": [
+      0.03011598955792155,
+      0.3583125865180358
+     ],
+     "overshoot": false
+    },
+    "ceiling": false
+   },
+   "A_reading": {
+    "opus-5.5-think": "the reliability statement does the work (A3 held and negative, A1 held)",
+    "qwen3.5:27b-think-bf16-t1": "the reliability statement does the work (A3 held and negative, A1 held)",
+    "gpt-6.1-sol-think": "attribution alone discounts (A2 held, A3 no shift)"
+   }
+  }
+ }
+}

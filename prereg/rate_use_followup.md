@@ -166,6 +166,9 @@ Written 2026-11-13 while building, before any held-out item was sent. No verdict
   - Cluster, the five full jobs, submitted 08:12 UTC on the Courant allocation, `results/followup/` on the cluster: 22966591 (Qwen3.5-4B, thinking off), 22966592 (9B, off), 22966593 (Gemma 4 12B, off), 22966594 (27B, off), each three samples with a 3-hour limit; 22966595 (Qwen3.5-27B, thinking on, three samples, 47-hour limit, 32,768-token reply budget, model length 40,960).
   - Cluster, thinking off, three of four done by 08:27 UTC and copied to `results/followup/` here with their job logs (`results/followup/cluster_logs/`): Qwen3.5-4B (22966591, 4 min 58 s) 3,600 rows, 1 without a verdict (a 22-token reply that stopped without one); Qwen3.5-9B (22966592, 7 min 45 s) 3,600 rows, 43 without a verdict, every one cut off at the 1,024-token reply limit the thinking-off runs have had throughout (22 in `exp90`, 13 in `exp10`, 6 in `exp50`, 1 each in `bayes10` and `bayes90`); Gemma 4 12B (22966593, 8 min 5 s) 3,600 rows, 5 without a verdict, all at that limit. The limit is part of the fixed protocol, so these rows stay as they are and the analysis treats them as it treats every reply without a verdict. Every condition has its three samples of all 200 items. The two 27B jobs (22966594, 22966595) were waiting for two-GPU nodes, with Slurm's estimated starts at 09:40 and 09:55 UTC. The connection to the cluster dropped before either could be observed (noticed 10:37 UTC); the jobs run independently of it, and their results and logs are to be pulled on the next login.
   - Cluster, Qwen3.5-27B thinking off (22966594): started 08:46 UTC, 15 min 27 s; 3,600 rows pulled 16:44 UTC, 10 without a verdict, all at the 1,024-token limit (7 in `exp10`, 2 in `exp50`, 1 in `exp90`); three samples of every condition and item. The thinking-on job (22966595) started 08:55 UTC on a two-GPU node and was running at 16:44 UTC.
+  - Cluster, Qwen3.5-27B thinking on (22966595): 13 h 58 min, ended 22:53 UTC; 3,600 rows pulled 22:55 UTC with the job and vLLM logs. 13 without a verdict, all cut off at the 32,768-token reply budget (9 in `note_bare`, 2 each in `bayes10` and `bayes90`; none in the example conditions); three samples of every condition and item; median reply 5,081 output tokens, 90th percentile 10,719.
+  - **Every approved job has finished** (2026-11-13, 22:55 UTC): 29,200 new replies, 72 without a verdict (0.25%). The no-peeking rule ends here; the analysis follows.
+- **Analysis** (2026-11-13, 22:58 UTC): `scripts/followup_analysis.py` with its defaults, nine seconds; outputs in `results/followup/analysis/`. Read below under Results.
 
 ## Deviations
 
@@ -173,4 +176,102 @@ Written 2026-11-13 while building, before any held-out item was sent. No verdict
 
 ## Results
 
-Not yet run.
+Written 2026-11-13, 23:00–23:40 UTC, after every approved job had finished (run log). Analysis: `scripts/followup_analysis.py` with its defaults, seed 0: the held-out rows of the premise test, the rate-wording run and this follow-up (170,400 rows, twelve critic runs, nine with the new conditions); 10,000 whole-problem resamples; 200,000 randomization draws; the label variants original, contested left out and contested flipped; no audit, since none exists. Nine seconds; `results/followup/analysis/followup.md` and `followup.json`. Numbers are under the original labels unless said otherwise; the other two variants are read at the end. The ten-critic Holm families of the plan have nine members, because Gemma 4 12B with thinking on was not run (as the Runs section says).
+
+### Pipeline rules
+
+- **2% rule.** Two new conditions, both Qwen3.5-9B with thinking off: `exp10` 2.2% (13 of 600) and `exp90` 3.7% (22 of 600) without a verdict, every one cut off at the 1,024-token reply limit. Shift from `neutral` with those trials counted as "error", then as "correct": `exp10` −0.15 / −0.06; `exp90` −0.28 / −0.10. ρ_exp is 0.041 as analysed, 0.044 and 0.013 under the two fills, so C1 and C2 read the same either way. No condition reached 5%. The two older conditions over 2% (Qwen3.5-27B with thinking on, `presuppose` and `claim_mistake`) are as reported in `prereg/premise.md`. Over the whole follow-up, 72 of 29,200 replies (0.25%) had no verdict.
+- **Ceiling.** No critic is at the ceiling under the original labels. With the contested items left out, Opus is (3.8 errors per 200), so its ρ under that variant is reported, not interpreted.
+- **Eligibility of the interaction test.** The studentized problem-cluster bootstrap needs enough problems whose verdicts change across the four conditions. It was eligible for the four open runs with thinking off and for Qwen3.5-27B with thinking on; for Opus, Haiku, GPT-6.1 Sol, GPT-6 Luna and Gemma 4 12B with thinking off it was descriptive only (too few informative problems), and the bootstrap interval of the ρ difference is the only reading there. Family A uses the exact within-item tests throughout (the paired problem-vector swap for Qwen3.5-27B's three samples).
+
+### Family A, attribution (Q1): the readings the plan allowed, one per critic
+
+| critic | A1 `note_bare` − `neutral` (predicted −) | A2 `claim_bare` − `note_bare` (predicted −) | A3 `note_bare` − `claim_random` | reading |
+|---|---|---|---|---|
+| Opus 5.5 | −0.36 [−0.59, −0.09], Holm p = .0002, held | −0.95 [−1.17, −0.79], p < .0001, held | −0.23 [−0.37, −0.12], p = .002, held, negative | the reliability statement does the work |
+| Qwen3.5-27B, thinking on | −0.45 [−0.57, −0.35], p < .0001, held | +0.06 [−0.01, 0.14], p = .30, not shown | −0.38 [−0.50, −0.28], p < .0001, held, negative | the reliability statement does the work |
+| GPT-6.1 Sol | −0.01 [−0.05, 0.00], p = 1, not shown | −1.58 [−1.71, −1.45], p < .0001, held | −0.01 [−0.05, 0.00], no shift | attribution alone discounts |
+
+False alarms per 100 correct solutions, `neutral` / `note_bare` / `claim_bare` / `claim_random` / `claim_reviewer`: Opus 15 / 24 / 89 / 12 / 22; Qwen3.5-27B 19 / 52 / 47 / 23 / 50; GPT-6.1 Sol 27 / 28 / 100 / 27 / 28. Hits stayed at or near 100 throughout.
+
+The three critics differ in what the attribution does. For GPT-6.1 Sol the bare note changed one verdict: attributing the claim to a note removes its whole effect. For Qwen3.5-27B the bare note moved the criterion as far as the system prompt's own claim (52 against 47 false alarms), so attribution does nothing and the declaration that notes are random does everything. For Opus the attribution removed about three quarters of the claim's effect on c (the claim moved c by −1.32 from `neutral` in the premise test, the note by −0.36) and the declaration removed most of the rest (12 false alarms against 15 with no line). The readings are the same under all three label variants.
+
+Against the expectations: as written for all three critics (Opus's 24 false alarms sit at the edge of the predicted 25–45).
+
+### Family B, the posterior rule spelled out (Q2): no critic used the rate more when told how
+
+| critic | ρ(`br`) | ρ_instr | ρ_instr − ρ(`br`) | test | B1 | B2 | B3: posterior shift, `bayes` / `br` (log-odds; ideal 4.39) | verdict follows own posterior |
+|---|---|---|---|---|---|---|---|---|
+| Gemma 4 12B, off | 0.07 [0.02, 0.14] | 0.08 [0.04, 0.14] | +0.01 [−0.06, 0.08] | descriptive | no | no | −0.09 / 0.19 | 100% |
+| GPT-6 Luna | 0.07 [−0.01, 0.19] | 0.03 [−0.02, 0.07] | −0.04 [−0.18, 0.03] | descriptive | no | no | 0.05 / 0.04 | 100% |
+| GPT-6.1 Sol | 0.17 [0.00, 0.32] | 0.17 [0.00, 0.32] | −0.00 [−0.03, 0.03] | descriptive | no | no | 0.16 / 0.13 | 100% |
+| Haiku 5.5 | 0.02 [−0.01, 0.05] | 0.13 [−0.05, 0.27] | +0.11 [−0.08, 0.26] | descriptive | no | no | 0.04 / 0.18 | 100% |
+| Opus 5.5 | 0.29 [0.09, 0.43] | 0.11 [0.04, 0.21] | −0.18 [−0.31, 0.01] | descriptive | no | no | 0.53 / 0.55 | 100% |
+| Qwen3.5-4B, off | 0.14 [0.10, 0.21] | 0.09 [0.06, 0.15] | −0.05 [−0.12, 0.01] | Holm p = .66 | no | no | 0.93 / 1.10 | 100% |
+| Qwen3.5-9B, off | 0.08 [0.05, 0.13] | 0.08 [0.05, 0.12] | −0.00 [−0.05, 0.04] | Holm p = 1 | no | no | 0.55 / 0.58 | 100% |
+| Qwen3.5-27B, off | 0.07 [0.04, 0.11] | 0.11 [0.07, 0.16] | +0.04 [−0.00, 0.09] | Holm p = .59 | no | no | 0.58 / 0.35 | 100% |
+| Qwen3.5-27B, on | 0.36 [0.23, 0.50] | 0.35 [0.22, 0.49] | −0.01 [−0.07, 0.04] | Holm p = 1 | no | no | 1.00 / 1.06 | 100% |
+
+B1 held for no run: the differences run from −0.18 (Opus) to +0.11 (Haiku), every interval includes 0, and the four eligible tests have Holm p ≥ .59. B2 was met by none: ρ_instr runs from 0.03 to 0.35, and the largest, Qwen3.5-27B with thinking on, equals that critic's ρ(`br`). B3 says why: told to treat the rate as a prior, combine it with the evidence and report the posterior, the critics reported posteriors that moved by −0.09 to 1.00 log-odds between the 10% and the 90% rate, against the 4.39 the rule prescribes, and within 0.3 of the shift of the probability they report under the plain line; in 99–100% of replies the verdict was on the side of 50% that the reported posterior said. The critics apply the rule they are given to a posterior that hardly moves with the prior. For Opus the instruction went with less use of the rate (0.11 against 0.29; the interval of the difference reaches 0.01).
+
+Against the expectations: the expectation held most firmly, that the instruction would help without reaching the ideal, failed in its first half. Not one critic used the rate more when told how to use it.
+
+### Family C, the rate shown in examples (Q3): a shown rate was used no more than a told one
+
+| critic | ρ(`br`) | ρ_exp (d′ at `exp50`) | ρ_exp − ρ(`br`) | test | C1 | C2 | d′(`exp50`) − d′(`neutral`) | c(`exp50`) − c(`neutral`) | C3 |
+|---|---|---|---|---|---|---|---|---|---|
+| Gemma 4 12B, off | 0.07 [0.02, 0.14] | 0.03 [−0.04, 0.10] | −0.04 [−0.14, 0.03] | descriptive | no | no | −0.17 [−0.51, 0.09] | −0.03 [−0.17, 0.14] | no |
+| GPT-6 Luna | 0.07 [−0.01, 0.19] | 0.01 [−0.02, 0.04] | −0.06 [−0.19, 0.03] | descriptive | no | no | +0.13 [−0.31, 0.64] | −0.06 [−0.32, 0.15] | no |
+| GPT-6.1 Sol | 0.17 [0.00, 0.32] | 0.03 [0.00, 0.08] | −0.14 [−0.29, 0.04] | descriptive | no | no | +0.06 [0.00, 0.16] | +0.03 [0.00, 0.08] | no |
+| Haiku 5.5 | 0.02 [−0.01, 0.05] | −0.10 [−0.22, 0.06] | −0.11 [−0.25, 0.05] | descriptive | no | no | −0.29 [−0.61, 0.19] | +0.34 [0.10, 0.50] | no |
+| Opus 5.5 | 0.29 [0.09, 0.43] | −0.12 [−0.25, 0.07] | −0.41 [−0.65, −0.06] | descriptive | no | no | +0.04 [−0.12, 0.22] | +0.02 [−0.06, 0.11] | no |
+| Qwen3.5-4B, off | 0.14 [0.10, 0.21] | 0.09 [0.05, 0.15] | −0.05 [−0.11, 0.01] | Holm p = 1 | no | no | −0.16 [−0.46, 0.14] | −0.29 [−0.44, −0.14] | no |
+| Qwen3.5-9B, off | 0.08 [0.05, 0.13] | 0.04 [−0.00, 0.10] | −0.04 [−0.11, 0.02] | Holm p = 1 | no | no | −0.11 [−0.44, 0.22] | −0.19 [−0.35, −0.03] | no |
+| Qwen3.5-27B, off | 0.07 [0.04, 0.11] | 0.07 [0.02, 0.13] | +0.00 [−0.06, 0.07] | Holm p = 1 | no | no | −0.17 [−0.48, 0.11] | −0.18 [−0.33, −0.03] | no |
+| Qwen3.5-27B, on | 0.36 [0.23, 0.50] | 0.22 [0.10, 0.33] | −0.15 [−0.32, 0.02] | Holm p = 1 | no | no | −0.09 [−0.21, 0.02] | −0.05 [−0.11, 0.00] | no |
+
+C1 held for no run: the differences run from −0.41 (Opus) to +0.00 (Qwen3.5-27B with thinking off), and no interval lies above 0. Opus's lies below it: shown ten audited verdicts with one or nine errors among them, it moved its criterion less than when told 10% or 90%, and in the wrong direction as a point estimate (ρ_exp −0.12 [−0.25, 0.07]). C2 was met by none: ρ_exp runs from −0.12 to 0.22. C3 was met by none: d′(`exp50`) − d′(`neutral`) runs from −0.29 to +0.13 with every interval including 0, so the ten examples did not change what the critics detect. They did move criteria: with the balanced block present, the three Qwen runs with thinking off flagged more (c down by 0.18–0.29, intervals below 0) and Haiku flagged less (+0.34 [0.10, 0.50]); the other five runs were within ±0.06.
+
+Against the expectations: the least certain expectation failed. A rate the critic could see in audited verdicts was used no more than a rate it was told, and by Opus less.
+
+### Family D, the paper (Q4): Opus, exploratory, every test descriptive only
+
+| ρ (d′ at `neutral`) | value |
+|---|---|
+| `br` (the plain line) | 0.29 [0.09, 0.43] |
+| `paper_self` | 0.05 [0.01, 0.12] |
+| `paper_other` ("Model M") | 0.21 [0.01, 0.35] |
+| `paper_methods` | 0.08 [0.03, 0.17] |
+| `paper_true` | 0.07 [0.00, 0.16] |
+
+| rule | difference in ρ | outcome |
+|---|---|---|
+| D1 self − `br` | −0.24 [−0.38, −0.04] | not shown by the rule (8 informative problems, descriptive); the interval lies below 0 |
+| D2 self − other | −0.16 [−0.30, 0.05] | not shown |
+| D3 self − methods | −0.03 [−0.11, 0.03] | not shown |
+| D4 true − self | +0.02 [−0.08, 0.11] | not shown |
+| D5 overshoot | ρ_self 0.05 [0.01, 0.12] | none |
+
+Handed a description of this study, Opus used the stated rate less, not more: ρ fell from 0.29 to 0.05, and the methods-only text (0.08) and the text with the revealing passages kept (0.07) did the same. The paper about "Model M" left use nearer the plain line (0.21); the difference from `paper_self`, −0.16 [−0.30, 0.05], is not shown. The expectation of a rise to 0.6–1.3 was wrong in direction.
+
+A limit found after the fact: every variant kept the Items paragraph, "three balanced sets of 200 solutions (100 flawed, 100 correct)", so each lets a reader infer that the true rate is 50% and the stated rate false; removing the three passages did not hide that. D4 therefore compares two texts that both imply the truth, which fits ρ_true ≈ ρ_self, and the drop in D1 is consistent with the critic inferring that the rate is false rather than with it correcting toward the ideal. The arm cannot tell the two apart; the paper gets one dated, exploratory paragraph, as the plan says, and no more.
+
+### Labels
+
+Every reading is the same under the three variants. The Family A readings are identical; B1 and C1 held for no run under any variant; D1's interval lies below 0 under all three (self 0.15 against `br` 0.49 with the contested items left out, 0.14 against 0.56 flipped). As in the earlier plans, ρ(`br`) rises for the thinking-on critics when the contested items are left out or flipped (Opus 0.49 and 0.56; Qwen3.5-27B 0.61 and 0.55), and ρ_instr and ρ_exp rise with it (Qwen3.5-27B 0.62 and 0.63; 0.41 and 0.52), leaving the differences where they were. Opus is at the ceiling in the left-out variant, so its ρ there is not interpreted.
+
+### Expectations against outcomes
+
+- **A** held as written for all three critics.
+- **B** failed: no critic used the rate more when told how; the reported posteriors barely moved with the prior.
+- **C** failed: no critic used a shown rate more than a told one; Opus used it less.
+- **D** failed in direction: the paper lowered Opus's use of the rate; the arm cannot separate "told it is false" from "read about itself".
+
+### Decisions for the manuscript (the plan's "How the result will be used")
+
+- **A.** "Stating a note's reliability is a cheap remedy" stays, with the attribution result beside it: attributing the claim to a note removed its whole effect for GPT-6.1 Sol, about three quarters of it for Opus, and none of it for Qwen3.5-27B, and the declaration that notes are random removed the rest for the two that still moved.
+- **B.** "The critics cannot use the rate even when told how" goes into Section 4.1 (beside the attention control) and the Discussion, with the posterior-shift numbers: told to compute a posterior, they report one that moves by at most 1.1 log-odds for an 81-fold change in the stated odds.
+- **C.** The Limitations paragraph on the normative premise is rewritten: a critic shown the rate in ten audited verdicts used it no more than one told the rate, so the under-use is not discounting of an unverifiable statement.
+- **D.** One Discussion paragraph, dated to the model version, exploratory, with the after-the-fact limit stated.
+- Method, Preregistration: this plan is added to the list. Discussion, Compute: about 253,000 replies; API fees US$103 and US$12.
+- A table of Families A–C goes into the appendix, and the body is kept at the foot of page 8 by moving Table 1 to the appendix or shortening Related Work, as the plan foresaw.

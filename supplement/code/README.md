@@ -28,4 +28,6 @@ Set `ANTHROPIC_API_KEY` or `OPENAI_API_KEY` in the environment; the wrappers `sc
 
 ## Anonymization
 
+Refreshed 2026-11-13 with the rate-use follow-up (`pilot/prompts.py`, `pilot/run.py`, `scripts/build_followup_blocks.py`, `scripts/followup.sh`, `scripts/followup_analysis.py`, `scripts/torch_submit.sh`, `data/condition_blocks/`, `data/examples_experienced.jsonl`, the figure script), with the same substitutions; the condition blocks are verbatim, since their hashes are recorded in the plan.
+
 Relative to the working copy, only the cluster's name was replaced by "the cluster" in comments and figure labels, and a user-specific credential-entry name was made generic. File and directory names containing the cluster's name (`results/torch_hard/`, `scripts/torch_*.sh`) are unchanged.

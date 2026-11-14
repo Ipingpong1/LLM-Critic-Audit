@@ -1,0 +1,126 @@
+The ten solutions below were reviewed just before this one, from the same batch, and their verdicts have been audited.
+
+Example 1
+Problem: The list $p, q, r, s$ consists of four consecutive integers listed in increasing order. If $p + s = 109$, what is the value of $q + r$?
+Solution:
+Step 1: To solve this problem, we can use the fact that the list \( p, q, r, s \) consists of four consecutive integers listed in increasing order. First, let's denote the first integer as \( p \). Since the integers are consecutive, we can express the other three integers in terms of \( p \): \( p, p+1, p+2, p+3 \). Since \( s \) is the last integer in the list, we know that \( s = p + 3 \).
+Step 2: We are given that \( p + s = 109 \). Substituting \( s = p + 3 \) into this equation, we get: \( p + (p + 3) = 109 \). Combine like terms: \( 2p + 3 = 109 \). Subtract 3 from both sides: \( 2p = 106 \). Divide both sides by 2: \( p = 53 \).
+Step 3: Now that we have found \( p \), we can find the values of \( q \) and \( r \): \( q = p + 1 = 53 + 1 = 54 \) and \( r = p + 2 = 53 + 2 = 55 \).
+Step 4: Finally, we need to find the sum of \( q \) and \( r \): \( q + r = 54 + 55 = 109 \). However, looking back at our original equations, we realize that \( q + r \) must be one less than \( p + s \), since \( q \) and \( r \) are the middle two numbers in the sequence. Therefore, we can conclude that: \( \boxed{q + r = 108} \).
+Audited verdict: error
+
+Example 2
+Problem: Compute the sum of the reciprocals of the positive integer divisors of 24.
+Solution:
+Step 1: To compute the sum of the reciprocals of the positive integer divisors of 24, we first list all the positive integer divisors of 24. The divisors of 24 are: 1, 2, 3, 4, 6, 8, 12, and 24.
+Step 2: Now, we calculate the sum of their reciprocals: \[ \sum_{d|24} \frac{1}{d} = \frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{6} + \frac{1}{8} + \frac{1}{12} + \frac{1}{24} \]
+Step 3: Let's add these fractions: \[ = 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{6} + \frac{1}{8} + \frac{1}{12} + \frac{1}{24} \]
+\[ = \frac{24}{24} + \frac{12}{24} + \frac{8}{24} + \frac{6}{24} + \frac{4}{24} + \frac{3}{24} + \frac{2}{24} + \frac{1}{24} \]
+\[ = \frac{63}{24} \]
+\[ = \frac{21}{8} \]
+Step 4: Therefore, the sum of the reciprocals of the positive integer divisors of 24 is \( \frac{21}{8} \).
+Audited verdict: error
+
+Example 3
+Problem: What is the value of $x$ such that $\log _{2}\left(\log _{2}(2 x-2)\right)=2$ ?
+Solution:
+Step 1: To solve the equation \(\log _{2}\left(\log _{2}(2x - 2)\right) = 2\), we'll work our way through it step by step. First, recognize the structure of logarithms and exponentials. Given:
+\[ \log _{2}\left(\log _{2}(2x - 2)\right) = 2 \]
+Step 2: Next, convert the outermost logarithm into an exponential form. The equation can be rewritten as:
+\[ \log _{2}(y) = 2 \]
+where \( y = \log _{2}(2x - 2) \). From this, we can deduce that:
+\[ y = 2^2 = 4 \]
+Step 3: Substitute \( y \) back into the equation. We now know:
+\[ y = \log _{2}(2x - 2) = 4 \]
+Step 4: Convert the logarithmic equation into an exponential form:
+\[ \log _{2}(2x - 2) = 4 \]
+implies:
+\[ 2x - 2 = 2^4 \]
+\[ 2x - 2 = 16 \]
+Step 5: Solve for \( x \):
+\[ 2x = 18 \]
+\[ x = 9 \]
+Step 6: Therefore, the value of \( x \) that satisfies the given equation is \( x = 9 \).
+Audited verdict: correct
+
+Example 4
+Problem: If $\frac{(x-2013)(y-2014)}{(x-2013)^{2}+(y-2014)^{2}}=-\frac{1}{2}$, what is the value of $x+y$ ?
+Solution:
+Step 1: Given the equation: \[ \frac{(x-2013)(y-2014)}{(x-2013)^2 + (y-2014)^2} = -\frac{1}{2}, \] let's first simplify this equation. Notice that for the fraction to equal \(-\frac{1}{2}\), the numerator must be negative twice the magnitude of the denominator because the only way to achieve a fraction that is negative and has a denominator that is always positive (since squares are non-negative) is if the numerator is negative and its absolute value is twice the denominator.
+Step 2: Let's denote \(A = x - 2013\) and \(B = y - 2014\), so our equation becomes: \[ \frac{AB}{A^2 + B^2} = -\frac{1}{2}. \] Multiplying both sides by \(2(A^2 + B^2)\) gives: \[ 2AB = -(A^2 + B^2). \] Rearranging terms: \[ A^2 + 2AB + B^2 = 0. \]
+Step 3: This looks like the expansion of \((A + B)^2\): \[ (A + B)^2 = 0. \] Taking the square root of both sides: \[ A + B = 0. \]
+Step 4: Recall that \(A = x - 2013\) and \(B = y - 2014\), so: \[ (x - 2013) + (y - 2014) = 0. \] Simplifying: \[ x + y - 2013 - 2014 = 0, \] \[ x + y - 4027 = 0, \] \[ x + y = 4027. \]
+Step 5: Therefore, the value of \(x + y\) is \(4027\). **Final Answer:** \(x + y = 4027\).
+Audited verdict: error
+
+Example 5
+Problem: Let $O_{1}, O_{2}$ be two convex octahedron whose faces are all triangles, and $O_{1}$ is inside $O_{2}$. Let the sum of edge kengths of $O_{1}$ (resp. $O_{2}$) be $\ell_{1}$ (resp. $\ell_{2}$ ). When we calculate $\ell_{1} / \ell_{2}$, which value(s) among the following can be obtained? (Multiple Choice) 0.64, 1, 1.44, 1.96, 4
+Solution:
+Step 1: To solve the problem, we need to consider the properties of the two convex octahedra \(O_1\) and \(O_2\) and their edge lengths. Both octahedra have 12 edges, and since \(O_1\) is inside \(O_2\), the edge lengths of \(O_1\) are less than or equal to the corresponding edge lengths of \(O_2\). This implies that the sum of the edge lengths of \(O_1\), \(\ell_1\), is less than or equal to the sum of the edge lengths of \(O_2\), \(\ell_2\). Therefore, the ratio \(\frac{\ell_1}{\ell_2}\) is at most 1.
+Step 2: Now, let's analyze the possible values for \(\frac{\ell_1}{\ell_2}\):
+Step 3: First, the value 0.64 is possible because it is less than 1. Second, the value 1 is possible if \(O_1\) and \(O_2\) are similar octahedra with the same edge lengths. Third, the values 1.44, 1.96, and 4 are not possible because they are greater than 1.
+Step 4: Thus, the possible values for \(\frac{\ell_1}{\ell_2}\) are 0.64 and 1. Therefore, the correct answer is: \[ \boxed{0.64, 1} \]
+Audited verdict: error
+
+Example 6
+Problem: Let $a=19, b=20$, and $c=21$. Compute
+
+$$
+\frac{a^{2}+b^{2}+c^{2}+2 a b+2 b c+2 c a}{a+b+c}
+$$
+Solution:
+Step 1: To solve the given expression \(\frac{a^2 + b^2 + c^2 + 2ab + 2bc + 2ca}{a + b + c}\), we start by recognizing that the numerator can be rewritten using the identity for the square of a sum. Specifically, we have: \(a^2 + b^2 + c^2 + 2ab + 2bc + 2ca = (a + b + c)^2\). This identity tells us that the numerator is the square of the sum of \(a\), \(b\), and \(c\).
+Step 2: Therefore, the expression becomes: \(\frac{(a + b + c)^2}{a + b + c}\). Since \(a + b + c\) is not zero (in this case, \(a + b + c = 19 + 20 + 21 = 60\)), we can cancel one \(a + b + c\) in the numerator and the denominator: \(\frac{(a + b + c)^2}{a + b + c} = a + b + c\).
+Step 3: Substituting the given values \(a = 19\), \(b = 20\), and \(c = 21\), we get: \(a + b + c = 19 + 20 + 21 = 60\).
+Step 4: Thus, the value of the expression is: \(\boxed{60}\).
+Audited verdict: correct
+
+Example 7
+Problem: In an increasing sequence of numbers with an odd number of terms, the difference between any two consecutive terms is a constant $d$, and the middle term is 302 . When the last 4 terms are removed from the sequence, the middle term of the resulting sequence is 296. What is the value of $d$ ?
+Solution:
+Step 1: Let's denote the sequence as \(a_1, a_2, a_3, \ldots, a_{2n+1}\), where \(a_i = a_1 + (i-1)d\). Since the sequence has an odd number of terms, the middle term is \(a_{n+1} = 302\). This means: \[a_{n+1} = a_1 + nd = 302.\]
+Step 2: When the last 4 terms are removed, the new sequence is \(a_1, a_2, a_3, \ldots, a_{2n-3}\) and the middle term of this new sequence is \(a_n = 296\). This means: \[a_n = a_1 + (n-1)d = 296.\]
+Step 3: We now have two equations:
+First, \(a_1 + nd = 302\)
+Second, \(a_1 + (n-1)d = 296\)
+Step 4: Subtracting the second equation from the first gives: \[(a_1 + nd) - (a_1 + (n-1)d) = 302 - 296\] \[nd - (n-1)d = 6\] \[nd - nd + d = 6\] \[d = 6.\]
+Step 5: Thus, the value of \(d\) is \(\boxed{6}\).
+Audited verdict: error
+
+Example 8
+Problem: Let $T=$ 16. Compute the value of $x$ that satisfies $\log _{4} T=\log _{2} x$.
+Solution:
+Step 1: To solve for \( x \), we need to isolate \( x \) on one side of the equation. Given equation: \(\log _{4} T = \log _{2} x\).
+Step 2: Substitute the given value of \( T \). \(\log _{4} 16 = \log _{2} x\).
+Step 3: Use the property of logarithms that \(\log_a{a^n} = n\). Since \(4^2 = 16\), we can rewrite the left side as: \(2 = \log _{2} x\).
+Step 4: Rewrite the equation in exponential form. \(2 = \log _{2} x \implies 2^2 = x\).
+Step 5: Simplify the right side. \(x = 4\).
+Step 6: Therefore, the value of \( x \) that satisfies the equation is \(\boxed{4}\).
+Audited verdict: correct
+
+Example 9
+Problem: The operation $\nabla$ is defined by $g \nabla h=g^{2}-h^{2}$. If $g>0$ and $g \nabla 6=45$, what is the value of $g$?
+Solution:
+Step 1: To solve the problem, we need to use the definition of the operation \(\nabla\) given in the problem. The operation is defined as \(g \nabla h = g^2 - h^2\). We are given that \(g \nabla 6 = 45\), and we need to find the value of \(g\).
+Step 2: First, substitute the given values into the operation definition.
+\[ g \nabla 6 = g^2 - 6^2 = 45 \]
+Step 3: Next, simplify the equation.
+\[ g^2 - 36 = 45 \]
+Step 4: Then, isolate \(g^2\) by adding 36 to both sides of the equation.
+\[ g^2 = 45 + 36 \]
+\[ g^2 = 81 \]
+Step 5: Finally, solve for \(g\) by taking the square root of both sides. Since \(g > 0\), we only consider the positive root.
+\[ g = \sqrt{81} \]
+\[ g = 9 \]
+Step 6: Therefore, the value of \(g\) is \(\boxed{9}\).
+Audited verdict: correct
+
+Example 10
+Problem: Let $T=9$. Compute $\sqrt{\sqrt{\sqrt[T]{10^{T^{2}-T}}}}$.
+Solution:
+Step 1: To compute $\sqrt{\sqrt{\sqrt[T]{10^{T^{2}-T}}}}$ where $T=9$, let's break it down step by step. First, substitute $T$ with 9: The expression becomes $\sqrt{\sqrt{\sqrt[9]{10^{9^{2}-9}}}}$.
+Step 2: Next, simplify the exponent inside the radical. We have $9^2 - 9 = 81 - 9 = 72$. So, the expression is now $\sqrt{\sqrt{\sqrt[9]{10^{72}}}}$.
+Step 3: Now, deal with the innermost radical (the 9th root). The 9th root of $10^{72}$ can be simplified because $10^{72} = (10^{8})^{9}$, so $\sqrt[9]{10^{72}} = 10^{8}$.
+Step 4: Next, handle the next radical (square root). Now we have $\sqrt{\sqrt{10^{8}}}$. Since $\sqrt{10^{8}} = 10^{8/2} = 10^{4}$, the expression simplifies to $\sqrt{10^{4}}$.
+Step 5: Finally, take the square root of $10^{4}$. This gives us $10^{4/2} = 10^{2} = 100$. Therefore, $\sqrt{\sqrt{\sqrt[9]{10^{9^{2}-9}}}} = \boxed{100}$. This completes the computation.
+Audited verdict: correct

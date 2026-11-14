@@ -4,6 +4,7 @@ Design rule: the user message (problem + solution + output format) is byte-ident
 across conditions. Each condition only appends one line to the system prompt, so any
 change in verdicts is attributable to that line.
 """
+from pathlib import Path
 
 BASE_SYSTEM = (
     "You review step-by-step solutions to math problems. Decide whether the solution "
@@ -92,7 +93,37 @@ RATE_WORDING = {
     **{f"user{p}": {"line": BR_LINE.format(p), "stated_p_error": p / 100, "arm": "rate_user", "place": "user"} for p in (10, 90)},
 }
 
-CONDITIONS = {**BASE_RATE, **FOLLOWUPS, **STRICTNESS, **LABELS, **PREMISE, **ITEM_RATE, **RATE_WORDING}
+# Rate-use follow-up (prereg/rate_use_followup.md). The example blocks and the paper texts are fixed files written once by
+# scripts/build_followup_blocks.py; a condition whose block is missing has no line and stops build_messages().
+_BLOCKS = Path(__file__).resolve().parent.parent / "data" / "condition_blocks"
+
+
+def _block(name):
+    p = _BLOCKS / f"{name}.txt"
+    return p.read_text().rstrip("\n") if p.exists() else None
+
+
+NOTE = {"note_bare": {"line": "A note attached to this solution says it contains an error.", "stated_p_error": None, "arm": "premise"}}
+BAYES_LINE = (" Treat this rate as your prior. Combine it with the evidence in the solution to obtain the posterior probability "
+              'that the solution contains an error, report that posterior as p_error, and answer "error" only if it is above 50%.')
+BAYES = {f"bayes{p}": {"line": BR_LINE.format(p) + BAYES_LINE, "stated_p_error": p / 100, "arm": "rate_bayes"} for p in (10, 90)}
+EXPERIENCED = {f"exp{p}": {"line": _block(f"exp{p}"), "stated_p_error": p / 100, "arm": "rate_exp", "block": f"exp{p}"}
+               for p in (10, 50, 90)}
+PAPER_FRAME = {
+    "self": "The following paper reports measurements of how reviewers like you, including Claude Opus 5.5, use a stated error rate.",
+    "other": "The following paper reports measurements of how reviewers like you, including Model M, use a stated error rate.",
+    "methods": "The following describes how a reviewer's use of a stated error rate is scored.",
+}
+PAPER_FRAME["true"] = PAPER_FRAME["self"]
+PAPER = {}
+for _v in ("self", "other", "methods", "true"):
+    _doc = _block(f"paper_{_v}")
+    for _p in (10, 90):
+        PAPER[f"paper_{_v}{_p}"] = {"line": None if _doc is None else f"{PAPER_FRAME[_v]}\n\n{_doc}\n\n{BR_LINE.format(_p)}",
+                                   "stated_p_error": _p / 100, "arm": f"paper_{_v}", "block": f"paper_{_v}"}
+
+CONDITIONS = {**BASE_RATE, **FOLLOWUPS, **STRICTNESS, **LABELS, **PREMISE, **ITEM_RATE, **RATE_WORDING,
+              **NOTE, **BAYES, **EXPERIENCED, **PAPER}
 CONDITION_SETS = {
     "base_rate": list(BASE_RATE),
     "followups": list(FOLLOWUPS),
@@ -113,13 +144,20 @@ CONDITION_SETS = {
     "rate_wording_new": ["br50", *RATE_WORDING],
     "rate_wording": ["br10", "br50", "br90", *ITEM_RATE, *RATE_WORDING],
     "rate_wording_full": ["neutral", "presuppose", *PREMISE, "br10", "br50", "br90", *ITEM_RATE, *RATE_WORDING],
+    # Rate-use follow-up (prereg/rate_use_followup.md): the six conditions every critic gets, and the paper arm (Opus only).
+    "followup_api": [*NOTE, *BAYES, *EXPERIENCED],
+    "followup_paper": list(PAPER),
+    "followup_smoke": [*NOTE, *BAYES, *EXPERIENCED, *PAPER],
 }
 ARM_LABELS = {"base_rate": "stated base rate", "use": "base rate + instruction to use it",
               "payoff": "stated payoffs", "strictness": "strictness framings",
               "labels": 'base rate, verdict words "flawed"/"sound"',
               "premise": "claims about this solution", "item_rate": "stated chance for this solution",
               "rate_freq": "base rate as a frequency", "rate_comp": "base rate as the share correct",
-              "rate_hist": "rate from past audits", "rate_user": "base rate in the user message"}
+              "rate_hist": "rate from past audits", "rate_user": "base rate in the user message",
+              "rate_bayes": "base rate + the posterior rule", "rate_exp": "rate shown in ten audited examples",
+              "paper_self": "the paper, about this critic", "paper_other": "the paper, about another critic",
+              "paper_methods": "the paper's method section only", "paper_true": "the paper, with the true rate revealed"}
 # Short descriptions of the strictness framings, for figures.
 FRAMING_LABELS = {"presuppose": '"contains an error"', "find_bugs": '"find the mistakes"',
                   "harsh": '"harsh reviewer"', "lenient": '"lenient reviewer"',
@@ -154,6 +192,9 @@ def resolve_conditions(spec: str) -> list[str]:
 
 def build_messages(item: dict, condition: str) -> list[dict]:
     line = CONDITIONS[condition]["line"]
+    if line is None and CONDITIONS[condition].get("block"):
+        raise SystemExit(f"condition {condition} needs data/condition_blocks/{CONDITIONS[condition]['block']}.txt: "
+                         "run scripts/build_followup_blocks.py first")
     in_user = CONDITIONS[condition].get("place") == "user"
     system = BASE_SYSTEM if line is None or in_user else f"{BASE_SYSTEM}\n\n{line}"
     solution = "\n".join(f"Step {i + 1}: {s}" for i, s in enumerate(item["steps"]))

@@ -1,0 +1,37 @@
+The Ideal-Observer Audit
+
+Items.  ProcessBench pairs competition-mathematics problems with step-by-step model solutions in which human experts marked the earliest erroneous step. We call a solution flawed if any step is marked and ask the critic only whether an error exists. We use three balanced sets of 200 solutions (100 flawed, 100 correct), drawn at random within split and class and capped at 6,000 characters: an easy set (GSM8K and MATH splits), a hard set (OlympiadBench and Omni-MATH) and a held-out set from the same two splits that shares no problem with the hard set and uses each problem once.
+
+Critics.  Four open-weight models, Qwen3.5-4B, -9B and -27B and Gemma-4-12B, run in bf16 with vLLM on L40S GPUs, with reasoning off and on, at each model card's sampling settings (temperature 1.0) and with up to 32,768 output tokens when reasoning. Three Claude 5.5 models run through the API: Haiku (reasoning off, and adaptive reasoning at effort high), Sonnet (off, high and max) and Opus (high; its reasoning cannot be turned off). This gives 14 configurations on the hard set, each with one reply per item and condition (Figure 2). The open models were also run on the easy set (Appendix B). Two OpenAI models, GPT-6.1 Sol and GPT-6 Luna, were added on the held-out set at reasoning effort high.
+
+Prompts and conditions.  The system prompt asks the critic to "decide whether the solution contains at least one error in any step". The user message gives the problem and the numbered steps and asks for a JSON object with a verdict ("error" or "correct") and p\_error, an integer probability that the solution contains at least one error (Appendix A). Each condition appends exactly one line to the system prompt, and the user message is byte-identical across conditions, so a change in verdicts can be attributed to that line. On the hard set the lines are:
+
+- a base rate: "For calibration: in this review batch, about $N$% of solutions contain at least one error.", with $N\in\{10,50,90\}$;
+- the base rate with an instruction to use it as a prior;
+- payoffs: "Scoring: you lose 1 point(s) for each solution with an error that you mark `correct', and 9 point(s) for each correct solution that you mark `error'.", and the reverse;
+- a tone, e.g., "Be a lenient, charitable reviewer.";
+- a claim: "This solution contains an error. Check it carefully."
+
+A label-swap control repeats the base-rate lines with the verdict words "flawed" and "sound", because a preference for a verdict token could pass for a criterion. Sonnet (high, max) and Opus received only the base-rate, tone and claim lines. The held-out set adds further claim wordings and controls (Section 4.3), a chance for the solution in hand ("there is about a 90% chance that this solution contains at least one error") and four other statements of the rate (Section 4.5).
+
+Sensitivity, criterion and the ideal observer.  Let $H=P(\text{"error"}\mid\text{flawed})$ be the hit rate and $F=P(\text{"error"}\mid\text{correct})$ the false-alarm rate, both with the log-linear correction. Sensitivity is $d'=z(H)-z(F)$ and the criterion is $c=-[z(H)+z(F)]/2$, so that $c>0$ is lenient and $c<0$ is quick to flag. Under the equal-variance Gaussian model, an observer that maximizes expected accuracy when a fraction $p$ of solutions is flawed sets
+
+c^*(p)=\frac{1}{d'} \ln\frac{1-p}{p}
+
+. This is the curve in Figure 1b. The less sensitive the observer, the steeper the curve: weak evidence should yield to the prior more readily. Moving the stated rate from 10% to 90% should move $c$ by $\ln 81/d'$, and we define the prior-use ratio as the observed share of that shift,
+
+\rho=\frac{c(10%)-c(90%)}{\ln 81/d'_{\mathrm{ref}}},
+
+where $d'_{\mathrm{ref}}$ is the critic's sensitivity under the 50% statement (hard set) or with no added line (held-out set). A critic with $\rho=0$ ignores the rate, $\rho=1$ is ideal, and $\rho>1$ overreacts. Losing 9 points per false alarm and 1 per miss yields the same optimal criterion as a 10% base rate, and the reverse yields that of a 90% rate, so the payoff lines are scored with the same denominator.
+
+Effective probability.  To place lines that carry no number on the same scale, we invert Eq. 1. The effective probability of a line $L$ is the stated error rate at which an ideal observer with the critic's sensitivity, starting from an unbiased criterion, would move its criterion as far as the critic did:
+
+p_eff(L)=\sigma\!\left(-\left[c(L)-c(\text{neutral})\right]d'_{\mathrm{ref}}\right),
+
+with $\sigma$ the logistic function and "neutral" the prompt with no added line. An ideal observer has $p_eff=0.1$ when told 10% and $p_eff=0.9$ when told 90%.
+
+Own-confidence benchmark.  The equal-variance ideal asks every critic of a given sensitivity for the same shift, but a critic that is sure of most verdicts might rightly move less. For the Claude critics, whose stated probabilities are graded, we therefore also read p\_error under the 50% statement as a posterior under a 50% prior. Told 10%, a Bayesian with that posterior flags a solution only if p\_error $>90$; told 90%, if p\_error $>10$. $\rho_{\mathrm{Bayes}}$ divides the critic's observed shift by this Bayesian's shift. The open models state nearly binary probabilities, so for them this benchmark predicts almost no change and we do not interpret it.
+
+Inference.  Intervals are 95% percentile intervals from an item bootstrap that resamples flawed and correct solutions separately and reuses the same resamples for every condition and critic, so all contrasts are paired (2,000 resamples, or 10,000 for preregistered tests). With repeated replies, counts are averaged per pass over the items before the correction. The preregistered contrasts (Tables 1 and 4) use an exact within-item randomization test, Holm-corrected within each family; their intervals are descriptive. In simulation the intervals for $\rho$ covered a true 0.5 in 95% of runs at $d'=1.5$ and 91% at $3.2$ but 80% at $4.5$, where the estimate fell to 0.35: near ceiling, $\rho$ understates the use of the rate.
+
+Preregistration.  The claim test (Section 4.3), the label re-analysis and the rate-wording follow-up (Section 4.5) each had a written plan with predictions, primary contrasts and decision rules, fixed before its data existed (for the re-analysis, before its script). We report outcomes against these plans (supplementary material).

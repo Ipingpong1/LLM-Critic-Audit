@@ -5,7 +5,7 @@ Full rewrite of 2026-11-11, with the rate-wording results added the same afterno
 | file | what |
 |---|---|
 | `main.tex` | the paper (one file; the AAAI kit forbids `\input`) |
-| `main.pdf` | the compiled paper, 14 pages |
+| `main.pdf` | the compiled paper, 15 pages |
 | `refs.bib` | 71 entries, 68 cited; the 50 arXiv ones were generated from the arXiv API on 2026-11-10 |
 | `aaai2027.sty`, `aaai2027.bst` | from the official AAAI-27 kit (`AuthorKit27.zip`, aaai.org/authorkit27, sha256 9406a545…780c960). Do not modify |
 | `build.sh` | builds `main.pdf`; intermediate files go to `build/` (git-ignored) |
@@ -27,6 +27,26 @@ Source: `results/freeze_2026-11-12/` (`claim_tests.csv`, `wording_tests.csv`, `v
 **Page budget.** The corrections added about four lines and the body had no slack (the note below about seven spare lines was stale: the 2026-11-11 build ended at the foot of page 8). To stay within eight pages these were trimmed, none of them a finding: the one-line pointer to Section 4.5 at the end of Section 4.1; the Appendix C pointer, folded into the preceding parenthesis; the Table 1 caption's list of line names (the rows and Appendix A carry them); one sentence each from the Figure 2 and Figure 3 captions that restated the text ("Reasoning raises d′ ..."; "Critics stay near 50% ..."); and, in the Discussion and Limitations, the "audit is cheap" item, the first two sentences and the clause "reasoning settings are not commensurable across vendors" (already in "Compute and budgets") compressed. The build after the corrections is 14 pages with the body ending at the foot of page 8 and no spare lines, so the audit results will still need a cut elsewhere (shorten Related Work, or move Table 1 to the appendix).
 
 The historical plans in `prereg/` keep the legacy bootstrap outcomes (7 of 9, 3 of 60) as a record of what was first reported.
+
+## Attribution, instruction and experience results, added 2026-11-13
+
+Source: `prereg/rate_use_followup.md` (Results) and `results/followup/analysis/`. `make_figures.py --only numbers` prints every number used (block "rate-use follow-up"). The manuscript as it stood before these changes is in `archive/2026-11-13_before_followup/` (it is also the text the paper arm's blocks were built from).
+
+| where | what changed |
+|---|---|
+| Abstract | "restating the rate five other ways changed little" now also names spelling out how to use the rate and showing it in audited examples |
+| Section 4.1, "Attention" | the spelled-out Bayesian rule: nine critic runs changed ρ by −0.18 to +0.11, no interval above 0; reported posteriors moved by at most 1.1 log-odds for an 81-fold change in the odds |
+| Section 4.1, new item "Trust" | the rate shown in ten audited verdicts was used no more than the told rate (differences −0.41 to 0.00; Opus's interval below 0); d′ unchanged |
+| Section 4.3, "It can be discounted" | the bare note without the reliability declaration: 24 vs 89 false alarms (Opus), 28 vs 100 (GPT-6.1 Sol), 52 vs 47 (Qwen3.5-27B) |
+| Method, "Preregistration" | the follow-up added to the list of plans |
+| Discussion, "What critics do with context" | the Estes analogy now says it only half fits: a shown rate was used no better than a told one |
+| Discussion, new paragraph "A critic handed this paper" | the exploratory paper arm (Opus): ρ 0.29 → 0.05 with the manuscript in the prompt; 0.08 Method only, 0.07 with the statements that the rate is false, 0.21 about "Model M"; the after-the-fact limit that every version states the item composition |
+| Discussion, "Compute and budgets" | about 253,000 replies; API fees US$103 and US$12 |
+| Limitations | the normative-premise paragraph now cites the two checks: told how, and shown, the critics used the rate no more |
+| Appendix E | **Table 1 moved here** from Section 4.3 (its caption points back to Section 4.3; the text's references to it are unchanged) |
+| Appendix F (new) | "Attribution, Instruction and Experience": the three families, the paper arm's four ρ values, the label variants and the 2% rule; a two-column table of ρ told / rule / shown and Δd′ for the nine runs |
+
+**Page budget.** The additions came to about 21 lines of one column and moving Table 1 freed about the same, but the body still ran 17 lines onto page 9, so these were trimmed, none of them a finding: the new Discussion paragraph and the Section 4.3 addition compressed; in Related Work, the sentence likening critics to an observer told rather than shown the rate (no longer accurate), the three-element description of the claim test, the Lijo et al. comparison and the ProcessBench sentence shortened; "Nor is it uniform conservatism" and "This is why we add the own-confidence benchmark" dropped; the human-payoffs sentence in "Payoffs do even less" dropped (Related Work says the same); the two tone sentences merged; "The audit is cheap" and "Compute and budgets" compressed; the Figure 4 caption's two explanatory sentences shortened; and the Introduction's description of the third contribution shortened to pay for the abstract clause. The build is 15 pages with the body ending at the foot of page 8 (no spare lines); Appendix F's table floats to page 15.
 
 ## Rate-wording results, added 2026-11-11
 
